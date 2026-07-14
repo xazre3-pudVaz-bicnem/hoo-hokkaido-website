@@ -1,60 +1,96 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, Loader2, TriangleAlert } from "lucide-react";
 import Link from "next/link";
-import { sortedActivities } from "@/data/activities";
+import { CheckCircle2, Loader2, TriangleAlert } from "lucide-react";
+import { localeConfig, locales, type Locale } from "@/i18n/locales";
+import { localePath } from "@/i18n/routing";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+export type ReservationFormStrings = {
+  fields: Record<string, string>;
+  notice: string;
+  submit: string;
+  submitting: string;
+  successTitle: string;
+  successBody: string;
+  successStrong: string;
+  successNote: string;
+  required: string;
+  errorNetwork: string;
+};
+
+export type ActivityOption = {
+  slug: string;
+  label: string;
+};
 
 const inputClass =
   "w-full rounded-xl border border-forest-light bg-white px-4 py-3 text-base text-ink placeholder:text-ink-soft/50 focus:border-water-deep focus:outline-none focus:ring-2 focus:ring-water-deep/30";
 const labelClass = "mb-1.5 block text-sm font-bold text-navy";
 
-function Required() {
+/** 必須バッジ（ラベルは言語ごとに異なるため props で受け取る） */
+function Required({ label }: { label: string }) {
   return (
     <span className="ml-1.5 rounded bg-water-deep px-1.5 py-0.5 text-[10px] font-bold text-white">
-      必須
+      {label}
     </span>
   );
 }
 
 /**
  * 予約フォーム。
- * /reservation?activity=<slug> で希望アクティビティを初期選択できます。
+ * /[locale]/reservation?activity=<slug> で希望アクティビティを初期選択できます。
+ * 外国語ページではフリガナ（ローマ字表記）を必須にしません。
  */
 export default function ReservationForm({
+  locale,
+  strings,
+  activityOptions,
   initialActivity,
 }: {
+  locale: Locale;
+  strings: ReservationFormStrings;
+  activityOptions: ActivityOption[];
   initialActivity?: string;
 }) {
-  const validInitial = sortedActivities.some((a) => a.slug === initialActivity)
+  const isJa = locale === "ja";
+  const validInitial = activityOptions.some((a) => a.slug === initialActivity)
     ? (initialActivity as string)
     : "";
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const f = strings.fields;
+  const req = <Required label={strings.required} />;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (status === "submitting") return; // 二重送信防止
 
     const form = event.currentTarget;
-    const formData = new FormData(form);
+    const data = new FormData(form);
     const payload = {
-      lastName: String(formData.get("lastName") ?? ""),
-      firstName: String(formData.get("firstName") ?? ""),
-      furigana: String(formData.get("furigana") ?? ""),
-      birthdate: String(formData.get("birthdate") ?? ""),
-      phone: String(formData.get("phone") ?? ""),
-      email: String(formData.get("email") ?? ""),
-      activity: String(formData.get("activity") ?? ""),
-      preferredDate: String(formData.get("preferredDate") ?? ""),
-      preferredTime: String(formData.get("preferredTime") ?? ""),
-      participants: String(formData.get("participants") ?? ""),
-      ageComposition: String(formData.get("ageComposition") ?? ""),
-      message: String(formData.get("message") ?? ""),
-      agree: formData.get("agree") === "on",
-      website: String(formData.get("website") ?? ""),
+      locale,
+      lastName: String(data.get("lastName") ?? ""),
+      firstName: String(data.get("firstName") ?? ""),
+      furigana: String(data.get("furigana") ?? ""),
+      birthdate: String(data.get("birthdate") ?? ""),
+      country: String(data.get("country") ?? ""),
+      phone: String(data.get("phone") ?? ""),
+      email: String(data.get("email") ?? ""),
+      contactLanguage: String(data.get("contactLanguage") ?? ""),
+      stayArea: String(data.get("stayArea") ?? ""),
+      activity: String(data.get("activity") ?? ""),
+      preferredDate: String(data.get("preferredDate") ?? ""),
+      preferredTime: String(data.get("preferredTime") ?? ""),
+      participants: String(data.get("participants") ?? ""),
+      ageComposition: String(data.get("ageComposition") ?? ""),
+      message: String(data.get("message") ?? ""),
+      agree: data.get("agree") === "on",
+      website: String(data.get("website") ?? ""),
+      sourcePath: typeof window !== "undefined" ? window.location.pathname : "",
     };
 
     setStatus("submitting");
@@ -65,20 +101,18 @@ export default function ReservationForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const data = (await res.json()) as { ok: boolean; message?: string };
-      if (data.ok) {
+      const result = (await res.json()) as { ok: boolean; message?: string };
+      if (result.ok) {
         setStatus("success");
         form.reset();
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         setStatus("error");
-        setErrorMessage(data.message ?? "送信に失敗しました。");
+        setErrorMessage(result.message ?? strings.errorNetwork);
       }
     } catch {
       setStatus("error");
-      setErrorMessage(
-        "送信に失敗しました。通信環境をご確認のうえ、再度お試しください。"
-      );
+      setErrorMessage(strings.errorNetwork);
     }
   }
 
@@ -87,36 +121,33 @@ export default function ReservationForm({
       <div className="rounded-3xl bg-white p-8 text-center shadow-card md:p-12">
         <CheckCircle2 aria-hidden="true" className="mx-auto h-14 w-14 text-forest" />
         <h2 className="mt-5 font-display text-2xl font-bold text-navy">
-          送信が完了しました
+          {strings.successTitle}
         </h2>
-        <p className="mt-4 text-sm leading-loose text-ink-soft">
-          予約リクエストを受け付けました。
-          <br />
-          内容を確認のうえ、担当者からご連絡いたします。
-          <br />
-          <strong className="font-bold text-navy">
-            担当者からの連絡をもって予約確定となります。
-          </strong>
+        <p className="mt-4 whitespace-pre-line text-sm leading-loose text-ink-soft">
+          {strings.successBody}
         </p>
-        <p className="mt-6 text-xs text-ink-soft">
-          しばらく経っても連絡がない場合は、お手数ですがお電話（090-5950-4006）にてご確認ください。
+        <p className="mt-3 text-sm font-bold leading-loose text-navy">
+          {strings.successStrong}
+        </p>
+        <p className="mt-6 text-xs leading-relaxed text-ink-soft">
+          {strings.successNote}
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate={false} className="rounded-3xl bg-white p-6 shadow-card md:p-10">
+    <form onSubmit={handleSubmit} className="rounded-3xl bg-white p-6 shadow-card md:p-10">
       {/* ハニーポット（スパム対策・画面には表示されない） */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-        <label htmlFor="website">Webサイト</label>
+        <label htmlFor="website">Website</label>
         <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="lastName" className={labelClass}>
-            姓 <Required />
+            {f.lastName} {req}
           </label>
           <input
             type="text"
@@ -124,13 +155,13 @@ export default function ReservationForm({
             name="lastName"
             required
             autoComplete="family-name"
-            placeholder="山田"
+            placeholder={isJa ? f.lastNamePlaceholder : ""}
             className={inputClass}
           />
         </div>
         <div>
           <label htmlFor="firstName" className={labelClass}>
-            名 <Required />
+            {f.firstName} {req}
           </label>
           <input
             type="text"
@@ -138,44 +169,60 @@ export default function ReservationForm({
             name="firstName"
             required
             autoComplete="given-name"
-            placeholder="太郎"
+            placeholder={isJa ? f.firstNamePlaceholder : ""}
             className={inputClass}
           />
         </div>
       </div>
 
+      {/* 日本語ページのみフリガナ必須。外国語ページはローマ字表記（任意） */}
       <div className="mt-5">
         <label htmlFor="furigana" className={labelClass}>
-          フリガナ <Required />
+          {isJa ? f.furigana : f.furiganaForeign} {isJa && req}
         </label>
         <input
           type="text"
           id="furigana"
           name="furigana"
-          required
-          placeholder="ヤマダ タロウ"
-          className={inputClass}
-        />
-      </div>
-
-      <div className="mt-5">
-        <label htmlFor="birthdate" className={labelClass}>
-          生年月日 <Required />
-        </label>
-        <input
-          type="date"
-          id="birthdate"
-          name="birthdate"
-          required
-          autoComplete="bday"
+          required={isJa}
+          placeholder={isJa ? f.furiganaPlaceholder : ""}
           className={inputClass}
         />
       </div>
 
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <div>
+          <label htmlFor="birthdate" className={labelClass}>
+            {f.birthdate} {req}
+          </label>
+          <input
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            required
+            autoComplete="bday"
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label htmlFor="country" className={labelClass}>
+            {f.country}
+          </label>
+          <input
+            type="text"
+            id="country"
+            name="country"
+            autoComplete="country-name"
+            placeholder={f.countryPlaceholder}
+            className={inputClass}
+          />
+        </div>
+      </div>
+
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <div>
           <label htmlFor="phone" className={labelClass}>
-            電話番号 <Required />
+            {f.phone} {req}
           </label>
           <input
             type="tel"
@@ -184,13 +231,14 @@ export default function ReservationForm({
             required
             inputMode="tel"
             autoComplete="tel"
-            placeholder="09012345678"
+            placeholder={isJa ? f.phonePlaceholder : "+81 90-1234-5678"}
             className={inputClass}
           />
+          <p className="mt-1.5 text-xs leading-relaxed text-ink-soft">{f.phoneHint}</p>
         </div>
         <div>
           <label htmlFor="email" className={labelClass}>
-            メールアドレス <Required />
+            {f.email} {req}
           </label>
           <input
             type="email"
@@ -199,7 +247,39 @@ export default function ReservationForm({
             required
             inputMode="email"
             autoComplete="email"
-            placeholder="example@email.com"
+            placeholder={f.emailPlaceholder}
+            className={inputClass}
+          />
+        </div>
+      </div>
+
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="contactLanguage" className={labelClass}>
+            {f.contactLanguage}
+          </label>
+          <select
+            id="contactLanguage"
+            name="contactLanguage"
+            defaultValue={locale}
+            className={inputClass}
+          >
+            {locales.map((item) => (
+              <option key={item} value={item}>
+                {localeConfig[item].label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="stayArea" className={labelClass}>
+            {f.stayArea}
+          </label>
+          <input
+            type="text"
+            id="stayArea"
+            name="stayArea"
+            placeholder={f.stayAreaPlaceholder}
             className={inputClass}
           />
         </div>
@@ -207,7 +287,7 @@ export default function ReservationForm({
 
       <div className="mt-5">
         <label htmlFor="activity" className={labelClass}>
-          希望アクティビティ <Required />
+          {f.activity} {req}
         </label>
         <select
           id="activity"
@@ -217,11 +297,11 @@ export default function ReservationForm({
           className={inputClass}
         >
           <option value="" disabled>
-            選択してください
+            {f.activityPlaceholder}
           </option>
-          {sortedActivities.map((a) => (
+          {activityOptions.map((a) => (
             <option key={a.slug} value={a.slug}>
-              {a.name}（{a.price.display}／{a.price.unit}）
+              {a.label}
             </option>
           ))}
         </select>
@@ -230,7 +310,7 @@ export default function ReservationForm({
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="preferredDate" className={labelClass}>
-            希望日 <Required />
+            {f.preferredDate} {req}
           </label>
           <input
             type="date"
@@ -242,13 +322,13 @@ export default function ReservationForm({
         </div>
         <div>
           <label htmlFor="preferredTime" className={labelClass}>
-            希望時間
+            {f.preferredTime}
           </label>
           <input
             type="text"
             id="preferredTime"
             name="preferredTime"
-            placeholder="例：午前中／13時頃"
+            placeholder={f.preferredTimePlaceholder}
             className={inputClass}
           />
         </div>
@@ -257,27 +337,26 @@ export default function ReservationForm({
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="participants" className={labelClass}>
-            参加人数 <Required />
+            {f.participants} {req}
           </label>
           <input
             type="text"
             id="participants"
             name="participants"
             required
-            inputMode="numeric"
-            placeholder="例：4名"
+            placeholder={f.participantsPlaceholder}
             className={inputClass}
           />
         </div>
         <div>
           <label htmlFor="ageComposition" className={labelClass}>
-            参加者の年齢構成
+            {f.ageComposition}
           </label>
           <input
             type="text"
             id="ageComposition"
             name="ageComposition"
-            placeholder="例：大人2名・小学生2名"
+            placeholder={f.ageCompositionPlaceholder}
             className={inputClass}
           />
         </div>
@@ -285,19 +364,19 @@ export default function ReservationForm({
 
       <div className="mt-5">
         <label htmlFor="message" className={labelClass}>
-          質問・相談事項
+          {f.message}
         </label>
         <textarea
           id="message"
           name="message"
           rows={5}
-          placeholder="ご質問・ご相談があればご記入ください"
+          placeholder={f.messagePlaceholder}
           className={inputClass}
         />
       </div>
 
       <div className="mt-6 rounded-2xl bg-water-light/60 p-4 text-xs leading-relaxed text-ink">
-        フォーム送信時点では予約確定ではありません。内容確認後、担当者からの連絡をもって予約確定となります。
+        {strings.notice}
       </div>
 
       <div className="mt-5">
@@ -309,14 +388,14 @@ export default function ReservationForm({
             className="mt-1 h-4 w-4 shrink-0 accent-forest"
           />
           <span>
+            {f.agree} {req}
             <Link
-              href="/privacy"
+              href={localePath(locale, "/privacy")}
               target="_blank"
-              className="font-bold text-water-deep underline underline-offset-2 hover:text-navy"
+              className="ml-2 whitespace-nowrap text-xs font-bold text-water-deep underline underline-offset-2 hover:text-navy"
             >
-              プライバシーポリシー
+              {f.agreeLink}
             </Link>
-            に同意する <Required />
           </span>
         </label>
       </div>
@@ -334,15 +413,15 @@ export default function ReservationForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-7 flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-water-deep px-8 text-base font-bold text-white shadow-card transition-colors hover:bg-navy disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-7 flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-water-deep px-6 text-base font-bold text-white shadow-card transition-colors hover:bg-navy disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "submitting" ? (
           <>
-            <Loader2 aria-hidden="true" className="h-5 w-5 animate-spin" />
-            送信中…
+            <Loader2 aria-hidden="true" className="h-5 w-5 shrink-0 animate-spin" />
+            {strings.submitting}
           </>
         ) : (
-          "予約リクエストを送信する"
+          strings.submit
         )}
       </button>
     </form>

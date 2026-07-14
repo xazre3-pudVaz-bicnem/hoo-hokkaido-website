@@ -101,7 +101,8 @@ async function buildPhotos() {
  * 濃色の文字を白へ置き換えた「反転版（暗い背景用）」も生成します。
  */
 async function buildLogo() {
-  const source = path.join(SRC_DIR, "ロゴ_0.png");
+  // 差し替え時はこのファイル名を変更してください（photos-original/ に置いた元ロゴ）
+  const source = path.join(SRC_DIR, "ロゴ.png");
   const logoDir = path.join(OUT_DIR, "logo");
   await mkdir(logoDir, { recursive: true });
 
@@ -155,7 +156,7 @@ async function buildLogo() {
 }
 
 const files = await readdir(SRC_DIR);
-const missing = [...new Set(MAPPING.map((m) => m.src)), "ロゴ_0.png"].filter(
+const missing = [...new Set(MAPPING.map((m) => m.src)), "ロゴ.png"].filter(
   (f) => !files.includes(f)
 );
 if (missing.length) {

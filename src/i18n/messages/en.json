@@ -1,0 +1,1229 @@
+{
+  "meta": {
+    "home": {
+      "title": "Furano Outdoor Activities & River Tours | HOO Hokkaido",
+      "description": "Guided river activities in Furano, Biei and Asahikawa. Enjoy Hokkaido's nature on a relaxed downriver trip with experienced local guides."
+    },
+    "activities": {
+      "title": "All Activities | River Experiences in Furano, Biei & Asahikawa",
+      "description": "Browse every HOO activity: Relax Downriver trips in Furano, Biei and Asahikawa, plus tailor-made Organize Programs for groups. Booking is required."
+    },
+    "furanoActivity": {
+      "title": "Things to Do in Furano | Outdoor & Nature Experiences",
+      "description": "Planning a trip to Furano? A local guide explains how to choose an outdoor experience, from river trips to nature time, for families, friends and couples."
+    },
+    "furanoRafting": {
+      "title": "Furano Rafting & River Activities: How to Choose",
+      "description": "Looking for rafting in Furano? Learn how river trips differ, what to check before you book, and what HOO's relaxed guided downriver experience is really like."
+    },
+    "about": {
+      "title": "About HOO | Mission, Vision & Our Guide",
+      "description": "Hokkaido Outdoor Organization connects people with Hokkaido's nature. Meet our mission, vision and representative Shota Kose, and see his qualifications."
+    },
+    "projects": {
+      "title": "Projects | River Care, Community Spaces & Local Tourism",
+      "description": "Beyond running activities, HOO works on river management and conservation, riverside community spaces, and tourism that strengthens the local economy."
+    },
+    "safety": {
+      "title": "Our Approach to Safety",
+      "description": "How HOO keeps river trips sensible: pre-trip briefings, go/no-go calls based on weather and river conditions, and health questions answered before you book."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Answers about joining a HOO river activity: first-timers, group size, what to wear, rain, children, meeting points, booking and cancellations."
+    },
+    "access": {
+      "title": "Access & Business Information",
+      "description": "Hokkaido Outdoor Organization is based at 2-8 Hokuto-cho, Furano, Hokkaido. Open 9:00-17:00 (JST). Meeting points are shared when you book."
+    },
+    "reservation": {
+      "title": "Booking Form | Reserve a River Activity",
+      "description": "Request a booking for a Relax Downriver trip in Furano, Biei or Asahikawa, or an Organize Program. You can also get in touch by phone."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Questions about our activities, dates, group bookings or projects? Send us a message any time. We reply during business hours, 9:00-17:00 (JST)."
+    },
+    "column": {
+      "title": "Column | Outdoor Stories from Furano & Hokkaido",
+      "description": "Practical guides to the outdoors in Furano, Biei and Asahikawa: choosing an activity, what to wear on the river, and how to plan your Hokkaido trip."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How Hokkaido Outdoor Organization (HOO) collects, uses and protects the personal information submitted through this website, and how to contact us about it."
+    },
+    "terms": {
+      "title": "Booking Information & Guidelines",
+      "description": "What to know before joining a HOO activity: how booking works, how we decide whether to run a trip, cancellations, and a few requests for the day itself."
+    },
+    "sitemap": {
+      "title": "Sitemap",
+      "description": "Every page on the Hokkaido Outdoor Organization website: activities, Furano experience guides, about HOO, booking and contact."
+    },
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "The page you are looking for may have moved or been removed. Try starting again from the home page or the activities list."
+    }
+  },
+
+  "common": {
+    "addressFull": "2-8 Hokuto-cho, Furano, Hokkaido, Japan",
+    "addressLabel": "Address",
+    "hoursLabel": "Business hours",
+    "hoursNote": "9:00-17:00 (JST)",
+    "hoursTimezoneNote": "Open 9:00-17:00 (Japan Standard Time)",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "reserve": "Book now",
+    "reserveThis": "Book this activity",
+    "call": "Call us",
+    "viewDetails": "View details",
+    "seeAll": "See all",
+    "learnMore": "Learn more",
+    "backToActivities": "Back to all activities",
+    "required": "Required",
+    "areaLabel": "Area",
+    "priceLabel": "Price",
+    "minParticipantsLabel": "Minimum group size",
+    "minParticipants": "From {count} people",
+    "minParticipantsShort": "From {count} people",
+    "formAvailable24h": "Outside business hours, you can still reach us any time through the contact form.",
+    "skipToContent": "Skip to main content"
+  },
+
+  "price": {
+    "amount": "JPY {amount}",
+    "perPerson": "per person, tax included",
+    "perThreeHours": "for 3 hours, tax included",
+    "full": {
+      "perPerson": "JPY {amount} per person, tax included",
+      "perThreeHours": "JPY {amount} for 3 hours, tax included"
+    },
+    "note": "Prices are subject to change. Please contact us for the latest pricing.",
+    "noteCustom": "The price depends on the content and group size. We will prepare a quote for you."
+  },
+
+  "language": {
+    "switchLabel": "Change language",
+    "currentLabel": "Language",
+    "menuLabel": "Select a language",
+    "bannerMessage": "This site is also available in English.",
+    "bannerSwitch": "View in English",
+    "bannerDismiss": "Dismiss"
+  },
+
+  "nav": {
+    "home": "Home",
+    "activities": "Activities",
+    "furanoActivity": "Experience Furano",
+    "about": "About HOO",
+    "projects": "Projects",
+    "faq": "FAQ",
+    "access": "Access",
+    "contact": "Contact",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "hoursHint": "Open 9:00-17:00 (JST) / Outside these hours, please use the contact form"
+  },
+
+  "footer": {
+    "links": {
+      "activities": "Activities",
+      "furanoDownriver": "Furano Relax Downriver",
+      "furanoActivity": "Furano Activities",
+      "furanoRafting": "Furano Rafting & River Experiences",
+      "about": "About HOO",
+      "projects": "Projects",
+      "safety": "Safety",
+      "column": "Column",
+      "faq": "FAQ",
+      "access": "Access",
+      "reservation": "Booking",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Booking Information",
+      "sitemap": "Sitemap"
+    },
+    "nav": "Footer navigation",
+    "copyright": "All rights reserved."
+  },
+
+  "mobileCta": {
+    "note": "Open 9:00-17:00 (JST) / Form enquiries accepted around the clock"
+  },
+
+  "breadcrumb": {
+    "label": "Breadcrumb",
+    "home": "Home"
+  },
+
+  "languagesSection": {
+    "title": "Information in five languages",
+    "body": "So that visitors coming to Hokkaido from overseas can plan an activity with confidence, Hokkaido Outdoor Organization publishes information in Japanese, English, Traditional Chinese, Simplified Chinese and Korean.",
+    "listLabel": "Available languages",
+    "note": "Our website and booking form are available in multiple languages. For the languages we can support on site and by phone, please ask us before you book."
+  },
+
+  "home": {
+    "hero": {
+      "eyebrow": "Hokkaido Outdoor Organization",
+      "title": "Hokkaido's rivers,\nhours you won't forget.",
+      "subtitle": "River activities in Furano, Biei and Asahikawa,\nclose to the nature of Hokkaido.",
+      "lead": "Hokkaido Outdoor Organization connects people with the nature of Hokkaido, and with experiences that stay with them.",
+      "ctaPrimary": "Find an activity",
+      "ctaSecondary": "Book now",
+      "imageAlt": "A relaxed downriver trip on a river in Furano"
+    },
+    "highlights": {
+      "label": "What our trips are like",
+      "items": [
+        "Based in Furano",
+        "From 2 people",
+        "Led by experienced guides",
+        "Advance booking required",
+        "An unhurried way to enjoy nature"
+      ]
+    },
+    "intro": {
+      "eyebrow": "Into the Nature",
+      "title": "Not just looking at Hokkaido.\nBeing in it.",
+      "paragraphs": [
+        "Hokkaido Outdoor Organization offers something you cannot get from simply visiting the sights.",
+        "Touch the moving water, listen to the forest, and feel the land of Hokkaido with your whole body.",
+        "Enjoy the nature of Furano, Biei and Asahikawa alongside experienced guides."
+      ]
+    },
+    "activities": {
+      "eyebrow": "Activities",
+      "title": "Activities",
+      "lead": "Based in Furano, we also run river activities in the Biei and Asahikawa areas. All trips are by advance booking, from 2 people.",
+      "seeAll": "See all activities"
+    },
+    "purpose": {
+      "eyebrow": "Find Your Experience",
+      "title": "Choose by what you're looking for",
+      "lead": "Not sure which activity is right for you? Start with the option closest to what you have in mind.",
+      "cards": [
+        {
+          "title": "I want to enjoy nature in Furano",
+          "body": "Our flagship river activity: a relaxed float down the rivers of Furano.",
+          "linkLabel": "Furano Relax Downriver"
+        },
+        {
+          "title": "I'm coming with family or friends",
+          "body": "From 2 people, with careful guidance for anyone joining for the first time.",
+          "linkLabel": "See all activities"
+        },
+        {
+          "title": "I want a memory that feels like Hokkaido",
+          "body": "We also run downriver trips in the Biei and Asahikawa areas.",
+          "linkLabel": "Choose an experience by area"
+        },
+        {
+          "title": "I'm planning something for a group",
+          "body": "Training days, events and more, built around your goals.",
+          "linkLabel": "Organize Program"
+        }
+      ]
+    },
+    "reasons": {
+      "eyebrow": "Why HOO",
+      "title": "Guides who know the water,\nrivers worth taking your time on."
+    },
+    "safety": {
+      "eyebrow": "Safety",
+      "title": "Our approach to safety",
+      "lead": "Because nature sets the terms, we would rather call it off than push our luck.",
+      "link": "Read about our approach to safety"
+    },
+    "flow": {
+      "eyebrow": "Flow",
+      "title": "From booking to the day itself",
+      "lead": "Meeting points, what to bring and other details are shared with you when you book."
+    },
+    "guide": {
+      "eyebrow": "Guide",
+      "link": "Learn more about HOO"
+    },
+    "projects": {
+      "eyebrow": "Projects",
+      "title": "Beyond the trip: what else HOO does",
+      "lead": "Alongside our activities, we work on the future of Hokkaido's rivers and the communities around them."
+    },
+    "voices": {
+      "eyebrow": "Voices",
+      "title": "Guest voices",
+      "preparing": "Guest voices are coming soon.\nWe'll share stories from our guests here."
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Frequently asked questions",
+      "lead": "If your question isn't answered here, please get in touch.",
+      "seeAll": "See all questions"
+    },
+    "access": {
+      "eyebrow": "Access",
+      "title": "Access"
+    }
+  },
+
+  "finalCta": {
+    "title": "Make time for the river\non your next trip to Hokkaido.",
+    "lead": "Bookings, availability, questions: reach us through the form or by phone.",
+    "primary": "Book an activity",
+    "secondary": "Call us",
+    "note": "Open 9:00-17:00 (JST) / Outside these hours, please use the contact form"
+  },
+
+  "activitiesPage": {
+    "eyebrow": "Activities",
+    "title": "Activities",
+    "lead": "Every river activity we run, based in Furano and reaching into the Biei and Asahikawa areas.\nAll trips are by advance booking, from 2 people.",
+    "helpTitle": "Not sure which to choose?",
+    "helpBody": "If it's your first time with us, we suggest our flagship program, the Furano Relax Downriver. We're also happy to suggest something that fits your itinerary and group size, so just ask."
+  },
+
+  "activityDetail": {
+    "overview": "Overview",
+    "features": "What makes it special",
+    "recommendedFor": "Ideal for",
+    "flow": "How the day works",
+    "notes": "Good to know",
+    "faq": "Frequently asked questions",
+    "faqLink": "For other questions, take a look at our FAQ.",
+    "otherActivities": "Other activities",
+    "otherActivitiesEyebrow": "Other Activities",
+    "accessEyebrow": "Access",
+    "accessTitle": "Access & meeting point",
+    "accessLead": "The meeting point depends on the area. We'll give you full details when you book.",
+    "reserveNote": "Sending the form does not confirm your booking.\nYour place is confirmed once we contact you.",
+    "labels": {
+      "duration": "Duration",
+      "period": "Season",
+      "targetAge": "Age range",
+      "meetingPlace": "Meeting point",
+      "clothing": "What to wear and bring"
+    },
+    "infoValues": {
+      "tbd": "Please contact us",
+      "onBooking": "Shared when you book",
+      "threeHours": "3 hours (flexible depending on the program)"
+    },
+    "furanoNote": "This is the program many people choose when they're searching for rafting or river activities in Furano. It isn't a white-water run: it's a relaxed downriver trip that gives you time to take in the nature of Furano's rivers. If you're weighing up your options, our guide to choosing a rafting or river experience in Furano may help.",
+    "furanoNoteLink": "How to choose a rafting or river experience in Furano"
+  },
+
+  "activities": {
+    "furano-relax-downriver": {
+      "name": "Furano Relax Downriver",
+      "area": "Furano",
+      "catchcopy": "See Hokkaido from the water, at the pace of the river.",
+      "summary": "Our flagship river activity: a boat trip down the rivers of Furano, taking in the scenery from water level alongside an experienced guide.",
+      "imageAlt": "A Relax Downriver trip on a river in Furano",
+      "meta": {
+        "title": "Furano Relax Downriver | River Activity in Furano",
+        "description": "Float down the rivers of Furano by boat with an experienced guide. From 2 people. A relaxed way to enjoy Hokkaido's nature on the water."
+      },
+      "description": [
+        "The Furano Relax Downriver is a river activity that takes you down the rivers of Furano by boat, close enough to the nature of Hokkaido to feel it.",
+        "The sky seen from water level, the forest along the banks, the sound of the current. From the river, Furano looks like nowhere you'll reach on foot.",
+        "An experienced guide reads the river on the day and leads the trip, so if it's your first time on the water, just talk to us."
+      ],
+      "features": [
+        {
+          "title": "Furano, seen from the river",
+          "body": "The sky, the forest and the water's edge from an angle you'll never get from land. Drifting with the current is the point of the trip, not a means to an end."
+        },
+        {
+          "title": "A guide you can ask anything",
+          "body": "Our representative has over 20 years as an outdoor guide, and our guides know these rivers. Ask us whatever you're unsure about, before you book or on the day."
+        },
+        {
+          "title": "An unhurried downriver trip",
+          "body": "This isn't about speed or thrills. It's a program built around taking your time with the current and the nature of Furano."
+        }
+      ],
+      "recommendedFor": [
+        "Travellers in Furano looking for a real encounter with nature",
+        "Families, friends and couples who want a memory to take home",
+        "Anyone curious about rafting or river trips, but not the wild kind",
+        "People who want to experience the Furano that photos can't capture"
+      ],
+      "flow": [
+        { "step": "Book or enquire", "body": "Tell us your preferred date and group size, by form or phone." },
+        { "step": "Details", "body": "We'll share the meeting point, what to bring and how the day runs." },
+        { "step": "Check in", "body": "Come to the meeting point we've given you." },
+        { "step": "Guide briefing", "body": "Your guide explains the equipment and how the trip will go." },
+        { "step": "On the river", "body": "Head down the rivers of Furano with your guide." },
+        { "step": "Finish", "body": "The trip ends and you're free to carry on with your day." }
+      ],
+      "notes": [
+        "Trips may be cancelled or changed depending on the weather and river conditions.",
+        "If you have any concerns about your health, please talk to us in advance.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Can I join if it's my first time?",
+          "answer": "Yes. Your guide will explain the equipment and how the day works as you go. If anything worries you, just ask when you book."
+        },
+        {
+          "question": "What is the minimum group size?",
+          "answer": "Bookings start from 2 people. For other group sizes, please get in touch."
+        },
+        {
+          "question": "Can children take part?",
+          "answer": "The age range depends on the river conditions on the day. If you're coming with children, contact us in advance and let us know their ages."
+        },
+        {
+          "question": "What should I wear and bring?",
+          "answer": "We'll tell you exactly what to wear and bring when you book."
+        }
+      ]
+    },
+    "biei-relax-downriver": {
+      "name": "Biei Relax Downriver",
+      "area": "Biei",
+      "catchcopy": "Biei, the town of rolling hills, seen from the water.",
+      "summary": "A relaxed boat trip down a river in the Biei area, and a different side of a landscape most people only see from the hills.",
+      "imageAlt": "A Relax Downriver trip on a river in Biei",
+      "meta": {
+        "title": "Biei Relax Downriver | River Activity in Biei",
+        "description": "A relaxed boat trip down a river in the Biei area. See the famous hill country of Biei from the water. From 2 people."
+      },
+      "description": [
+        "The Biei Relax Downriver is a guided boat trip down a river in the Biei area, and a chance to spend time in the landscape rather than beside it.",
+        "Biei is known for its hills and patchwork fields, but the view from the river is another thing entirely: water and forest close by, and time that moves at Hokkaido's pace.",
+        "It slots easily into a Biei and Furano itinerary. Tell us your plans and we'll work around them."
+      ],
+      "features": [
+        {
+          "title": "Biei's nature from the river",
+          "body": "A quiet way to experience one of Hokkaido's most photographed areas, from an angle few visitors see."
+        },
+        {
+          "title": "Led by an experienced guide",
+          "body": "Your guide reads the river as you go and leads the trip with safety in mind."
+        },
+        {
+          "title": "Easy to fit into your trip",
+          "body": "It plans well alongside sightseeing in the Biei, Furano and Asahikawa areas."
+        }
+      ],
+      "recommendedFor": [
+        "Travellers who want nature time alongside sightseeing in Biei",
+        "Anyone looking for more than the usual tourist route",
+        "People who want to enjoy nature quietly"
+      ],
+      "flow": [
+        { "step": "Book or enquire", "body": "Tell us your preferred date and group size, by form or phone." },
+        { "step": "Details", "body": "We'll share the meeting point, what to bring and how the day runs." },
+        { "step": "Check in", "body": "Come to the meeting point we've given you." },
+        { "step": "Guide briefing", "body": "Your guide explains the equipment and how the trip will go." },
+        { "step": "On the river", "body": "Head down the river in Biei with your guide." },
+        { "step": "Finish", "body": "The trip ends and you're free to carry on with your day." }
+      ],
+      "notes": [
+        "Trips may be cancelled or changed depending on the weather and river conditions.",
+        "If you have any concerns about your health, please talk to us in advance.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Can I do this on the same day as sightseeing in Biei?",
+          "answer": "We'll confirm the duration and meeting point when you book, so if your itinerary is already set, let us know and we'll advise."
+        },
+        {
+          "question": "What is the minimum group size?",
+          "answer": "Bookings start from 2 people. For other group sizes, please get in touch."
+        }
+      ]
+    },
+    "asahikawa-relax-downriver": {
+      "name": "Asahikawa Relax Downriver",
+      "area": "Asahikawa",
+      "catchcopy": "River time, minutes from the city of Asahikawa.",
+      "summary": "A relaxed boat trip down a river in the Asahikawa area: close to the city, yet surrounded by nature.",
+      "imageAlt": "A Relax Downriver trip on a river in Asahikawa",
+      "meta": {
+        "title": "Asahikawa Relax Downriver | River Activity in Asahikawa",
+        "description": "A relaxed boat trip down a river in the Asahikawa area. Enjoy Hokkaido's nature just outside the city. From 2 people."
+      },
+      "description": [
+        "The Asahikawa Relax Downriver is a guided boat trip down a river in the Asahikawa area.",
+        "Hokkaido's second city is closer to rivers and forest than most people expect. Add a few hours on the water to your time in town.",
+        "It fits neatly into a trip that takes in Asahikawa, Biei and Furano."
+      ],
+      "features": [
+        {
+          "title": "The waterways of the Asahikawa area",
+          "body": "A chance to get onto the river in a region better known for Asahiyama Zoo and city sightseeing."
+        },
+        {
+          "title": "Led by an experienced guide",
+          "body": "Your guide reads the river as you go and leads the trip with safety in mind."
+        },
+        {
+          "title": "Easy to reach from your base",
+          "body": "A natural addition to a Hokkaido trip built around Asahikawa."
+        }
+      ],
+      "recommendedFor": [
+        "Travellers who want nature time alongside sightseeing in Asahikawa",
+        "Anyone using Asahikawa as a base for Furano and Biei",
+        "People who want to spend an unhurried few hours by the water"
+      ],
+      "flow": [
+        { "step": "Book or enquire", "body": "Tell us your preferred date and group size, by form or phone." },
+        { "step": "Details", "body": "We'll share the meeting point, what to bring and how the day runs." },
+        { "step": "Check in", "body": "Come to the meeting point we've given you." },
+        { "step": "Guide briefing", "body": "Your guide explains the equipment and how the trip will go." },
+        { "step": "On the river", "body": "Head down the river in Asahikawa with your guide." },
+        { "step": "Finish", "body": "The trip ends and you're free to carry on with your day." }
+      ],
+      "notes": [
+        "Trips may be cancelled or changed depending on the weather and river conditions.",
+        "If you have any concerns about your health, please talk to us in advance.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Is it close to central Asahikawa?",
+          "answer": "We'll give you the meeting point when you book. Tell us your itinerary and we'll advise."
+        },
+        {
+          "question": "What is the minimum group size?",
+          "answer": "Bookings start from 2 people. For other group sizes, please get in touch."
+        }
+      ]
+    },
+    "organize-program": {
+      "name": "Organize Program",
+      "area": "Furano, Biei, Asahikawa and beyond",
+      "catchcopy": "A nature experience built around your group.",
+      "summary": "A made-to-order program for groups, shaped around what you want to achieve: training days, events, or something no one has done before. Start by telling us the idea.",
+      "imageAlt": "An Organize Program in the nature of Hokkaido",
+      "meta": {
+        "title": "Organize Program | Custom Outdoor Experiences for Groups",
+        "description": "Made-to-order outdoor programs for groups: corporate training, team building, group travel. Tell us your goals and we'll design the day."
+      },
+      "description": [
+        "The Organize Program is a made-to-order outdoor program, designed around what your group actually needs.",
+        "Corporate training, team building, a one-off event for friends, a community gathering: tell us the purpose and the number of people, and we'll put a plan together.",
+        "Enquiries at the \"could you do something like this?\" stage are welcome. Just get in touch."
+      ],
+      "features": [
+        {
+          "title": "Built around your goals",
+          "body": "We shape the program around your group size, purpose and available time."
+        },
+        {
+          "title": "An experienced guide from the planning stage",
+          "body": "Our representative, with over 20 years as an outdoor guide, works with you from the first conversation."
+        },
+        {
+          "title": "Made for groups",
+          "body": "Corporate training, team building, group travel and more."
+        }
+      ],
+      "recommendedFor": [
+        "Companies planning training or team building",
+        "Groups looking to organise a nature experience of their own",
+        "Anyone wanting something our regular programs don't cover"
+      ],
+      "flow": [
+        { "step": "Get in touch", "body": "Tell us your purpose, group size and preferred dates." },
+        { "step": "Consultation & proposal", "body": "We listen, then come back with a program proposal and a quote." },
+        { "step": "Confirm & book", "body": "Once the details are settled, we confirm your booking." },
+        { "step": "On the day", "body": "Your guide runs the program as planned." }
+      ],
+      "notes": [
+        "Programs may be cancelled or changed depending on the weather and river conditions.",
+        "The price depends on the content and group size. Please contact us to discuss.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "How many people can you accommodate?",
+          "answer": "It depends on the group size and the program. Contact us with the number of people you have in mind."
+        },
+        {
+          "question": "How flexible is the content?",
+          "answer": "We'll work with your purpose and the time you have. It's fine if nothing is decided yet."
+        }
+      ]
+    }
+  },
+
+  "furanoActivity": {
+    "eyebrow": "Furano Activity",
+    "title": "Looking for things to do\nand nature to explore in Furano",
+    "lead": "Furano is more than lavender fields and beautiful hills. From the water, you can feel this landscape rather than just look at it. HOO is based here, and here's how we'd help you choose.",
+    "introTitle": "Nature experiences you can have in Furano",
+    "introParagraphs": [
+      "Furano is best known for lavender fields and ski slopes. But there is more to it than that. A short drive from town, rivers and forest open into the kind of scenery Hokkaido is made of.",
+      "A downriver trip, drifting along in a boat, brings you to a Furano that sightseeing on foot never reaches. The sound of the water, the smell of the forest, the breeze across the surface, and the view changing as you move: none of it exists anywhere but on the river.",
+      "HOO is based in Furano and runs river activities here as well as in the Biei and Asahikawa areas."
+    ],
+    "styleEyebrow": "How to Choose",
+    "styleTitle": "Choosing a Furano activity by who you're with",
+    "styleCards": [
+      {
+        "title": "With family",
+        "body": "Because the Relax Downriver is about taking your time rather than chasing speed, families ask about it often. Whether children can join depends on their age, so please talk to us first.",
+        "linkLabel": "Furano Relax Downriver"
+      },
+      {
+        "title": "With friends or a partner",
+        "body": "The view of Furano from the water is the kind of memory a photo can't quite hold. Bookings start from 2 people, so it works well for a trip for two.",
+        "linkLabel": "Furano Relax Downriver"
+      },
+      {
+        "title": "With a group",
+        "body": "Our Organize Program is built around your goals, whether that's training or an event. Tell us the numbers and the purpose, and we'll propose something.",
+        "linkLabel": "Organize Program"
+      }
+    ],
+    "whyTitle": "Why a river activity, and why now",
+    "whyParagraphs": [
+      "If the view from a car window or an observation deck is nature you look at, a river activity is nature you go into. Drifting with the current alongside a guide, Furano works its way into your memory through all five senses.",
+      "HOO's downriver trips aren't about intensity. They're built around taking the river and the scenery slowly, and plenty of people who wouldn't call themselves outdoorsy choose them as their first time on the water."
+    ],
+    "whyImageAlt": "A river activity in Furano",
+    "checkEyebrow": "Check Points",
+    "checkTitle": "Worth checking before you book",
+    "checkPoints": [
+      "Whether a trip runs depends on the weather and river conditions, so make sure we can reach you as your travel dates approach",
+      "What to wear and bring changes with the season. Follow the details we send when you book",
+      "Meeting points vary by activity. Check yours, and how you'll get there, in advance",
+      "If you have any concerns about your health, talk to us before you book"
+    ],
+    "recommendedEyebrow": "Recommended",
+    "recommendedTitle": "Start with this one",
+    "recommendedLead": "Our flagship program is the Furano Relax Downriver, and we run trips in the Biei and Asahikawa areas too.",
+    "guideEyebrow": "Guide & Safety",
+    "guideTitle": "Our guide, and how we think about safety",
+    "guideBody": "Shota Kose, HOO's representative, has more than 20 years as an outdoor guide. He is a Hokkaido Governor-certified Outdoor Guide (Rafting / Canoe) and holds Rescue3 SRT-1 and Advanced First Aid certification, with guiding experience on rivers across Japan. Whether a trip runs is decided on the day, based on the weather and the state of the river, and we would rather not run than push it.",
+    "guideLinkProfile": "Meet our guide",
+    "guideLinkSafety": "Our approach to safety",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Questions about activities in Furano",
+    "faq": [
+      {
+        "question": "Do I need to book in advance?",
+        "answer": "Yes, all HOO activities require advance booking. Once you know your date, contact us by form or phone as early as you can."
+      },
+      {
+        "question": "How do I fit this into my Furano itinerary?",
+        "answer": "We share the duration and meeting point when you book, so if your plans are already set, send them along with your enquiry and we'll suggest a time that works."
+      },
+      {
+        "question": "Can I take part outside summer?",
+        "answer": "The season depends on the state of the river. Once you know when you'd like to come, check with us by form or phone."
+      },
+      {
+        "question": "Are any activities suitable for children?",
+        "answer": "The age range depends on the activity and the river conditions on the day. Contact us in advance with your children's ages and we'll let you know."
+      }
+    ],
+    "ctaTitle": "See Furano from the river.\nWe'll take you there."
+  },
+
+  "furanoRafting": {
+    "eyebrow": "Furano Rafting Guide",
+    "title": "Looking for rafting or\na river experience in Furano",
+    "lead": "If you searched for \"Furano rafting\" and landed here, this page is for you. Here's an honest look at the choices, and at what HOO actually runs on the rivers of Furano.",
+    "introTitle": "What to know before you pick a river trip in Furano",
+    "introParagraphs": [
+      "\"Rafting\" is used loosely for almost any trip that takes a boat down a river, but the experiences behind the word are very different. Some run white water for the thrill of it. Others move gently, and are about the scenery and the life around the water.",
+      "What HOO runs in Furano is closer to the second kind: a program we call the Relax Downriver. It isn't a white-water run. You ride the current and take in the nature of Furano at an easy pace, which makes it a comfortable first time on a river.",
+      "As you read on, it helps to keep asking yourself what kind of day you actually want."
+    ],
+    "compareEyebrow": "How to Compare",
+    "compareTitle": "What to look at when comparing river trips",
+    "comparePoints": [
+      {
+        "title": "Check what kind of trip it is",
+        "body": "River trips range from ones built around the rapids to ones built around the view. Deciding what kind of time you want first makes everything else easier."
+      },
+      {
+        "title": "Check the area and the meeting point",
+        "body": "Even within \"the Furano area\", operators use different rivers and different meeting points. Check yours against your itinerary and how you'll travel."
+      },
+      {
+        "title": "Check who can take part",
+        "body": "Age limits and group size requirements vary. If you're bringing children or a large group, ask before you book."
+      },
+      {
+        "title": "Check the guide's experience and qualifications",
+        "body": "When nature sets the terms, a guide's experience, qualifications and attitude to safety are worth knowing about."
+      }
+    ],
+    "programEyebrow": "Our Program",
+    "programTitle": "The Furano Relax Downriver",
+    "programLead": "A river activity that takes you gently down the rivers of Furano, with a guide alongside you.",
+    "beforeEyebrow": "Before You Go",
+    "beforeTitle": "What to sort out before your first trip",
+    "beforeCards": [
+      {
+        "title": "What to wear and bring",
+        "body": "You may well get wet, so what you wear and bring should suit the season. We send full details when you book, so follow those and you'll be set."
+      },
+      {
+        "title": "Weather and river conditions",
+        "body": "Whether a river trip runs depends on the weather and the state of the river. Your guide decides based on the conditions, and we'll let you know in advance if we have to cancel or change anything."
+      },
+      {
+        "title": "Ask us what's on your mind",
+        "body": "Not a strong swimmer, not sure about your fitness, wondering whether to bring the kids? Ask before you book, and we'll give you a straight answer."
+      }
+    ],
+    "guideTitle": "Guided by someone who has worked rivers across Japan",
+    "guideParagraphs": [
+      "Shota Kose, HOO's representative, has more than 20 years as a river guide, on the Yoshino River in Shikoku, the Tone River in Gunma, the Mu River in Hokkaido and elsewhere.",
+      "He is a Hokkaido Governor-certified Outdoor Guide (Rafting / Canoe) and holds Rescue3 SRT-1 and Advanced First Aid certification, reading the river as it is on the day and running trips accordingly."
+    ],
+    "guideImageAlt": "A HOO guide leading a trip on a river in Hokkaido",
+    "guideLink": "Read about our approach to safety",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Questions about river trips in Furano",
+    "faq": [
+      {
+        "question": "How is the Relax Downriver different from rafting?",
+        "answer": "\"Rafting\" tends to be used as a catch-all for going down a river in a boat. HOO's Relax Downriver isn't about chasing thrills: it's a downriver trip built around taking the current and the scenery slowly. If you're not sure it matches what you have in mind, just ask us."
+      },
+      {
+        "question": "Can I join if I can't swim?",
+        "answer": "Talk to us in advance about anything that concerns you. On the day, your guide will explain the equipment and how to spend your time on the water before you set off."
+      },
+      {
+        "question": "Should I just wear something I don't mind getting wet?",
+        "answer": "What to wear and bring depends on the season and the conditions on the day, so we send full details when you book. If you'd like to know earlier, get in touch."
+      },
+      {
+        "question": "What happens if the weather looks bad?",
+        "answer": "Your guide decides whether to run the trip, and in what form, based on the weather and river conditions. If we have to cancel or change anything, we'll contact you in advance."
+      }
+    ],
+    "relatedLinks": [
+      "How to choose an outdoor experience in Furano",
+      "Furano Relax Downriver in detail",
+      "All frequently asked questions"
+    ],
+    "ctaTitle": "Your first downriver trip,\non the rivers of Furano."
+  },
+
+  "about": {
+    "eyebrow": "About HOO",
+    "title": "About HOO",
+    "lead": "Hokkaido Outdoor Organization (HOO) is an outdoor organisation based in Furano, offering nature experiences across Hokkaido.",
+    "missionEyebrow": "Mission",
+    "missionTitle": "Connecting people with Hokkaido's nature,\nand with moments that move them.",
+    "missionBody": "We create experiences that connect you with nature,\nnot just another day of sightseeing.",
+    "visionEyebrow": "Vision",
+    "visionTitle": "Find yourself out in nature.",
+    "visionParagraphs": [
+      "What we set out to do is bring people and the nature of Hokkaido together.",
+      "Not just to look at the scenery, but to feel the breath of the land, touch the moving water, and find yourself somewhere in the middle of it.",
+      "In that moment, something shifts.",
+      "We want to be the people who make that meeting happen: the bridge between nature and the feeling it leaves behind."
+    ],
+    "guideEyebrow": "Representative",
+    "guideTitle": "Our representative and guide",
+    "riversTitle": "The rivers behind the experience",
+    "riversBody": "Years of river guiding on the Yoshino River in Shikoku, the Tone River in Gunma, the Mu River in Hokkaido and other rivers across Japan.",
+    "companyEyebrow": "Company",
+    "companyTitle": "Organisation profile",
+    "companyLabels": {
+      "name": "Name",
+      "shortName": "Short name",
+      "representative": "Representative",
+      "address": "Address",
+      "hours": "Business hours",
+      "tel": "Phone",
+      "email": "Email"
+    },
+    "projectsLink": "See HOO's projects: river management and local development"
+  },
+
+  "guide": {
+    "role": "Representative / River Guide",
+    "careerYears": "Over 20 years as an outdoor guide",
+    "imageAlt": "Shota Kose, HOO's representative, guiding an outdoor experience in Furano",
+    "safetyImageAlt": "A HOO guide leading a river trip with safety in mind",
+    "qualificationsTitle": "Qualifications",
+    "profile": [
+      "More than 20 years as an outdoor guide, with river guiding experience on the Yoshino River in Shikoku, the Tone River in Gunma, the Mu River in Hokkaido and other rivers across Japan.",
+      "Now based back home in Hokkaido, building outdoor experiences that make the most of what this place already is."
+    ],
+    "qualifications": [
+      "Hokkaido Governor-certified Outdoor Guide (Rafting / Canoe)",
+      "Rescue3 SRT-1",
+      "Advanced First Aid / Advanced Life Saving certification",
+      "Regional Tourism Development Manager"
+    ],
+    "reasons": [
+      {
+        "title": "Over 20 years as an outdoor guide",
+        "body": "Your guide has worked rivers across Japan, from the Yoshino River in Shikoku to the Tone River in Gunma and the Mu River in Hokkaido."
+      },
+      {
+        "title": "Hokkaido Governor-certified Outdoor Guide",
+        "body": "Certified for rafting and canoe, and building programs on a deep familiarity with Hokkaido's rivers."
+      },
+      {
+        "title": "Rescue3 SRT-1 and Advanced First Aid",
+        "body": "Specialist qualifications in swiftwater rescue and life saving underpin how we run every trip."
+      },
+      {
+        "title": "Rooted in Hokkaido's nature and communities",
+        "body": "We also work on river management, conservation and local development, alongside the communities we belong to."
+      },
+      {
+        "title": "Small groups welcome",
+        "body": "Bookings start from 2 people. If you're unsure about numbers or content, just ask."
+      }
+    ]
+  },
+
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "HOO's projects",
+    "lead": "Running activities alone won't protect the future of these rivers or the communities around them.\nHOO works on three fronts to look after Hokkaido's waterways and the places they run through.",
+    "ctaTitle": "The future of the rivers,\nand of the places around them.",
+    "ctaLead": "We welcome enquiries about our projects and about working together.",
+    "items": {
+      "river-management": {
+        "title": "River management and conservation",
+        "summary": "Keeping Hokkaido's rivers places people can enjoy safely, and passing them on to the next generation.",
+        "imageAlt": "River management and conservation work in Hokkaido",
+        "description": [
+          "Rivers hold up both everyday life in the community and the outdoor experiences we offer. HOO doesn't just use the water: we look after it, taking on the management and conservation of the riverside."
+        ],
+        "items": [
+          {
+            "title": "A point of contact for waterfront use",
+            "body": "We field enquiries about using the waterfront and act as a bridge between the community, users and local government."
+          },
+          {
+            "title": "Clear guidelines for use",
+            "body": "We work on plain, usable guidelines so that everyone can enjoy the water with confidence."
+          },
+          {
+            "title": "Maintenance and operation of facilities",
+            "body": "We maintain and operate riverside equipment and facilities, keeping the environment safe and comfortable."
+          }
+        ]
+      },
+      "community-space": {
+        "title": "Places to relax and meet",
+        "summary": "Turning the riverside into somewhere locals and visitors can unwind and meet, through events and partnerships.",
+        "imageAlt": "Creating places to relax and meet by the water",
+        "description": [
+          "The waterfront isn't only for activities. Creating places where local people and visitors naturally gather and settle in is a real part of HOO's work."
+        ],
+        "items": [
+          {
+            "title": "Planning and coordinating local events",
+            "body": "We plan and coordinate community events on the water's edge, giving people a reason to come together."
+          },
+          {
+            "title": "Listening to local voices",
+            "body": "We take the time to hear what local residents want, and let that shape what we build."
+          },
+          {
+            "title": "Working with nearby attractions",
+            "body": "We partner with nearby attractions and businesses to open up new ways to enjoy the waterfront."
+          }
+        ]
+      },
+      "regional-tourism": {
+        "title": "Tourism and the local economy",
+        "summary": "Using nature experiences as a way in, and building tourism and economic energy in Furano and beyond.",
+        "imageAlt": "Supporting tourism and the local economy in Furano",
+        "description": [
+          "Outdoor experiences bring people to a region and put money into it. HOO's work doesn't stop at running trips: we work to strengthen local tourism and the economy around it."
+        ],
+        "items": [
+          {
+            "title": "Promoting and selling local products",
+            "body": "By promoting and selling products that carry the character of the region, we help keep value circulating locally."
+          },
+          {
+            "title": "Developing people who will carry the region forward",
+            "body": "We invest in the people who will shape the region's future, so that growth here can last."
+          }
+        ]
+      }
+    }
+  },
+
+  "safety": {
+    "eyebrow": "Safety",
+    "title": "Our approach to safety",
+    "lead": "Nothing is ever guaranteed when nature sets the terms.\nSo we read the conditions, and we don't push our luck.",
+    "note": "For anything not covered here, such as equipment details or the conditions for running a trip, we'll explain when you book, or you can ask us directly.",
+    "noteLink": "Contact us",
+    "guideEyebrow": "Guide Experience",
+    "guideTitle": "A guide who knows the river,\nreading it as it is today.",
+    "guideBody": "The same river changes from one day to the next with the water level and the weather. Shota Kose, our representative, has over 20 years of experience as an outdoor guide and runs each program based on the conditions he finds that day.",
+    "guideLink": "Read our representative's profile",
+    "flowEyebrow": "Flow",
+    "flowTitle": "From booking to the day itself",
+    "flowLead": "Meeting points, what to bring, how long it takes: we cover all of it when you book.",
+    "ctaTitle": "If something's on your mind,\nask before you book.",
+    "ctaLead": "Health, age, not being a confident swimmer: whatever it is, talk to us in advance.",
+    "commitments": [
+      {
+        "title": "A briefing before you start",
+        "body": "Your guide runs through how the day will go and what to watch for, so first-timers can clear up any questions before setting off."
+      },
+      {
+        "title": "Equipment and how the day runs",
+        "body": "We explain the equipment you'll need and how the day works when you book and again on the day. Ask us anything in advance."
+      },
+      {
+        "title": "An experienced guide with you",
+        "body": "A guide with real river experience goes with you, reading the conditions as the trip unfolds."
+      },
+      {
+        "title": "Decisions based on weather and river conditions",
+        "body": "Your guide decides whether to run the trip, and in what form, based on the weather and the state of the river. We never force a trip through."
+      },
+      {
+        "title": "What we ask of you",
+        "body": "So that everyone can enjoy the day safely, we ask you to follow your guide's instructions on the water."
+      },
+      {
+        "title": "Health concerns: talk to us first",
+        "body": "If you have a medical condition or any concern about your health, get in touch before you book and we'll advise you."
+      }
+    ],
+    "flowSteps": [
+      { "step": "Book or enquire", "body": "Tell us the activity, dates and group size you have in mind, by form or phone." },
+      { "step": "Meeting point and what to bring", "body": "We'll send you the meeting point, what to wear and what to bring for your booking." },
+      { "step": "Check in on the day", "body": "Come to the meeting point we've given you and check in." },
+      { "step": "Guide briefing", "body": "Your guide explains the equipment, how the day runs and what to watch for." },
+      { "step": "Onto the water", "body": "Enjoy Hokkaido's rivers and its nature alongside your guide." },
+      { "step": "Finish", "body": "The activity ends and you're free to carry on with your day." }
+    ]
+  },
+
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Frequently asked questions",
+    "lead": "The questions we're asked most often before a trip. If yours isn't here, just get in touch.",
+    "helpTitle": "Still have a question?",
+    "helpBody": "You can reach us by phone during business hours, 9:00-17:00 (Japan Standard Time).\nOutside those hours, the contact form is open around the clock.",
+    "helpCta": "Contact form",
+    "items": [
+      {
+        "question": "Can I join if it's my first time?",
+        "answer": "Yes, first-timers are welcome. On the day, your guide will explain the equipment and how everything works as you go. If anything is worrying you, just ask before you book."
+      },
+      {
+        "question": "What is the minimum group size?",
+        "answer": "Every activity starts from 2 people. If you'd like to join alone or bring a large group, please talk to us in advance."
+      },
+      {
+        "question": "What should I wear and bring?",
+        "answer": "What to wear and bring changes with the season and the state of the river, so we send full details when you book. Ask us in advance if you'd like to know sooner."
+      },
+      {
+        "question": "What happens if it rains?",
+        "answer": "Your guide decides whether to run the trip, and in what form, based on the weather and river conditions. If we have to cancel or change anything, we'll contact you in advance, so get in touch even if the forecast looks doubtful."
+      },
+      {
+        "question": "Can children take part?",
+        "answer": "The age range depends on the activity and the river conditions on the day. If you'd like to bring children, contact us in advance and let us know their ages."
+      },
+      {
+        "question": "Where do we meet?",
+        "answer": "We give you the meeting point in full when you book. It differs by area (Furano, Biei or Asahikawa), so check the details for your booking."
+      },
+      {
+        "question": "How far in advance should I book?",
+        "answer": "All activities require advance booking. Once your date is set, contact us as early as you can. For last-minute bookings, call us and we'll see what's possible."
+      },
+      {
+        "question": "What is your cancellation policy?",
+        "answer": "The conditions and any cancellation fees are explained when you book. If your plans change afterwards, let us know as soon as you can."
+      },
+      {
+        "question": "Do you take group bookings?",
+        "answer": "Yes. For groups we offer the Organize Program, built around your purpose. Tell us the number of people and what you have in mind, and we'll propose something."
+      },
+      {
+        "question": "Do you run trips outside Furano?",
+        "answer": "Yes. As well as Furano, we run Relax Downriver trips in the Biei and Asahikawa areas. Choose whichever fits your itinerary."
+      }
+    ]
+  },
+
+  "access": {
+    "eyebrow": "Access",
+    "title": "Access & business information",
+    "lead": "Where HOO is based, and how to reach us.",
+    "meetingTitle": "About meeting points",
+    "meetingBody": "The meeting point for each activity depends on the area (Furano, Biei or Asahikawa) and on the river conditions that day. It may not be the address above, so please check the details we send when you book. If anything is unclear, call us or use the contact form.",
+    "mapNote": "Meeting points differ by area. We'll give you full details when you book.",
+    "mapButton": "Open in Google Maps",
+    "mapAria": "Map showing Hokkaido Outdoor Organization"
+  },
+
+  "reservation": {
+    "eyebrow": "Reservation",
+    "title": "Booking form",
+    "lead": "Tell us which activity you'd like and when.\nWe'll review your request and confirm your booking by getting in touch.",
+    "phoneTitle": "Book or ask by phone",
+    "phoneNote": "Phone lines open 9:00-17:00 (Japan Standard Time) / Outside these hours, please use the form",
+    "notice": "Sending this form does not confirm your booking. We'll review your request, and your place is confirmed once we contact you.",
+    "submit": "Send booking request",
+    "submitting": "Sending...",
+    "successTitle": "Your request has been sent",
+    "successBody": "We've received your booking request.\nWe'll review it and get back to you shortly.",
+    "successStrong": "Your booking is confirmed once we contact you.",
+    "successNote": "If you haven't heard from us after a while, please give us a call.",
+    "fields": {
+      "lastName": "Last name",
+      "firstName": "First name",
+      "furigana": "Name in katakana",
+      "furiganaForeign": "Name in Roman letters",
+      "birthdate": "Date of birth",
+      "country": "Country / region",
+      "countryPlaceholder": "e.g. Australia",
+      "phone": "Phone number",
+      "phoneHint": "You can include your country code (e.g. +81 90-1234-5678)",
+      "email": "Email address",
+      "contactLanguage": "Preferred language for our reply",
+      "stayArea": "Where you're staying",
+      "stayAreaPlaceholder": "e.g. a hotel in Furano",
+      "activity": "Activity",
+      "activityPlaceholder": "Please select",
+      "preferredDate": "Preferred date",
+      "preferredTime": "Preferred time",
+      "preferredTimePlaceholder": "e.g. morning / around 1pm",
+      "participants": "Number of people",
+      "participantsPlaceholder": "e.g. 4 people",
+      "ageComposition": "Ages of your group",
+      "ageCompositionPlaceholder": "e.g. 2 adults and 2 children",
+      "message": "Questions or requests",
+      "messagePlaceholder": "Let us know if you have any questions or requests",
+      "agree": "I agree to the privacy policy",
+      "agreeLink": "Privacy Policy",
+      "lastNamePlaceholder": "Smith",
+      "firstNamePlaceholder": "John",
+      "furiganaPlaceholder": "JOHN SMITH",
+      "emailPlaceholder": "example@email.com",
+      "phonePlaceholder": "+81 90-1234-5678"
+    },
+    "errors": {
+      "lastName": "Please enter your last name.",
+      "firstName": "Please enter your first name.",
+      "furigana": "Please enter your name in Roman letters.",
+      "birthdate": "Please enter your date of birth.",
+      "phone": "Please enter a valid phone number.",
+      "email": "Please enter a valid email address.",
+      "activity": "Please select an activity.",
+      "preferredDate": "Please enter your preferred date.",
+      "participants": "Please enter the number of people.",
+      "agree": "You need to agree to the privacy policy.",
+      "failed": "Your message could not be sent. Please try again in a little while, or give us a call.",
+      "network": "Your message could not be sent. Check your connection and try again.",
+      "notConfigured": "Email sending is not configured (RESEND_API_KEY is not set). Please check .env.local.",
+      "badRequest": "The request was not in a valid format."
+    }
+  },
+
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Contact us",
+    "lead": "Questions about an activity, a group booking, or one of our projects?\nGet in touch any time. The form is open around the clock.",
+    "submit": "Send",
+    "submitting": "Sending...",
+    "successTitle": "Thank you for your message",
+    "successBody": "We'll review it and get back to you.\nThank you for your patience.",
+    "phoneTitle": "By phone",
+    "phoneNote": "Phone lines open 9:00-17:00 (Japan Standard Time)",
+    "mailTitle": "By email",
+    "mailNote": "Open around the clock",
+    "fields": {
+      "name": "Name",
+      "namePlaceholder": "John Smith",
+      "email": "Email address",
+      "phone": "Phone number",
+      "contactLanguage": "Preferred language for our reply",
+      "subject": "Subject",
+      "subjectPlaceholder": "e.g. Enquiry about a group booking",
+      "message": "Your message",
+      "messagePlaceholder": "Please tell us what you'd like to know"
+    },
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email address.",
+      "message": "Please enter your message.",
+      "agree": "You need to agree to the privacy policy."
+    }
+  },
+
+  "column": {
+    "eyebrow": "Column",
+    "title": "Column",
+    "lead": "Useful things to know about the outdoors in Furano, Biei and Asahikawa, from the guides who work here.",
+    "empty": "Articles are on the way. Please check back soon.",
+    "published": "Published",
+    "updated": "Updated",
+    "supervisorLabel": "Reviewed by",
+    "supervisorProfile": "View profile",
+    "relatedTitle": "Related articles",
+    "ctaTitle": "Ready to experience Furano?",
+    "notAvailable": "This article is not currently available in this language.",
+    "notAvailableCta": "Back to all articles",
+    "defaultSupervisor": "Shota Kose (HOO representative, over 20 years as an outdoor guide)"
+  },
+
+  "privacy": {
+    "eyebrow": "Privacy Policy",
+    "title": "Privacy Policy",
+    "sections": [
+      {
+        "title": "1. Our approach",
+        "body": [
+          "Hokkaido Outdoor Organization (\"we\", \"us\") recognises the importance of the personal information entrusted to us by visitors to this website. We comply with the laws and regulations governing the protection of personal information, and we take care in how we collect, use and manage it."
+        ]
+      },
+      {
+        "title": "2. Information we collect",
+        "body": [
+          "When you submit our booking form or contact form, we collect your name, your name in katakana or Roman letters, date of birth, country or region, phone number, email address, preferred language for correspondence, preferred date, number of participants, the area where you are staying, and any other information you enter into the form."
+        ]
+      },
+      {
+        "title": "3. How we use it",
+        "body": [
+          "We use the personal information we collect for the following purposes.",
+          "- To confirm, arrange and finalise your booking",
+          "- To respond to your enquiry",
+          "- To send you important information about your participation, such as whether an activity will run",
+          "- As reference material for improving the quality of our service"
+        ]
+      },
+      {
+        "title": "4. Disclosure to third parties",
+        "body": [
+          "We do not provide personal information to third parties without your consent, except where required by law."
+        ]
+      },
+      {
+        "title": "5. Managing personal information",
+        "body": [
+          "We manage the personal information we collect appropriately and work to prevent leakage, loss or damage. Once information has served its purpose, we dispose of it appropriately."
+        ]
+      },
+      {
+        "title": "6. Use of external services",
+        "body": [
+          "This website may use external services to process form submissions and to understand how the site is used. Information handled by those services is subject to their own privacy policies."
+        ]
+      },
+      {
+        "title": "7. Disclosure, correction and deletion",
+        "body": [
+          "If you ask us to disclose, correct or delete your personal information, we will verify your identity and respond promptly."
+        ]
+      },
+      {
+        "title": "8. Contact",
+        "body": [
+          "For questions about how we handle personal information, please use the contact details at the bottom of this page."
+        ]
+      },
+      {
+        "title": "9. Changes to this policy",
+        "body": [
+          "This policy may be revised without notice in response to changes in the law or in how we operate. Any revision takes effect once it is published on this page."
+        ]
+      }
+    ]
+  },
+
+  "terms": {
+    "eyebrow": "Information",
+    "title": "Booking information & guidelines",
+    "lead": "A few things to know so you can enjoy your activity with confidence. Please read before you book.",
+    "sections": [
+      {
+        "title": "Booking",
+        "items": [
+          "All activities require advance booking.",
+          "Every activity starts from 2 people. For other group sizes, please talk to us.",
+          "Sending the form does not confirm your booking. We'll review your request, and your place is confirmed once we contact you.",
+          "The meeting point, what to bring and how the day runs are all explained when you book."
+        ]
+      },
+      {
+        "title": "Deciding whether a trip runs",
+        "items": [
+          "Depending on the weather and river conditions, your guide may cancel a trip or change what it involves.",
+          "If we have to cancel or change anything, we'll contact you in advance."
+        ]
+      },
+      {
+        "title": "Cancellations",
+        "items": [
+          "Cancellation conditions and any cancellation fees are explained when you book.",
+          "If your plans change after booking, please let us know as soon as you can."
+        ]
+      },
+      {
+        "title": "On the day",
+        "items": [
+          "For everyone's safety, please follow your guide's instructions throughout.",
+          "If you are feeling unwell, or have a medical condition or any concern about your health, talk to us before you book.",
+          "We may decline participation if you have been drinking.",
+          "Age ranges and participation requirements vary by activity and by the conditions on the day. Please contact us in advance."
+        ]
+      }
+    ],
+    "contactTitle": "Contact us",
+    "contactBody": "For anything not covered here, please ask us through the contact form or by phone.",
+    "contactLink": "Contact form"
+  },
+
+  "sitemap": {
+    "eyebrow": "Sitemap",
+    "title": "Sitemap",
+    "groups": {
+      "activities": "Activities",
+      "furano": "Experience Furano",
+      "about": "About HOO",
+      "column": "Column",
+      "info": "Information"
+    },
+    "links": {
+      "activitiesIndex": "All activities",
+      "columnIndex": "All articles",
+      "furanoActivity": "Furano activities & nature experiences",
+      "furanoRafting": "Furano rafting & river experiences",
+      "about": "About HOO (mission, vision and our guide)",
+      "projects": "Projects",
+      "safety": "Our approach to safety",
+      "faq": "Frequently asked questions",
+      "access": "Access & business information",
+      "reservation": "Booking form",
+      "contact": "Contact us",
+      "terms": "Booking information & guidelines",
+      "privacy": "Privacy Policy"
+    }
+  },
+
+  "notFound": {
+    "heading": "We couldn't find that page",
+    "body": "The page you're looking for may have moved or been removed.\nTry starting again from the home page or the activities list.",
+    "home": "Go to the home page",
+    "activities": "Find an activity",
+    "sitemap": "View the sitemap"
+  }
+}

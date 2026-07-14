@@ -1,11 +1,15 @@
 import { Plus } from "lucide-react";
-import type { Faq } from "@/data/faq";
+
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
 
 /**
  * details/summary ベースのFAQアコーディオン。
  * JavaScript不要でキーボード操作にも対応。
  */
-export default function FaqAccordion({ faqs }: { faqs: Faq[] }) {
+export default function FaqAccordion({ faqs }: { faqs: readonly FaqItem[] }) {
   return (
     <div className="space-y-3">
       {faqs.map((faq) => (
@@ -26,7 +30,7 @@ export default function FaqAccordion({ faqs }: { faqs: Faq[] }) {
             />
           </summary>
           <div className="px-5 pb-5 md:px-6">
-            <p className="border-t border-forest-light pt-4 text-sm leading-loose text-ink-soft md:text-[15px]">
+            <p className="whitespace-pre-line border-t border-forest-light pt-4 text-sm leading-loose text-ink-soft md:text-[15px]">
               {faq.answer}
             </p>
           </div>

@@ -1,36 +1,56 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Locale } from "@/i18n/locales";
+import { localePath } from "@/i18n/routing";
+import { site } from "@/data/site";
 
 /**
  * HOOロゴ。
- * public/images/logo/hoo-logo.png（通常）と hoo-logo-white.png（暗い背景用）を使用します。
- * ロゴを差し替える場合は photos-original/ の元ファイルを更新して `npm run photos` を実行してください。
+ *
+ * - ヘッダー: ロゴマークのみ（withText なし）。ナビゲーションと干渉させないため。
+ * - フッター: ロゴマーク＋団体名（withText）。横幅に余裕があるため併記する。
+ *
+ * 差し替えは photos-original/ロゴ.png を更新して `npm run photos` を実行してください
+ * （白背景の透過処理と、暗い背景用の白抜き版が自動生成されます）。
  */
-export default function Logo({ inverted = false }: { inverted?: boolean }) {
+export default function Logo({
+  locale,
+  inverted = false,
+  withText = false,
+}: {
+  locale: Locale;
+  /** 暗い背景で使う白抜きロゴ */
+  inverted?: boolean;
+  /** ロゴの横に団体名を併記する */
+  withText?: boolean;
+}) {
   return (
     <Link
-      href="/"
-      className="group flex items-center gap-3"
-      aria-label="Hokkaido Outdoor Organization ホームへ"
+      href={localePath(locale)}
+      className="flex shrink-0 items-center gap-3"
+      aria-label={`${site.name} — Home`}
     >
       <Image
-        src={inverted ? "/images/logo/hoo-logo-white.png" : "/images/logo/hoo-logo.png"}
-        alt="Hokkaido Outdoor Organization ロゴ"
+        src={
+          inverted ? "/images/logo/hoo-logo-white.png" : "/images/logo/hoo-logo.png"
+        }
+        alt={`${site.name} ロゴ`}
         width={363}
         height={193}
         priority
-        className="h-9 w-auto md:h-11"
+        className="h-10 w-auto md:h-12"
       />
-      {/* ナビゲーションと競合しないよう、xl（ナビ表示幅）では隠す */}
-      <span
-        className={`hidden whitespace-nowrap text-[10px] font-medium leading-tight tracking-[0.1em] sm:block xl:hidden 2xl:block ${
-          inverted ? "text-white/80" : "text-ink-soft"
-        }`}
-      >
-        Hokkaido
-        <br />
-        Outdoor Organization
-      </span>
+      {withText && (
+        <span
+          className={`whitespace-nowrap text-[11px] font-bold leading-tight tracking-[0.08em] ${
+            inverted ? "text-white/85" : "text-ink-soft"
+          }`}
+        >
+          Hokkaido
+          <br />
+          Outdoor Organization
+        </span>
+      )}
     </Link>
   );
 }

@@ -8,9 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "generate:images": "node scripts/generate-placeholders.mjs",
-    "photos": "node scripts/place-photos.mjs"
+    "photos": "node scripts/place-photos.mjs",
+    "i18n:check": "node scripts/i18n-check.mjs",
+    "translate:content": "node scripts/translate-content.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.111.0",
     "framer-motion": "^12.42.2",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.24.0",

@@ -18,6 +18,7 @@
   --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Yu Gothic", sans-serif;
   --font-display: var(--font-shippori), "Hiragino Mincho ProN", serif;
+  --font-cjk-fallback: sans-serif;
 
   --shadow-card: 0 1px 2px rgb(23 54 74 / 0.06), 0 8px 24px rgb(23 54 74 / 0.08);
   --shadow-card-hover: 0 2px 4px rgb(23 54 74 / 0.08),
@@ -40,6 +41,37 @@ body {
 ::selection {
   background: var(--color-water-light);
   color: var(--color-navy);
+}
+
+/*
+ * 言語別のフォントスタック。
+ * 大容量のCJK Webフォントは読み込まず、各OSの標準フォントへ確実に
+ * フォールバックさせることで、文字化けを防ぎつつ表示速度を維持します。
+ */
+html[lang="zh-Hant"] {
+  --font-sans: var(--font-noto-sans-jp), "PingFang TC", "Noto Sans TC",
+    "Microsoft JhengHei", "Hiragino Sans CNS", sans-serif;
+  --font-display: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
+}
+html[lang="zh-Hans"] {
+  --font-sans: var(--font-noto-sans-jp), "PingFang SC", "Noto Sans SC",
+    "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+  --font-display: "Noto Serif SC", "PingFang SC", "Microsoft YaHei", serif;
+}
+html[lang="ko"] {
+  --font-sans: var(--font-noto-sans-jp), "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+  --font-display: "Noto Serif KR", "Apple SD Gothic Neo", "Malgun Gothic", serif;
+}
+html[lang="en"] {
+  --font-display: var(--font-shippori), Georgia, "Times New Roman", serif;
+}
+
+/* 中国語・韓国語は日本語より字面が詰まるため、行間を少し広げる */
+html[lang="zh-Hant"] body,
+html[lang="zh-Hans"] body,
+html[lang="ko"] body {
+  line-height: 1.85;
 }
 
 /* キーボード操作時のフォーカス表示 */

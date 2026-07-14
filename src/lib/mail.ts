@@ -8,6 +8,7 @@ import { site } from "@/data/site";
  */
 
 type SendMailArgs = {
+  to?: string;
   subject: string;
   text: string;
   replyTo?: string;
@@ -17,21 +18,26 @@ export type SendMailResult =
   | { ok: true }
   | { ok: false; reason: "not-configured" | "send-failed" };
 
+export function isMailConfigured(): boolean {
+  return Boolean(process.env.RESEND_API_KEY);
+}
+
 export async function sendMail({
+  to,
   subject,
   text,
   replyTo,
 }: SendMailArgs): Promise<SendMailResult> {
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.MAIL_TO ?? site.email;
+  const recipient = to ?? process.env.MAIL_TO ?? site.email;
   const from =
     process.env.MAIL_FROM ?? `${site.shortName} Website <onboarding@resend.dev>`;
 
   if (!apiKey) {
     if (process.env.NODE_ENV !== "production") {
       console.error(
-        "[mail] RESEND_API_KEY が設定されていません。.env.local に RESEND_API_KEY を設定してください。送信予定だった内容:\n" +
-          `To: ${to}\nSubject: ${subject}\n${text}`
+        "[mail] RESEND_API_KEY が設定されていません。.env.local に RESEND_API_KEY を設定してください。\n" +
+          `送信予定だった内容:\nTo: ${recipient}\nSubject: ${subject}\n${text}`
       );
     } else {
       console.error("[mail] RESEND_API_KEY is not configured.");
@@ -43,7 +49,7 @@ export async function sendMail({
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from,
-      to,
+      to: recipient,
       subject,
       text,
       replyTo,
@@ -62,5 +68,6 @@ export async function sendMail({
 export const isValidEmail = (value: string) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
+/** 国番号付き（+81 など）も受け付ける電話番号バリデーション */
 export const isValidPhone = (value: string) =>
-  /^[0-9+\-() ]{10,15}$/.test(value.trim());
+  /^\+?[0-9\-() .]{8,20}$/.test(value.trim());

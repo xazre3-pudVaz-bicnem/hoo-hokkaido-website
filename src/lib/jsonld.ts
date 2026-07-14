@@ -1,25 +1,41 @@
 import { site } from "@/data/site";
 import type { Activity } from "@/data/activities";
-import type { Faq } from "@/data/faq";
+import type { Dictionary } from "@/i18n/dictionary";
+import { localeConfig, type Locale } from "@/i18n/locales";
+import { localeUrl } from "@/i18n/routing";
+import { formatPriceFull } from "@/lib/format";
 
 /**
- * 構造化データ（JSON-LD）生成ヘルパー。
- * 画面上に存在しない口コミ評価・架空のレビューは含めないこと。
+ * 言語別の構造化データ（JSON-LD）。
+ *
+ * - inLanguage を言語ごとに設定
+ * - 名称・説明・FAQ は表示言語に合わせる
+ * - 電話番号・住所・料金などの共通情報は data 層から取得するため、言語間で不一致が起きない
+ * - 架空の口コミ・評価・実績数は含めない
  */
 
-export function localBusinessJsonLd() {
+type Faq = { question: string; answer: string };
+
+/** hreflang 相当の言語コード（ja / en / zh-Hant / zh-Hans / ko） */
+function langCode(locale: Locale): string {
+  return localeConfig[locale].hreflang;
+}
+
+export function localBusinessJsonLd(locale: Locale, dict: Dictionary) {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${site.url}/#organization`,
     name: site.name,
     alternateName: site.shortName,
-    url: site.url,
+    url: localeUrl(locale),
     email: site.email,
-    telephone: "+81-90-5950-4006",
+    telephone: site.tel.schema,
+    inLanguage: langCode(locale),
+    description: dict.meta.home.description,
     address: {
       "@type": "PostalAddress",
-      addressCountry: "JP",
+      addressCountry: site.address.country,
       addressRegion: site.address.prefecture,
       addressLocality: site.address.city,
       streetAddress: site.address.street,
@@ -40,25 +56,29 @@ export function localBusinessJsonLd() {
     },
     founder: {
       "@type": "Person",
-      name: "小瀬 祥太",
+      name: site.representative.nameRoman,
+      alternateName: site.representative.name,
     },
-    areaServed: ["富良野市", "美瑛町", "旭川市"],
+    areaServed: ["Furano", "Biei", "Asahikawa"],
   };
 }
 
-export function websiteJsonLd() {
+export function websiteJsonLd(locale: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": `${site.url}/#website`,
+    "@id": `${site.url}/#website-${locale}`,
     name: site.name,
-    url: site.url,
-    inLanguage: "ja",
+    url: localeUrl(locale),
+    inLanguage: langCode(locale),
     publisher: { "@id": `${site.url}/#organization` },
   };
 }
 
-export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+export function breadcrumbJsonLd(
+  locale: Locale,
+  items: { name: string; path: string }[]
+) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -66,15 +86,16 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: `${site.url}${item.path === "/" ? "" : item.path}`,
+      item: localeUrl(locale, item.path),
     })),
   };
 }
 
-export function faqJsonLd(faqs: Faq[]) {
+export function faqJsonLd(locale: Locale, faqs: readonly Faq[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: langCode(locale),
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.question,
@@ -83,49 +104,57 @@ export function faqJsonLd(faqs: Faq[]) {
   };
 }
 
-export function serviceJsonLd(activity: Activity) {
+export function serviceJsonLd(
+  locale: Locale,
+  dict: Dictionary,
+  activity: Activity
+) {
+  const t = dict.activities[activity.slug as keyof Dictionary["activities"]];
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: activity.name,
-    serviceType: "リバーアクティビティ・アウトドア体験",
-    description: activity.summary,
-    url: `${site.url}/activities/${activity.slug}`,
-    areaServed: activity.area,
+    name: t.name,
+    description: t.summary,
+    url: localeUrl(locale, `/activities/${activity.slug}`),
+    inLanguage: langCode(locale),
+    areaServed: t.area,
     provider: { "@id": `${site.url}/#organization` },
     offers: {
       "@type": "Offer",
       price: activity.price.amount,
       priceCurrency: "JPY",
-      description: `${activity.price.display}（${activity.price.unit}）`,
+      description: formatPriceFull(activity, locale, dict),
       availability: "https://schema.org/InStock",
-      url: `${site.url}/reservation?activity=${activity.slug}`,
+      url: localeUrl(locale, `/reservation?activity=${activity.slug}`),
     },
   };
 }
 
-export function articleJsonLd(args: {
-  title: string;
-  description: string;
-  slug: string;
-  publishedAt: string;
-  updatedAt: string;
-  image?: string;
-}) {
+export function articleJsonLd(
+  locale: Locale,
+  args: {
+    title: string;
+    description: string;
+    slug: string;
+    publishedAt: string;
+    updatedAt: string;
+    image?: string;
+  }
+) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: args.title,
     description: args.description,
-    url: `${site.url}/column/${args.slug}`,
+    url: localeUrl(locale, `/column/${args.slug}`),
     datePublished: args.publishedAt,
     dateModified: args.updatedAt,
-    inLanguage: "ja",
+    inLanguage: langCode(locale),
     image: args.image ? `${site.url}${args.image}` : undefined,
     author: {
       "@type": "Person",
-      name: "小瀬 祥太",
-      jobTitle: "Hokkaido Outdoor Organization 代表",
+      name: site.representative.nameRoman,
+      alternateName: site.representative.name,
     },
     publisher: { "@id": `${site.url}/#organization` },
   };

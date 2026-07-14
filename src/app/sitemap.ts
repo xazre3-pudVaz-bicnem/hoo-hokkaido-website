@@ -1,8 +1,14 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/data/site";
 import { activities } from "@/data/activities";
 import { getAllColumns } from "@/lib/column";
+import { locales } from "@/i18n/locales";
+import { alternateLanguages, localeUrl } from "@/i18n/routing";
 
+/**
+ * 言語別XMLサイトマップ。
+ * 各URLに alternates.languages（hreflang）を付与し、
+ * 検索エンジンへ言語間の対応関係を伝えます。
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths: { path: string; priority: number }[] = [
     { path: "", priority: 1.0 },
@@ -22,25 +28,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/sitemap", priority: 0.3 },
   ];
 
-  const activityEntries = activities.map((a) => ({
-    url: `${site.url}/activities/${a.slug}`,
-    lastModified: new Date(),
-    priority: a.slug === "furano-relax-downriver" ? 0.95 : 0.8,
-  }));
+  const now = new Date();
+  const entries: MetadataRoute.Sitemap = [];
 
-  const columnEntries = getAllColumns().map((p) => ({
-    url: `${site.url}/column/${p.slug}`,
-    lastModified: new Date(p.updatedAt || p.publishedAt),
-    priority: 0.6,
-  }));
+  for (const locale of locales) {
+    for (const entry of staticPaths) {
+      entries.push({
+        url: localeUrl(locale, entry.path),
+        lastModified: now,
+        priority: entry.priority,
+        alternates: { languages: alternateLanguages(entry.path) },
+      });
+    }
 
-  return [
-    ...staticPaths.map((entry) => ({
-      url: `${site.url}${entry.path}`,
-      lastModified: new Date(),
-      priority: entry.priority,
-    })),
-    ...activityEntries,
-    ...columnEntries,
-  ];
+    for (const activity of activities) {
+      const path = `/activities/${activity.slug}`;
+      entries.push({
+        url: localeUrl(locale, path),
+        lastModified: now,
+        priority: activity.slug === "furano-relax-downriver" ? 0.95 : 0.8,
+        alternates: { languages: alternateLanguages(path) },
+      });
+    }
+
+    for (const post of getAllColumns(locale)) {
+      const path = `/column/${post.slug}`;
+      entries.push({
+        url: localeUrl(locale, path),
+        lastModified: new Date(post.updatedAt || post.publishedAt),
+        priority: 0.6,
+        alternates: { languages: alternateLanguages(path) },
+      });
+    }
+  }
+
+  return entries;
 }

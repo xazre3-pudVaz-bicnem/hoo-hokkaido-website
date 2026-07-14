@@ -1,29 +1,31 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import GoogleMap from "@/components/ui/GoogleMap";
-import { site } from "@/data/site";
+import { phoneFor, site } from "@/data/site";
+import type { Dictionary } from "@/i18n/dictionary";
+import type { Locale } from "@/i18n/locales";
 
 /** アクセス情報＋Googleマップ（トップページ・アクセスページで共通利用） */
-export default function AccessInfo() {
+export default function AccessInfo({
+  locale,
+  dict,
+}: {
+  locale: Locale;
+  dict: Dictionary;
+}) {
+  const phone = phoneFor(locale);
+
   const rows = [
-    {
-      icon: MapPin,
-      label: "所在地",
-      value: site.address.full,
-    },
-    {
-      icon: Clock,
-      label: "営業時間",
-      value: site.hours.display,
-    },
+    { icon: MapPin, label: dict.common.addressLabel, value: dict.common.addressFull },
+    { icon: Clock, label: dict.common.hoursLabel, value: dict.common.hoursNote },
     {
       icon: Phone,
-      label: "電話",
-      value: site.tel.display,
-      href: site.tel.link,
+      label: dict.common.phoneLabel,
+      value: phone.display,
+      href: phone.link,
     },
     {
       icon: Mail,
-      label: "メール",
+      label: dict.common.emailLabel,
       value: site.email,
       href: `mailto:${site.email}`,
     },
@@ -37,9 +39,9 @@ export default function AccessInfo() {
           {rows.map((row) => (
             <div key={row.label} className="flex items-start gap-3">
               <row.icon aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-water-deep" />
-              <div>
+              <div className="min-w-0">
                 <dt className="text-xs font-bold text-ink-soft">{row.label}</dt>
-                <dd className="mt-0.5 text-sm font-medium text-ink">
+                <dd className="mt-0.5 break-words text-sm font-medium text-ink">
                   {row.href ? (
                     <a href={row.href} className="transition-colors hover:text-water-deep">
                       {row.value}
@@ -53,10 +55,10 @@ export default function AccessInfo() {
           ))}
         </dl>
         <p className="mt-6 border-t border-forest-light pt-4 text-xs leading-relaxed text-ink-soft">
-          各アクティビティの集合場所は開催エリアにより異なります。ご予約時に詳しくご案内します。
+          {dict.access.mapNote}
         </p>
       </div>
-      <GoogleMap />
+      <GoogleMap dict={dict} />
     </div>
   );
 }

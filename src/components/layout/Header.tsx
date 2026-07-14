@@ -5,19 +5,43 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Phone, X } from "lucide-react";
 import Logo from "@/components/layout/Logo";
-import { navigation, site } from "@/data/site";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import { navigation, phoneFor } from "@/data/site";
+import type { Locale } from "@/i18n/locales";
+import { localePath } from "@/i18n/routing";
+
+export type HeaderStrings = {
+  nav: Record<string, string>;
+  reserve: string;
+  menuOpen: string;
+  menuClose: string;
+  mainNav: string;
+  mobileNav: string;
+  hoursHint: string;
+  languageSwitch: string;
+  languageMenu: string;
+};
 
 /**
  * 追従ヘッダー。
  * トップページ最上部では透明、スクロール後は白背景に切り替わります。
+ * 文言は表示中の言語のものだけをサーバーから受け取ります（全言語は送りません）。
  */
-export default function Header() {
+export default function Header({
+  locale,
+  strings,
+}: {
+  locale: Locale;
+  strings: HeaderStrings;
+}) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const isHome = pathname === "/";
+  const home = localePath(locale);
+  const isHome = pathname === home;
   const transparent = isHome && !scrolled && !menuOpen;
+  const phone = phoneFor(locale);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -36,65 +60,78 @@ export default function Header() {
           : "bg-white/95 shadow-[0_1px_0_rgba(23,54,74,0.08)] backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:h-20 md:px-6">
-        <Logo inverted={transparent} />
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 md:h-20 md:px-6">
+        <Logo locale={locale} inverted={transparent} />
 
         {/* PCナビゲーション */}
-        <nav aria-label="メインナビゲーション" className="hidden xl:block">
-          <ul className="flex items-center gap-5 2xl:gap-6">
-            {navigation.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={`whitespace-nowrap text-[13px] font-medium tracking-wide transition-colors ${
-                    transparent
-                      ? "text-white/90 hover:text-sky"
-                      : "text-ink hover:text-water-deep"
-                  } ${pathname === item.href ? "font-bold" : ""}`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+        <nav aria-label={strings.mainNav} className="hidden xl:block">
+          <ul className="flex items-center gap-4 2xl:gap-5">
+            {navigation.map((item) => {
+              const href = localePath(locale, item.href);
+              return (
+                <li key={item.key}>
+                  <Link
+                    href={href}
+                    className={`whitespace-nowrap text-[13px] font-medium tracking-wide transition-colors ${
+                      transparent
+                        ? "text-white/90 hover:text-sky"
+                        : "text-ink hover:text-water-deep"
+                    } ${pathname === href ? "font-bold" : ""}`}
+                  >
+                    {strings.nav[item.key]}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2 md:gap-3">
+        <div className="flex items-center gap-1 md:gap-2">
+          {/* 言語切り替え（スマートフォンでもヘッダーから切り替え可能） */}
+          <LanguageSwitcher
+            locale={locale}
+            inverted={transparent}
+            labels={{
+              switchLabel: strings.languageSwitch,
+              menuLabel: strings.languageMenu,
+            }}
+          />
+
           <a
-            href={site.tel.link}
-            className={`hidden min-h-11 items-center gap-2 rounded-full px-4 text-sm font-bold transition-colors md:inline-flex ${
+            href={phone.link}
+            className={`hidden min-h-11 items-center gap-2 whitespace-nowrap rounded-full px-2 text-sm font-bold transition-colors lg:inline-flex ${
               transparent
                 ? "text-white hover:text-sky"
                 : "text-forest-dark hover:text-water-deep"
             }`}
-            aria-label={`電話をかける ${site.tel.display}`}
+            aria-label={`${strings.nav.contact}: ${phone.display}`}
           >
             <Phone aria-hidden="true" className="h-4 w-4" />
-            <span className="hidden whitespace-nowrap lg:inline">
-              {site.tel.display}
-            </span>
+            <span className="hidden 2xl:inline">{phone.display}</span>
           </a>
           <a
-            href={site.tel.link}
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden ${
+            href={phone.link}
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-full lg:hidden ${
               transparent ? "text-white" : "text-forest-dark"
             }`}
-            aria-label={`電話をかける ${site.tel.display}`}
+            aria-label={`${strings.nav.contact}: ${phone.display}`}
           >
             <Phone aria-hidden="true" className="h-5 w-5" />
           </a>
+
           <Link
-            href="/reservation"
-            className="inline-flex min-h-11 items-center whitespace-nowrap rounded-full bg-water-deep px-4 py-2 text-sm font-bold text-white shadow-card transition-colors hover:bg-navy md:px-6"
+            href={localePath(locale, "/reservation")}
+            className="inline-flex min-h-11 items-center whitespace-nowrap rounded-full bg-water-deep px-4 py-2 text-sm font-bold text-white shadow-card transition-colors hover:bg-navy md:px-5"
           >
-            予約する
+            {strings.reserve}
           </Link>
+
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            aria-label={menuOpen ? "メニューを閉じる" : "メニューを開く"}
+            aria-label={menuOpen ? strings.menuClose : strings.menuOpen}
             className={`inline-flex h-11 w-11 items-center justify-center rounded-full xl:hidden ${
               transparent ? "text-white" : "text-navy"
             }`}
@@ -112,33 +149,47 @@ export default function Header() {
       {menuOpen && (
         <nav
           id="mobile-menu"
-          aria-label="モバイルナビゲーション"
+          aria-label={strings.mobileNav}
           className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-forest-light bg-white xl:hidden"
         >
           <ul className="px-4 py-4">
-            {navigation.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={`block border-b border-forest-light/60 px-2 py-3.5 text-sm font-medium text-ink transition-colors hover:text-water-deep ${
-                    pathname === item.href ? "font-bold text-forest-dark" : ""
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {navigation.map((item) => {
+              const href = localePath(locale, item.href);
+              return (
+                <li key={item.key}>
+                  <Link
+                    href={href}
+                    onClick={closeMenu}
+                    className={`block border-b border-forest-light/60 px-2 py-3.5 text-sm font-medium text-ink transition-colors hover:text-water-deep ${
+                      pathname === href ? "font-bold text-forest-dark" : ""
+                    }`}
+                  >
+                    {strings.nav[item.key]}
+                  </Link>
+                </li>
+              );
+            })}
+            <li className="px-2 pt-5">
+              {/* モバイルメニュー内の言語切り替え */}
+              <LanguageSwitcher
+                locale={locale}
+                variant="list"
+                labels={{
+                  switchLabel: strings.languageSwitch,
+                  menuLabel: strings.languageMenu,
+                }}
+              />
+            </li>
             <li className="px-2 pb-2 pt-5">
               <Link
-                href="/reservation"
+                href={localePath(locale, "/reservation")}
                 onClick={closeMenu}
                 className="flex min-h-12 items-center justify-center rounded-full bg-water-deep text-sm font-bold text-white"
               >
-                予約する
+                {strings.reserve}
               </Link>
-              <p className="mt-3 text-center text-xs text-ink-soft">
-                営業時間 {site.hours.display} ／ 営業時間外はフォームからお問い合わせいただけます
+              <p className="mt-3 text-center text-xs leading-relaxed text-ink-soft">
+                {strings.hoursHint}
               </p>
             </li>
           </ul>

@@ -1,16 +1,24 @@
 import { NextResponse } from "next/server";
 import { activities } from "@/data/activities";
+import { getDictionary } from "@/i18n/dictionary";
+import { autoReply, localeNameJa } from "@/i18n/emails";
+import { defaultLocale, isLocale, type Locale } from "@/i18n/locales";
+import { formatPriceFull } from "@/lib/format";
 import { isValidEmail, isValidPhone, sendMail } from "@/lib/mail";
 
 export const runtime = "nodejs";
 
 type ReservationBody = {
+  locale?: string;
   lastName?: string;
   firstName?: string;
   furigana?: string;
   birthdate?: string;
+  country?: string;
   phone?: string;
   email?: string;
+  contactLanguage?: string;
+  stayArea?: string;
   activity?: string;
   preferredDate?: string;
   preferredTime?: string;
@@ -18,6 +26,7 @@ type ReservationBody = {
   ageComposition?: string;
   message?: string;
   agree?: boolean;
+  sourcePath?: string;
   /** ハニーポット（人間には見えない項目。値が入っていればスパム） */
   website?: string;
 };
@@ -27,11 +36,17 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as ReservationBody;
   } catch {
+    const dict = await getDictionary(defaultLocale);
     return NextResponse.json(
-      { ok: false, message: "リクエストの形式が正しくありません。" },
+      { ok: false, message: dict.reservation.errors.badRequest },
       { status: 400 }
     );
   }
+
+  const locale: Locale =
+    body.locale && isLocale(body.locale) ? body.locale : defaultLocale;
+  const dict = await getDictionary(locale);
+  const e = dict.reservation.errors;
 
   // ハニーポット：botには成功したように見せる
   if (body.website) {
@@ -39,21 +54,19 @@ export async function POST(request: Request) {
   }
 
   const errors: string[] = [];
-  if (!body.lastName?.trim()) errors.push("姓を入力してください。");
-  if (!body.firstName?.trim()) errors.push("名を入力してください。");
-  if (!body.furigana?.trim()) errors.push("フリガナを入力してください。");
-  if (!body.birthdate?.trim()) errors.push("生年月日を入力してください。");
-  if (!body.phone?.trim() || !isValidPhone(body.phone)) {
-    errors.push("電話番号を正しく入力してください。");
-  }
-  if (!body.email?.trim() || !isValidEmail(body.email)) {
-    errors.push("メールアドレスを正しく入力してください。");
-  }
+  if (!body.lastName?.trim()) errors.push(e.lastName);
+  if (!body.firstName?.trim()) errors.push(e.firstName);
+  // フリガナは日本語ページのみ必須（外国語ページではローマ字表記は任意）
+  if (locale === "ja" && !body.furigana?.trim()) errors.push(e.furigana);
+  if (!body.birthdate?.trim()) errors.push(e.birthdate);
+  if (!body.phone?.trim() || !isValidPhone(body.phone)) errors.push(e.phone);
+  if (!body.email?.trim() || !isValidEmail(body.email)) errors.push(e.email);
+
   const activity = activities.find((a) => a.slug === body.activity);
-  if (!activity) errors.push("希望アクティビティを選択してください。");
-  if (!body.preferredDate?.trim()) errors.push("希望日を入力してください。");
-  if (!body.participants?.trim()) errors.push("参加人数を入力してください。");
-  if (!body.agree) errors.push("プライバシーポリシーへの同意が必要です。");
+  if (!activity) errors.push(e.activity);
+  if (!body.preferredDate?.trim()) errors.push(e.preferredDate);
+  if (!body.participants?.trim()) errors.push(e.participants);
+  if (!body.agree) errors.push(e.agree);
 
   if (errors.length > 0) {
     return NextResponse.json(
@@ -62,37 +75,68 @@ export async function POST(request: Request) {
     );
   }
 
-  const text = [
+  const contactLanguage: Locale =
+    body.contactLanguage && isLocale(body.contactLanguage)
+      ? body.contactLanguage
+      : locale;
+
+  // 管理者宛メールは日本語で内容を確認できる形式
+  const jaDict = await getDictionary("ja");
+  const activityNameJa =
+    jaDict.activities[activity!.slug as keyof typeof jaDict.activities].name;
+  const activityNameUser =
+    dict.activities[activity!.slug as keyof typeof dict.activities].name;
+  const fullName = `${body.lastName} ${body.firstName}`;
+
+  const adminText = [
     "Webサイトから新しい予約リクエストが届きました。",
     "（フォーム送信時点では予約確定ではありません）",
     "",
-    `■ お名前: ${body.lastName} ${body.firstName}（${body.furigana}）`,
-    `■ 生年月日: ${body.birthdate}`,
-    `■ 電話番号: ${body.phone}`,
-    `■ メール: ${body.email}`,
-    `■ 希望アクティビティ: ${activity!.name}`,
-    `■ 希望日: ${body.preferredDate}`,
-    `■ 希望時間: ${body.preferredTime || "指定なし"}`,
-    `■ 参加人数: ${body.participants}`,
-    `■ 参加者の年齢構成: ${body.ageComposition || "未記入"}`,
+    `■ 閲覧言語：${localeNameJa[locale]}`,
+    `■ 希望連絡言語：${localeNameJa[contactLanguage]}`,
+    `■ 送信元ページ：${body.sourcePath || "（不明）"}`,
     "",
-    "■ 質問・相談事項:",
+    `■ お名前：${fullName}`,
+    `■ フリガナ／ローマ字表記：${body.furigana || "（未記入）"}`,
+    `■ 生年月日：${body.birthdate}`,
+    `■ 国・地域：${body.country || "（未記入）"}`,
+    `■ 電話番号：${body.phone}`,
+    `■ メール：${body.email}`,
+    `■ 宿泊エリア・滞在先：${body.stayArea || "（未記入）"}`,
+    "",
+    `■ 希望アクティビティ：${activityNameJa}`,
+    `■ 料金（参考）：${formatPriceFull(activity!, "ja", jaDict)}`,
+    `■ 希望日：${body.preferredDate}`,
+    `■ 希望時間：${body.preferredTime || "指定なし"}`,
+    `■ 参加人数：${body.participants}`,
+    `■ 参加者の年齢構成：${body.ageComposition || "未記入"}`,
+    "",
+    "■ 質問・相談事項：",
     body.message || "（なし）",
   ].join("\n");
 
-  const result = await sendMail({
-    subject: `【予約リクエスト】${activity!.name}（${body.lastName} ${body.firstName}様）`,
-    text,
+  const adminResult = await sendMail({
+    subject: `【予約リクエスト／${localeNameJa[locale]}】${activityNameJa}（${fullName}様）`,
+    text: adminText,
     replyTo: body.email,
   });
 
-  if (!result.ok) {
+  if (!adminResult.ok) {
     const message =
-      result.reason === "not-configured" && process.env.NODE_ENV !== "production"
-        ? "メール送信が設定されていません（RESEND_API_KEY 未設定）。.env.local を確認してください。"
-        : "送信に失敗しました。お手数ですが、時間をおいて再度お試しいただくか、お電話にてご連絡ください。";
+      adminResult.reason === "not-configured" &&
+      process.env.NODE_ENV !== "production"
+        ? e.notConfigured
+        : e.failed;
     return NextResponse.json({ ok: false, message }, { status: 500 });
   }
+
+  // ユーザーへの自動返信は、フォームを送信した言語で送る
+  const reply = autoReply[locale];
+  await sendMail({
+    to: body.email,
+    subject: reply.reservationSubject,
+    text: reply.reservationBody(fullName, activityNameUser),
+  });
 
   return NextResponse.json({ ok: true });
 }

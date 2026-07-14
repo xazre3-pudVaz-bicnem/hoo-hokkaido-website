@@ -1,22 +1,28 @@
 import { Phone } from "lucide-react";
 import Button from "@/components/ui/Button";
 import WaveDivider from "@/components/ui/WaveDivider";
-import { site } from "@/data/site";
+import { phoneFor } from "@/data/site";
+import type { Dictionary } from "@/i18n/dictionary";
+import type { Locale } from "@/i18n/locales";
+import { localePath } from "@/i18n/routing";
 
-type FinalCtaProps = {
+/** 最終CTAセクション（全ページ共通） */
+export default function FinalCta({
+  locale,
+  dict,
+  title,
+  lead,
+}: {
+  locale: Locale;
+  dict: Dictionary;
   title?: string;
   lead?: string;
-};
+}) {
+  const phone = phoneFor(locale);
 
-/** 最終CTAセクション（全ページ共通で利用可能） */
-export default function FinalCta({
-  title = "次の北海道旅行に、\n川で過ごす時間を。",
-  lead = "予約・空き状況の確認・ご相談は、フォームまたはお電話でお気軽にどうぞ。",
-}: FinalCtaProps) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-forest-dark via-forest to-water-deep">
       <WaveDivider fill="var(--color-offwhite)" flip />
-      {/* 水面のゆらぎを思わせる装飾 */}
       <div
         aria-hidden="true"
         className="animate-drift absolute -right-24 -top-24 h-96 w-96 rounded-full bg-sky/10 blur-3xl"
@@ -27,23 +33,28 @@ export default function FinalCta({
       />
 
       <div className="relative mx-auto max-w-4xl px-4 py-20 text-center md:px-6 md:py-28">
-        <h2 className="whitespace-pre-line font-display text-3xl font-bold leading-relaxed text-white md:text-4xl md:leading-relaxed">
-          {title}
+        <h2 className="whitespace-pre-line font-display text-2xl font-bold leading-relaxed text-white sm:text-3xl md:text-4xl md:leading-relaxed">
+          {title ?? dict.finalCta.title}
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-sm leading-loose text-white/85 md:text-base">
-          {lead}
+          {lead ?? dict.finalCta.lead}
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-          <Button href="/reservation" variant="white" size="lg">
-            アクティビティを予約する
+          <Button href={localePath(locale, "/reservation")} variant="white" size="lg">
+            {dict.finalCta.primary}
           </Button>
-          <Button href={site.tel.link} variant="water" size="lg" className="bg-navy/40 hover:bg-navy/60">
-            <Phone aria-hidden="true" className="h-4 w-4" />
-            電話で相談する
+          <Button
+            href={phone.link}
+            variant="water"
+            size="lg"
+            className="bg-navy/40 hover:bg-navy/60"
+          >
+            <Phone aria-hidden="true" className="h-4 w-4 shrink-0" />
+            {dict.finalCta.secondary}
           </Button>
         </div>
-        <p className="mt-6 text-xs text-white/70">
-          営業時間 {site.hours.display} ／ 営業時間外はフォームからお問い合わせください
+        <p className="mt-6 text-xs leading-relaxed text-white/70">
+          {dict.finalCta.note}
         </p>
       </div>
     </section>
