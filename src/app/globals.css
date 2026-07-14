@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors — 北海道の水と森 */
+  --color-forest-dark: #164c3b;
+  --color-forest: #24765b;
+  --color-forest-light: #ddede4;
+  --color-water: #43afc7;
+  --color-water-deep: #2b8ba1;
+  --color-water-light: #ddf4f7;
+  --color-sky: #8fd4e4;
+  --color-navy: #17364a;
+  --color-offwhite: #f7faf7;
+  --color-ivory: #f4f2ea;
+  --color-ink: #18302a;
+  --color-ink-soft: #4a5f58;
+
+  --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-display: var(--font-shippori), "Hiragino Mincho ProN", serif;
+
+  --shadow-card: 0 1px 2px rgb(23 54 74 / 0.06), 0 8px 24px rgb(23 54 74 / 0.08);
+  --shadow-card-hover: 0 2px 4px rgb(23 54 74 / 0.08),
+    0 16px 40px rgb(23 54 74 / 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-offwhite);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-water-light);
+  color: var(--color-navy);
+}
+
+/* キーボード操作時のフォーカス表示 */
+:focus-visible {
+  outline: 2px solid var(--color-water-deep);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 見出し用の字送り */
+.font-display {
+  letter-spacing: 0.04em;
+  font-feature-settings: "palt";
+}
+
+/* details/summary製FAQのマーカー非表示 */
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item summary {
+  list-style: none;
+}
+details.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}
+.faq-icon {
+  transition: transform 0.25s ease;
+}
+
+/* 水面を連想する背景のゆらぎ */
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-2%, 1.5%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.animate-drift {
+  animation: drift 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-drift {
+    animation: none;
+  }
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
