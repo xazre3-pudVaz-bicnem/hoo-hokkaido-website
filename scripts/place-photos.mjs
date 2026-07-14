@@ -8,7 +8,7 @@
  *
  * 事前準備: npm install --no-save heic-decode
  */
-import { mkdir, readFile, readdir } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 import decodeHeic from "heic-decode";
@@ -139,20 +139,48 @@ async function buildLogo() {
   await sharp(inverted, raw).png().toFile(path.join(logoDir, "hoo-logo-white.png"));
   console.log("✓ logo/hoo-logo.png, logo/hoo-logo-white.png");
 
-  // ファビコン（正方形・白背景にロゴを配置）
-  const mark = await sharp(normal, raw).resize(400, null, { fit: "inside" }).png().toBuffer();
-  await sharp({
+  // ファビコン（icon.png / favicon.ico）
+  // 小さいサイズでも見えるよう、余白ぎりぎりまでトリミングしてから正方形に収める
+  const trimmed = await sharp(normal, raw).trim().toBuffer();
+  const tm = await sharp(trimmed).metadata();
+  const side = Math.round(Math.max(tm.width, tm.height) * 1.18);
+  const mark = await sharp(trimmed)
+    .resize(Math.round(side * 0.9), Math.round(side * 0.9), { fit: "inside" })
+    .png()
+    .toBuffer();
+  const square = await sharp({
     create: {
-      width: 512,
-      height: 512,
+      width: side,
+      height: side,
       channels: 4,
       background: { r: 255, g: 255, b: 255, alpha: 1 },
     },
   })
     .composite([{ input: mark, gravity: "centre" }])
     .png()
+    .toBuffer();
+
+  await sharp(square)
+    .resize(512, 512, { fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 1 } })
+    .png()
     .toFile(path.join(root, "src", "app", "icon.png"));
   console.log("✓ src/app/icon.png");
+
+  // favicon.ico は複数解像度を束ねるため png-to-ico で生成
+  try {
+    const mod = await import("png-to-ico");
+    const pngToIco = mod.default ?? mod;
+    const sizes = await Promise.all(
+      [16, 32, 48].map((s) => sharp(square).resize(s, s).png().toBuffer())
+    );
+    const ico = await pngToIco(sizes);
+    await writeFile(path.join(root, "src", "app", "favicon.ico"), ico);
+    console.log("✓ src/app/favicon.ico");
+  } catch {
+    console.log(
+      "- favicon.ico はスキップしました（生成するには `npm i -D png-to-ico` を実行してください）"
+    );
+  }
 }
 
 const files = await readdir(SRC_DIR);
