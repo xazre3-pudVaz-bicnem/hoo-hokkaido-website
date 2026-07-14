@@ -4,7 +4,12 @@ import { getDictionary } from "@/i18n/dictionary";
 import { autoReply, localeNameJa } from "@/i18n/emails";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/locales";
 import { formatPriceFull } from "@/lib/format";
-import { isValidEmail, isValidPhone, sendMail } from "@/lib/mail";
+import {
+  adminRecipient,
+  isValidEmail,
+  isValidPhone,
+  sendMail,
+} from "@/lib/mail";
 
 export const runtime = "nodejs";
 
@@ -115,19 +120,23 @@ export async function POST(request: Request) {
     body.message || "（なし）",
   ].join("\n");
 
+  const subject = `【予約リクエスト／${localeNameJa[locale]}】${activityNameJa}（${fullName}様）`;
+
   const adminResult = await sendMail({
-    subject: `【予約リクエスト／${localeNameJa[locale]}】${activityNameJa}（${fullName}様）`,
+    subject,
     text: adminText,
     replyTo: body.email,
   });
 
+  // 自動送信ができない場合（APIキー未設定・送信失敗）は、
+  // 訪問者のメールソフトで送ってもらう mailto 方式へ切り替える。
+  // 本文はサーバー側で組み立てたものをそのまま渡すため、内容は自動送信時と同一。
   if (!adminResult.ok) {
-    const message =
-      adminResult.reason === "not-configured" &&
-      process.env.NODE_ENV !== "production"
-        ? e.notConfigured
-        : e.failed;
-    return NextResponse.json({ ok: false, message }, { status: 500 });
+    return NextResponse.json({
+      ok: false,
+      code: "MAILTO_FALLBACK",
+      mailto: { to: adminRecipient(), subject, body: adminText },
+    });
   }
 
   // ユーザーへの自動返信は、フォームを送信した言語で送る

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getDictionary } from "@/i18n/dictionary";
 import { autoReply, localeNameJa } from "@/i18n/emails";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/locales";
-import { isValidEmail, sendMail } from "@/lib/mail";
+import { adminRecipient, isValidEmail, sendMail } from "@/lib/mail";
 
 export const runtime = "nodejs";
 
@@ -36,7 +36,6 @@ export async function POST(request: Request) {
     body.locale && isLocale(body.locale) ? body.locale : defaultLocale;
   const dict = await getDictionary(locale);
   const e = dict.contact.errors;
-  const re = dict.reservation.errors;
 
   if (body.website) {
     return NextResponse.json({ ok: true });
@@ -76,19 +75,21 @@ export async function POST(request: Request) {
     body.message ?? "",
   ].join("\n");
 
+  const subject = `【お問い合わせ／${localeNameJa[locale]}】${body.name}様`;
+
   const adminResult = await sendMail({
-    subject: `【お問い合わせ／${localeNameJa[locale]}】${body.name}様`,
+    subject,
     text: adminText,
     replyTo: body.email,
   });
 
+  // 自動送信ができない場合は mailto 方式へ切り替える（本文は自動送信時と同一）
   if (!adminResult.ok) {
-    const message =
-      adminResult.reason === "not-configured" &&
-      process.env.NODE_ENV !== "production"
-        ? re.notConfigured
-        : re.failed;
-    return NextResponse.json({ ok: false, message }, { status: 500 });
+    return NextResponse.json({
+      ok: false,
+      code: "MAILTO_FALLBACK",
+      mailto: { to: adminRecipient(), subject, body: adminText },
+    });
   }
 
   const reply = autoReply[locale];

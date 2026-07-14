@@ -50,6 +50,7 @@ export default async function ContactPage({
       <section className="mx-auto max-w-3xl px-4 py-10 md:px-6 md:py-14">
         <ContactForm
           locale={locale}
+          phone={phone}
           strings={{
             fields: c.fields as unknown as Record<string, string>,
             agree: dict.reservation.fields.agree,
@@ -60,6 +61,7 @@ export default async function ContactPage({
             successBody: c.successBody,
             required: dict.common.required,
             errorNetwork: dict.reservation.errors.network,
+            mailto: dict.mailto,
           }}
         />
 

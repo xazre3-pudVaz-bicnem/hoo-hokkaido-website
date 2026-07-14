@@ -63,6 +63,7 @@ export default async function ReservationPage({
           locale={locale}
           initialActivity={activity}
           activityOptions={activityOptions}
+          phone={phone}
           strings={{
             fields: r.fields as unknown as Record<string, string>,
             notice: r.notice,
@@ -74,6 +75,7 @@ export default async function ReservationPage({
             successNote: r.successNote,
             required: dict.common.required,
             errorNetwork: r.errors.network,
+            mailto: dict.mailto,
           }}
         />
 

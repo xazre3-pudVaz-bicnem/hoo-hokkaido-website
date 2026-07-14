@@ -103,6 +103,19 @@
     "noteCustom": "The price depends on the content and group size. We will prepare a quote for you."
   },
 
+  "mailto": {
+    "title": "Your email app is opening",
+    "lead": "We've loaded everything you entered into a new email. Please review it and hit send.",
+    "notice": "Your request won't reach HOO until you actually send that email.",
+    "longWarning": "Your message is fairly long, so some email apps may cut it off partway through. Please check that the whole message is there. If anything is missing, use \"Copy my details\" below.",
+    "noMailTitle": "If your email app didn't open",
+    "noMailBody": "On some devices the email app won't open automatically. If that happens, copy your details with the button below and send them to the address here. You're also welcome to call us.",
+    "copy": "Copy my details",
+    "copied": "Copied",
+    "showContent": "Show what I entered",
+    "back": "Back to the form"
+  },
+
   "language": {
     "switchLabel": "Change language",
     "currentLabel": "Language",

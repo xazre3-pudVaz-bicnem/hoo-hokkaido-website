@@ -2,10 +2,24 @@ import { Resend } from "resend";
 import { site } from "@/data/site";
 
 /**
- * メール送信ヘルパー（Resend）。
- * APIキーは環境変数 RESEND_API_KEY で管理します（.env.example 参照）。
- * キー未設定時は送信せずエラーを返し、開発環境ではその内容をコンソールに出力します。
+ * メール送信。
+ *
+ * ■ 設定なしでも使えるようにしている
+ * RESEND_API_KEY を設定すれば、フォームから自動でメールを送信します。
+ * 未設定（または送信失敗）の場合は「送信できなかった」ことを呼び出し側へ返し、
+ * 画面側は mailto:（訪問者のメールソフトを開く方式）へ切り替えます。
+ * → サーバーの設定も外部サービスの契約もなしに、そのまま運用できます。
+ *
+ * ■ 重要
+ * 送信できていないのに「送信完了」と表示してはいけません。
+ * （届いていないのに成功と見せるのは、問い合わせを失うことと同じです）
  */
+
+export type MailFailReason = "not-configured" | "send-failed";
+
+export type SendMailResult =
+  | { ok: true }
+  | { ok: false; reason: MailFailReason };
 
 type SendMailArgs = {
   to?: string;
@@ -14,9 +28,10 @@ type SendMailArgs = {
   replyTo?: string;
 };
 
-export type SendMailResult =
-  | { ok: true }
-  | { ok: false; reason: "not-configured" | "send-failed" };
+/** 管理者宛メールの宛先（環境変数で差し替え可能） */
+export function adminRecipient(): string {
+  return process.env.MAIL_TO ?? site.email;
+}
 
 export function isMailConfigured(): boolean {
   return Boolean(process.env.RESEND_API_KEY);
@@ -29,18 +44,17 @@ export async function sendMail({
   replyTo,
 }: SendMailArgs): Promise<SendMailResult> {
   const apiKey = process.env.RESEND_API_KEY;
-  const recipient = to ?? process.env.MAIL_TO ?? site.email;
+  const recipient = to ?? adminRecipient();
   const from =
     process.env.MAIL_FROM ?? `${site.shortName} Website <onboarding@resend.dev>`;
 
   if (!apiKey) {
+    // 未設定は異常ではない（mailto方式で運用できる）ため、開発時のみ案内を出す
     if (process.env.NODE_ENV !== "production") {
-      console.error(
-        "[mail] RESEND_API_KEY が設定されていません。.env.local に RESEND_API_KEY を設定してください。\n" +
-          `送信予定だった内容:\nTo: ${recipient}\nSubject: ${subject}\n${text}`
+      console.info(
+        "[mail] RESEND_API_KEY が未設定のため、フォームは mailto 方式で動作します。" +
+          "自動送信を有効にするには .env.local に RESEND_API_KEY を設定してください。"
       );
-    } else {
-      console.error("[mail] RESEND_API_KEY is not configured.");
     }
     return { ok: false, reason: "not-configured" };
   }

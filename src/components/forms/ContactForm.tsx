@@ -3,10 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle2, Loader2, TriangleAlert } from "lucide-react";
+import MailtoPanel, {
+  mailtoHref,
+  type MailtoPayload,
+  type MailtoStrings,
+} from "@/components/forms/MailtoPanel";
 import { localeConfig, locales, type Locale } from "@/i18n/locales";
 import { localePath } from "@/i18n/routing";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "mailto" | "error";
 
 export type ContactFormStrings = {
   fields: Record<string, string>;
@@ -18,6 +23,7 @@ export type ContactFormStrings = {
   successBody: string;
   required: string;
   errorNetwork: string;
+  mailto: MailtoStrings;
 };
 
 const inputClass =
@@ -36,12 +42,15 @@ function Required({ label }: { label: string }) {
 export default function ContactForm({
   locale,
   strings,
+  phone,
 }: {
   locale: Locale;
   strings: ContactFormStrings;
+  phone: { display: string; link: string };
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [mailto, setMailto] = useState<MailtoPayload | null>(null);
   const f = strings.fields;
   const req = <Required label={strings.required} />;
 
@@ -72,11 +81,24 @@ export default function ContactForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const result = (await res.json()) as { ok: boolean; message?: string };
+      const result = (await res.json()) as {
+        ok: boolean;
+        code?: string;
+        message?: string;
+        mailto?: MailtoPayload;
+      };
+
       if (result.ok) {
         setStatus("success");
         form.reset();
         window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (result.code === "MAILTO_FALLBACK" && result.mailto) {
+        // 自動送信が設定されていない（または失敗した）場合は、
+        // 訪問者のメールソフトを開いて送ってもらう
+        setMailto(result.mailto);
+        setStatus("mailto");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.location.href = mailtoHref(result.mailto);
       } else {
         setStatus("error");
         setErrorMessage(result.message ?? strings.errorNetwork);
@@ -85,6 +107,20 @@ export default function ContactForm({
       setStatus("error");
       setErrorMessage(strings.errorNetwork);
     }
+  }
+
+  if (status === "mailto" && mailto) {
+    return (
+      <MailtoPanel
+        strings={strings.mailto}
+        payload={mailto}
+        phone={phone}
+        onBack={() => {
+          setMailto(null);
+          setStatus("idle");
+        }}
+      />
+    );
   }
 
   if (status === "success") {
