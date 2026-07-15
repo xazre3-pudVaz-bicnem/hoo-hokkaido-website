@@ -25,6 +25,16 @@ const contentDir = path.join(root, "src", "content");
 const BASE = "ja";
 const LOCALES = ["ja", "en", "zh-tw", "zh-cn", "ko"];
 
+/**
+ * 日本語だけに存在してよいキー（ja限定で描画するUI）。
+ * 他言語での不足を許容します。
+ * - furanoActivity.guides*: 関連コラムが日本語記事のみのため、
+ *   ピラーページの「関連ガイド」節は locale === "ja" のときだけ描画する。
+ */
+const JA_ONLY_PREFIXES = ["furanoActivity.guides"];
+const isJaOnlyKey = (key) =>
+  JA_ONLY_PREFIXES.some((p) => key === p || key.startsWith(p));
+
 /** 翻訳ファイルへ書いてはいけない共通データ（重複記載の検出用） */
 const FORBIDDEN = [
   { label: "料金（7,700）", pattern: /7[,，]?700/ },
@@ -83,6 +93,8 @@ for (const locale of LOCALES) {
 
   // 1 & 4: 不足キー・配列長の不一致
   for (const [key, info] of baseFlat) {
+    // ja限定で描画するキーは他言語に無くてよい
+    if (isJaOnlyKey(key)) continue;
     if (!flat.has(key)) {
       errors.push(`[${locale}] 翻訳キーが不足: ${key}`);
       continue;

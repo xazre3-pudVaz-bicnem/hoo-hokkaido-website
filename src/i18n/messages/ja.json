@@ -642,6 +642,20 @@
         "answer": "対象年齢は当日の河川状況などにより異なります。お子さまの年齢を添えて事前にお問い合わせいただければ、参加可否をご案内します。"
       }
     ],
+    "guidesEyebrow": "Activity Guides",
+    "guidesTitle": "富良野のアクティビティ選びに役立つガイド",
+    "guidesLead": "季節・時間・目的別に、富良野で楽しめるアクティビティの選び方をまとめています。",
+    "guides": [
+      { "label": "富良野のおすすめアクティビティ｜人気の選び方", "slug": "furano-activity-ranking" },
+      { "label": "富良野の自然アクティビティにはどんな種類がある？", "slug": "furano-activity-types" },
+      { "label": "半日で楽しむ富良野のアクティビティ", "slug": "furano-activity-half-day" },
+      { "label": "冬の富良野で楽しむアクティビティ", "slug": "furano-winter-activity" },
+      { "label": "春・GWの富良野アクティビティ", "slug": "furano-spring-activity" },
+      { "label": "混雑を避けて楽しむ富良野の穴場アクティビティ", "slug": "furano-activity-hidden" },
+      { "label": "富良野観光にアクティビティを組み合わせる楽しみ方", "slug": "furano-sightseeing-activity" },
+      { "label": "天気・季節で選ぶ富良野のアクティビティ", "slug": "furano-activity-weather-choice" }
+    ],
+    "guidesMore": "コラムをもっと見る",
     "ctaTitle": "富良野の自然を、\n川の上から体験しませんか。"
   },
 

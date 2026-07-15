@@ -10,6 +10,8 @@ type PageMeta = {
   /** ロケールを含まないパス（例: "/activities"）。トップは "" */
   path?: string;
   ogImage?: string;
+  /** 対策キーワード（メインKW＋関連KW）。検索意図の明示に使う。 */
+  keywords?: readonly string[];
   /**
    * hreflang に含める言語を限定する（省略時は全5言語）。
    * コラムのように一部言語しか翻訳がないページで、実在ぶんだけ指定するために使う。
@@ -30,12 +32,14 @@ export function pageMetadata({
   description,
   path = "",
   ogImage = "/images/og/og-image.jpg",
+  keywords,
   availableLocales,
 }: PageMeta): Metadata {
   const url = localeUrl(locale, path);
   return {
     title,
     description,
+    ...(keywords && keywords.length > 0 ? { keywords: [...keywords] } : {}),
     alternates: {
       canonical: url,
       languages: alternateLanguages(path, availableLocales),

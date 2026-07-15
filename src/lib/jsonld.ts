@@ -92,6 +92,30 @@ export function breadcrumbJsonLd(
   };
 }
 
+/**
+ * 一覧ページ（ハブ）向けの ItemList 構造化データ。
+ * 「富良野 アクティビティ」のような集約ページが、
+ * 各体験へのハブであることを検索エンジンに伝えます。
+ */
+export function itemListJsonLd(
+  locale: Locale,
+  name: string,
+  items: { name: string; path: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    inLanguage: langCode(locale),
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: localeUrl(locale, item.path),
+    })),
+  };
+}
+
 export function faqJsonLd(locale: Locale, faqs: readonly Faq[]) {
   return {
     "@context": "https://schema.org",

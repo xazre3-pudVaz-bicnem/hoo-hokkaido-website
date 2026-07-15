@@ -11,11 +11,24 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ActivityCard from "@/components/ui/ActivityCard";
 import FinalCta from "@/components/sections/FinalCta";
 import { pageMetadata } from "@/lib/seo";
-import { faqJsonLd } from "@/lib/jsonld";
+import { faqJsonLd, itemListJsonLd } from "@/lib/jsonld";
 import { getActivity } from "@/data/activities";
 import { getDictionary } from "@/i18n/dictionary";
-import type { Locale } from "@/i18n/locales";
+import { defaultLocale, type Locale } from "@/i18n/locales";
 import { localePath } from "@/i18n/routing";
+
+/** 「富良野 アクティビティ」対策キーワード（メインKW＋関連KW） */
+const FURANO_ACTIVITY_KEYWORDS = [
+  "富良野 アクティビティ",
+  "富良野 体験",
+  "富良野 自然体験",
+  "富良野 アウトドア",
+  "富良野 川下り",
+  "富良野 ダウンリバー",
+  "富良野 観光 アクティビティ",
+  "美瑛 アクティビティ",
+  "旭川 アクティビティ",
+];
 
 type Params = { locale: Locale };
 
@@ -38,6 +51,7 @@ export async function generateMetadata({
     title: dict.meta.furanoActivity.title,
     description: dict.meta.furanoActivity.description,
     path: "/furano-activity",
+    keywords: locale === defaultLocale ? FURANO_ACTIVITY_KEYWORDS : undefined,
   });
 }
 
@@ -53,10 +67,18 @@ export default async function FuranoActivityPage({
   const furano = getActivity("furano-relax-downriver")!;
   const biei = getActivity("biei-relax-downriver")!;
   const asahikawa = getActivity("asahikawa-relax-downriver")!;
+  const organize = getActivity("organize-program")!;
+
+  // 「富良野 アクティビティ」ハブであることを伝える ItemList
+  const activityList = [furano, biei, asahikawa, organize].map((a) => ({
+    name: dict.activities[a.slug as keyof typeof dict.activities].name,
+    path: `/activities/${a.slug}`,
+  }));
 
   return (
     <>
       <JsonLd data={faqJsonLd(locale, p.faq)} />
+      <JsonLd data={itemListJsonLd(locale, p.introTitle, activityList)} />
       <PageHeader eyebrow={p.eyebrow} title={p.title} lead={p.lead} />
       <Breadcrumbs
         locale={locale}
@@ -224,6 +246,48 @@ export default async function FuranoActivityPage({
           <FaqAccordion faqs={p.faq} />
         </FadeIn>
       </section>
+
+      {/* 富良野アクティビティ選びに役立つコラム（ハブ→クラスタの内部リンク・日本語のみ） */}
+      {locale === defaultLocale && (
+        <section className="bg-water-light/50 py-16 md:py-20">
+          <div className="mx-auto max-w-4xl px-4 md:px-6">
+            <FadeIn>
+              <SectionHeading
+                eyebrow={p.guidesEyebrow}
+                title={p.guidesTitle}
+                lead={p.guidesLead}
+              />
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {p.guides.map((guide) => (
+                  <li key={guide.slug}>
+                    <Link
+                      href={localePath(locale, `/column/${guide.slug}`)}
+                      className="group flex items-center justify-between gap-4 rounded-2xl border border-forest-light bg-white px-5 py-4 transition-all hover:border-water hover:shadow-card"
+                    >
+                      <span className="text-sm font-bold text-navy transition-colors group-hover:text-water-deep">
+                        {guide.label}
+                      </span>
+                      <ArrowRight
+                        aria-hidden="true"
+                        className="h-4 w-4 shrink-0 text-water-deep transition-transform group-hover:translate-x-1"
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 text-center">
+                <Link
+                  href={localePath(locale, "/column")}
+                  className="inline-flex items-center gap-1.5 text-sm font-bold text-water-deep transition-colors hover:text-navy"
+                >
+                  {p.guidesMore}
+                  <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
 
       <FinalCta locale={locale} dict={dict} title={p.ctaTitle} />
     </>
