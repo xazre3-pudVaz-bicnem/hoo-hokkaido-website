@@ -1,5 +1,20 @@
 {
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "ブログ",
+    "lead": "富良野・北海道のアクティビティや自然体験について、地元ガイドHOOが役立つ情報を日々お届けします。",
+    "empty": "記事は準備中です。もうしばらくお待ちください。",
+    "published": "公開日",
+    "relatedTitle": "関連記事",
+    "ctaTitle": "富良野で自然を体験してみませんか？",
+    "notAvailable": "この記事は選択中の言語ではまだご用意がありません。ブログ一覧から他の記事をご覧ください。",
+    "notAvailableCta": "ブログ一覧へ"
+  },
   "meta": {
+    "blog": {
+      "title": "富良野アクティビティ・自然体験ブログ",
+      "description": "富良野・北海道のアクティビティやラフティング、川遊び、自然体験の楽しみ方を、地元アウトドアガイドHOOがブログでお届けします。旅行の計画や準備の参考にどうぞ。"
+    },
     "home": {
       "title": "富良野のアクティビティ・リバー体験｜Hokkaido Outdoor Organization",
       "description": "富良野・美瑛・旭川で北海道の自然を楽しむリバーアクティビティ。Hokkaido Outdoor Organizationでは、経験豊富なガイドがリラックスダウンリバーなどの自然体験をご案内します。"
@@ -152,6 +167,7 @@
       "projects": "プロジェクト",
       "safety": "安全への取り組み",
       "column": "コラム",
+      "blog": "ブログ",
       "faq": "よくある質問",
       "access": "アクセス",
       "reservation": "予約",

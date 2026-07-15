@@ -66,6 +66,7 @@ export default async function SitemapPage({
       heading: s.groups.column,
       links: [
         { label: s.links.columnIndex, href: "/column" },
+        { label: dict.blog.title, href: "/blog" },
         ...getAllColumns(locale).map((p) => ({
           label: p.title,
           href: `/column/${p.slug}`,

@@ -89,6 +89,7 @@ export const footerLinks = [
   { key: "projects", href: "/projects" },
   { key: "safety", href: "/safety" },
   { key: "column", href: "/column" },
+  { key: "blog", href: "/blog" },
   { key: "faq", href: "/faq" },
   { key: "access", href: "/access" },
   { key: "reservation", href: "/reservation" },

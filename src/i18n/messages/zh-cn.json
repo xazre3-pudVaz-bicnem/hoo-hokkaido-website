@@ -1,5 +1,20 @@
 {
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "博客",
+    "lead": "本地向导HOO持续分享富良野与北海道的活动与自然体验相关的实用信息。",
+    "empty": "文章准备中，敬请期待。",
+    "published": "发布日",
+    "relatedTitle": "相关文章",
+    "ctaTitle": "要不要在富良野体验大自然？",
+    "notAvailable": "该文章尚未提供所选语言的版本。请从博客列表浏览其他文章。",
+    "notAvailableCta": "返回博客"
+  },
   "meta": {
+    "blog": {
+      "title": "富良野活动・自然体验博客",
+      "description": "本地户外向导HOO分享富良野与北海道的活动、漂流、玩水与自然体验的乐趣，供你规划与准备行程时参考。"
+    },
     "home": {
       "title": "富良野户外活动与河流体验｜HOO北海道",
       "description": "在富良野、美瑛、旭川尽享北海道自然的河流活动。Hokkaido Outdoor Organization由经验丰富的向导带领，提供悠闲顺流的河流之旅。"
@@ -152,6 +167,7 @@
       "projects": "项目",
       "safety": "安全措施",
       "column": "专栏",
+      "blog": "博客",
       "faq": "常见问题",
       "access": "交通方式",
       "reservation": "预约",

@@ -1,5 +1,20 @@
 {
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Blog",
+    "lead": "Local guide HOO shares helpful notes on activities and nature experiences in Furano and Hokkaido.",
+    "empty": "Articles are on the way. Please check back soon.",
+    "published": "Published",
+    "relatedTitle": "Related articles",
+    "ctaTitle": "Ready to experience Furano's nature?",
+    "notAvailable": "This article is not available in the selected language yet. Please browse other articles from the blog list.",
+    "notAvailableCta": "Back to blog"
+  },
   "meta": {
+    "blog": {
+      "title": "Furano Activity & Nature Blog",
+      "description": "Local outdoor guide HOO shares tips on Furano and Hokkaido activities, rafting, river play, and nature experiences. Useful reading for planning and preparing your trip."
+    },
     "home": {
       "title": "Furano Outdoor Activities & River Tours | HOO Hokkaido",
       "description": "Guided river activities in Furano, Biei and Asahikawa. Enjoy Hokkaido's nature on a relaxed downriver trip with experienced local guides."
@@ -152,6 +167,7 @@
       "projects": "Projects",
       "safety": "Safety",
       "column": "Column",
+      "blog": "Blog",
       "faq": "FAQ",
       "access": "Access",
       "reservation": "Booking",

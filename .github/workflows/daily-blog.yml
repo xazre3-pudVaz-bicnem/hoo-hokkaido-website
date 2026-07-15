@@ -1,0 +1,73 @@
+name: Daily Blog
+
+# 毎日11:10 JST（= 02:10 UTC）に1記事を自動生成し、main へ直接コミットします。
+# Vercel の GitHub 連携により、push 後に自動で本番公開されます。
+on:
+  schedule:
+    - cron: "10 2 * * *"
+  workflow_dispatch: {}
+
+# main へ直接コミット・push するために書き込み権限を付与
+permissions:
+  contents: write
+
+# 同時実行を防ぐ（前回が走っていれば待つ）
+concurrency:
+  group: daily-blog
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate daily blog post
+        env:
+          # 必要な Secret はこれだけ
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 任意: リポジトリ Variables で ANTHROPIC_MODEL を設定すると上書き可能
+          # （未設定なら scripts 側の既定 claude-haiku-4-5-20251001 を使用）
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+        run: npx tsx scripts/generate-daily-post.ts
+
+      - name: Commit & push
+        run: |
+          git config user.name "hoo-blog-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 生成対象ディレクトリのみをステージ
+          git add src/content/blog
+
+          if git diff --cached --quiet; then
+            echo "変更はありません（新規記事なし）。正常終了します。"
+            exit 0
+          fi
+
+          echo "----- 追加/変更されたファイル -----"
+          git diff --cached --name-only
+
+          NEW_FILE=$(git diff --cached --name-only | grep 'src/content/blog/' | head -n1)
+          # 注: コミットメッセージに [skip ci] は付けない（Vercel が自動デプロイをスキップしてしまうため）
+          git commit -m "blog: 毎日の自動投稿 ($(TZ=Asia/Tokyo date +%Y-%m-%d))
+
+生成ファイル: ${NEW_FILE}
+使用モデル: ${ANTHROPIC_MODEL:-claude-haiku-4-5-20251001}
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+          echo "----- push -----"
+          git push origin HEAD:main
+          echo "push 完了: ${NEW_FILE}"
+        env:
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}

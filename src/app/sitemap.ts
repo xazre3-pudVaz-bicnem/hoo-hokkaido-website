@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { activities } from "@/data/activities";
 import { getAllColumns } from "@/lib/column";
+import { getAllBlogPosts } from "@/lib/blog";
 import { locales, type Locale } from "@/i18n/locales";
 import { alternateLanguages, localeUrl } from "@/i18n/routing";
 
@@ -23,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/access", priority: 0.6 },
     { path: "/contact", priority: 0.7 },
     { path: "/column", priority: 0.7 },
+    { path: "/blog", priority: 0.7 },
     { path: "/privacy", priority: 0.3 },
     { path: "/terms", priority: 0.3 },
     { path: "/sitemap", priority: 0.3 },
@@ -38,6 +40,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const list = columnLocales.get(post.slug) ?? [];
       list.push(locale);
       columnLocales.set(post.slug, list);
+    }
+  }
+
+  // ブログ記事も同様に、実在する言語を集める
+  const blogLocales = new Map<string, Locale[]>();
+  for (const locale of locales) {
+    for (const post of getAllBlogPosts(locale)) {
+      const list = blogLocales.get(post.slug) ?? [];
+      list.push(locale);
+      blogLocales.set(post.slug, list);
     }
   }
 
@@ -69,6 +81,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: localeUrl(locale, path),
         lastModified: new Date(post.updatedAt || post.publishedAt),
         priority: 0.6,
+        alternates: { languages: alternateLanguages(path, availableLocales) },
+      });
+    }
+
+    for (const post of getAllBlogPosts(locale)) {
+      const path = `/blog/${post.slug}`;
+      const availableLocales = blogLocales.get(post.slug) ?? [locale];
+      entries.push({
+        url: localeUrl(locale, path),
+        lastModified: post.date ? new Date(post.date) : now,
+        priority: 0.5,
         alternates: { languages: alternateLanguages(path, availableLocales) },
       });
     }

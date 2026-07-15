@@ -164,14 +164,17 @@ export function articleJsonLd(
     publishedAt: string;
     updatedAt: string;
     image?: string;
+    /** URLのセクション（既定: column）。ブログ記事では "blog" を指定する。 */
+    section?: string;
   }
 ) {
+  const section = args.section ?? "column";
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: args.title,
     description: args.description,
-    url: localeUrl(locale, `/column/${args.slug}`),
+    url: localeUrl(locale, `/${section}/${args.slug}`),
     datePublished: args.publishedAt,
     dateModified: args.updatedAt,
     inLanguage: langCode(locale),
