@@ -62,6 +62,20 @@ const MAPPING = [
   { src: "IMG_1787 (1).JPG", out: "column/before-booking.jpg", size: [1200, 675], note: "ラフトを漕ぐガイド" },
   { src: "IMG_9966 (1).HEIC", out: "column/biei-nature.jpg", size: [1200, 675], note: "美瑛・青い池" },
   { src: "IMG_4505 (1).JPG", out: "column/asahikawa-river.jpg", size: [1200, 675], note: "旭川市街地のカヌー" },
+
+  // ── コラム増補用アイキャッチ（50記事対応） ──
+  { src: "IMG_0167 (1).JPG", out: "column/river-kayak.jpg", size: [1200, 675], note: "森を流れる川" },
+  { src: "IMG_0207 (1).HEIC", out: "column/lake-canoe.jpg", size: [1200, 675], note: "湖に浮かぶカヌー" },
+  { src: "IMG_1848 (1).jpg", out: "column/river-aerial.jpg", size: [1200, 675], trimBlack: true, note: "空から見た富良野の川" },
+  { src: "IMG_9108 (1).HEIC", out: "column/canoe-pov.jpg", size: [1200, 675], note: "カヌーから眺める川" },
+  { src: "IMG_9550 (1).heic", out: "column/lavender.jpg", size: [1200, 675], note: "富良野のラベンダー畑" },
+  { src: "IMG_9400 (1).heic", out: "column/summer-field.jpg", size: [1200, 675], note: "富良野の夏の花畑" },
+  { src: "IMG_9440 (1).heic", out: "column/blue-pond.jpg", size: [1200, 675], note: "美瑛の青い池" },
+  { src: "IMG_1749 (1).heic", out: "column/waterfall.jpg", size: [1200, 675], note: "美瑛の滝" },
+  { src: "IMG_0347 (1).heic", out: "column/mountain-view.jpg", size: [1200, 675], note: "山からの眺め" },
+  { src: "IMG_0451 (1).HEIC", out: "column/furano-autumn.jpg", size: [1200, 675], note: "秋の富良野と山並み" },
+  { src: "IMG_0508 (1).heic", out: "column/autumn-road.jpg", size: [1200, 675], note: "秋の富良野の道と山" },
+  { src: "IMG_0412 (1).HEIC", out: "column/vineyard.jpg", size: [1200, 675], note: "富良野のぶどう畑" },
 ];
 
 /** 元ファイル（HEIC含む）を sharp インスタンスとして読み込む */

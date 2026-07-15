@@ -20,13 +20,23 @@ export function localeUrl(locale: Locale, path = ""): string {
 /**
  * hreflang 用の言語別URLマップ。
  * x-default は日本語ページを指す（サイトの原本言語）。
+ *
+ * onlyLocales を渡すと、その言語のぶんだけ出力します。
+ * コラムのように一部言語しか翻訳が存在しないページで、
+ * 実在しない翻訳URLを hreflang に含めないために使います。
  */
-export function alternateLanguages(path = ""): Record<string, string> {
+export function alternateLanguages(
+  path = "",
+  onlyLocales?: readonly Locale[]
+): Record<string, string> {
+  const target = onlyLocales ?? locales;
   const languages: Record<string, string> = {};
-  for (const locale of locales) {
+  for (const locale of target) {
     languages[localeConfig[locale].hreflang] = localeUrl(locale, path);
   }
-  languages["x-default"] = localeUrl(defaultLocale, path);
+  // x-default は日本語版があればそれを、なければ対象の先頭言語を指す
+  const fallback = target.includes(defaultLocale) ? defaultLocale : target[0];
+  if (fallback) languages["x-default"] = localeUrl(fallback, path);
   return languages;
 }
 

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { activities } from "@/data/activities";
 import { getAllColumns } from "@/lib/column";
-import { locales } from "@/i18n/locales";
+import { locales, type Locale } from "@/i18n/locales";
 import { alternateLanguages, localeUrl } from "@/i18n/routing";
 
 /**
@@ -31,6 +31,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const entries: MetadataRoute.Sitemap = [];
 
+  // 記事スラッグごとに、翻訳が存在する言語を集める（hreflangを実在ぶんに絞るため）
+  const columnLocales = new Map<string, Locale[]>();
+  for (const locale of locales) {
+    for (const post of getAllColumns(locale)) {
+      const list = columnLocales.get(post.slug) ?? [];
+      list.push(locale);
+      columnLocales.set(post.slug, list);
+    }
+  }
+
   for (const locale of locales) {
     for (const entry of staticPaths) {
       entries.push({
@@ -53,11 +63,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     for (const post of getAllColumns(locale)) {
       const path = `/column/${post.slug}`;
+      // この記事が実際に翻訳されている言語だけを hreflang に含める
+      const availableLocales = columnLocales.get(post.slug) ?? [locale];
       entries.push({
         url: localeUrl(locale, path),
         lastModified: new Date(post.updatedAt || post.publishedAt),
         priority: 0.6,
-        alternates: { languages: alternateLanguages(path) },
+        alternates: { languages: alternateLanguages(path, availableLocales) },
       });
     }
   }

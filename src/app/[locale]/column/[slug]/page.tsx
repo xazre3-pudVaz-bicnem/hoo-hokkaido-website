@@ -14,6 +14,7 @@ import { articleJsonLd } from "@/lib/jsonld";
 import {
   getAllColumnParams,
   getColumn,
+  getColumnLocales,
   getRelatedColumns,
 } from "@/lib/column";
 import { formatDate } from "@/lib/format";
@@ -64,6 +65,8 @@ export async function generateMetadata({
     description: post.description,
     path: `/column/${slug}`,
     ogImage: post.image,
+    // この記事が実際に存在する言語だけを hreflang に含める
+    availableLocales: getColumnLocales(slug),
   });
 }
 

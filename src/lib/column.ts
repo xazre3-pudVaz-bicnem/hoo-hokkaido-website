@@ -95,3 +95,10 @@ export function getAllColumnParams(): { locale: Locale; slug: string }[] {
     getAllColumns(locale).map((p) => ({ locale, slug: p.slug }))
   );
 }
+
+/** 指定スラッグの記事が存在する言語を返す（hreflang を実在ぶんに絞るため） */
+export function getColumnLocales(slug: string): Locale[] {
+  return locales.filter((locale) =>
+    fs.existsSync(path.join(columnDir(locale), `${slug}.md`))
+  );
+}
