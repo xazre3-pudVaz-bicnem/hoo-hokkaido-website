@@ -59,12 +59,11 @@ jobs:
 
           NEW_FILE=$(git diff --cached --name-only | grep 'src/content/blog/' | head -n1)
           # 注: コミットメッセージに [skip ci] は付けない（Vercel が自動デプロイをスキップしてしまうため）
-          git commit -m "blog: 毎日の自動投稿 ($(TZ=Asia/Tokyo date +%Y-%m-%d))
-
-生成ファイル: ${NEW_FILE}
-使用モデル: ${ANTHROPIC_MODEL:-claude-haiku-4-5-20251001}
-
-Co-Authored-By: Claude <noreply@anthropic.com>"
+          # -m を複数回使い、YAML ブロックスカラーの字下げ内に全行を収める
+          git commit \
+            -m "blog: 毎日の自動投稿 ($(TZ=Asia/Tokyo date +%Y-%m-%d))" \
+            -m "生成ファイル: ${NEW_FILE} / 使用モデル: ${ANTHROPIC_MODEL:-claude-haiku-4-5-20251001}" \
+            -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 
           echo "----- push -----"
           git push origin HEAD:main
