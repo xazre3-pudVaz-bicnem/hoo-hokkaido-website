@@ -5,6 +5,7 @@ import "../globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileCta from "@/components/layout/MobileCta";
+import HooSplash from "@/components/layout/HooSplash";
 import LanguageBanner, {
   type BannerStrings,
 } from "@/components/layout/LanguageBanner";
@@ -93,6 +94,8 @@ export default async function LocaleLayout({
       className={`${notoSansJp.variable} ${shippori.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        {/* 初回ローディング画面（ロゴ表示・読み込み完了でフェードアウト） */}
+        <HooSplash label={dict.common.loading} />
         <JsonLd
           data={[localBusinessJsonLd(locale, dict), websiteJsonLd(locale)]}
         />

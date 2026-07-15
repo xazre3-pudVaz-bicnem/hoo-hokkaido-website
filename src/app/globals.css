@@ -87,6 +87,51 @@ html[lang="ko"] body {
   font-feature-settings: "palt";
 }
 
+/* 初回ローディング（スプラッシュ）画面 */
+#hoo-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-offwhite);
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+#hoo-splash.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+#hoo-splash[hidden] {
+  display: none;
+}
+#hoo-splash .hoo-splash-logo {
+  width: clamp(140px, 42vw, 210px);
+  height: auto;
+  animation: hoo-splash-pulse 1.6s ease-in-out infinite;
+}
+@keyframes hoo-splash-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hoo-splash {
+    transition: none;
+  }
+  #hoo-splash .hoo-splash-logo {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* details/summary製FAQのマーカー非表示 */
 details.faq-item summary::-webkit-details-marker {
   display: none;

@@ -88,7 +88,8 @@
     "minParticipants": "{count} 人起成行",
     "minParticipantsShort": "{count} 人即可参加",
     "formAvailable24h": "非营业时间，也可通过咨询表单24小时与我们联系。",
-    "skipToContent": "跳至正文"
+    "skipToContent": "跳至正文",
+    "loading": "加载中"
   },
 
   "price": {

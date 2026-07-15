@@ -88,7 +88,8 @@
     "minParticipants": "{count} 人以上成行",
     "minParticipantsShort": "{count} 人即可參加",
     "formAvailable24h": "營業時間以外，也可透過聯絡表單24小時與我們聯繫。",
-    "skipToContent": "跳至主要內容"
+    "skipToContent": "跳至主要內容",
+    "loading": "載入中"
   },
 
   "price": {

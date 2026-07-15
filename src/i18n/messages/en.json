@@ -88,7 +88,8 @@
     "minParticipants": "From {count} people",
     "minParticipantsShort": "From {count} people",
     "formAvailable24h": "Outside business hours, you can still reach us any time through the contact form.",
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "loading": "Loading"
   },
 
   "price": {

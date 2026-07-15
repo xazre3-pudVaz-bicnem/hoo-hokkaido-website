@@ -88,7 +88,8 @@
     "minParticipants": "{count}名から",
     "minParticipantsShort": "{count}名から参加可能",
     "formAvailable24h": "営業時間外も、お問い合わせフォームから24時間ご連絡いただけます。",
-    "skipToContent": "本文へスキップ"
+    "skipToContent": "本文へスキップ",
+    "loading": "読み込み中"
   },
 
   "price": {
