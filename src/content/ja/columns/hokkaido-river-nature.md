@@ -6,8 +6,8 @@ translationKey: hokkaido-river-nature
 category: 自然と魅力
 publishedAt: "2026-07-07"
 updatedAt: "2026-07-07"
-image: /images/column/waterfall.jpg
-imageAlt: 美瑛の滝
+image: /images/column/river-aerial.jpg
+imageAlt: 上空から見た北海道・富良野の川と自然
 related:
   - furano-scenery-from-river
   - downriver-appeal

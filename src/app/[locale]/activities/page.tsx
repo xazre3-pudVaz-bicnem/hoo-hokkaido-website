@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ActivityCard from "@/components/ui/ActivityCard";
@@ -10,6 +12,7 @@ import { serviceJsonLd } from "@/lib/jsonld";
 import { sortedActivities } from "@/data/activities";
 import { getDictionary } from "@/i18n/dictionary";
 import type { Locale } from "@/i18n/locales";
+import { localePath } from "@/i18n/routing";
 
 type Params = { locale: Locale };
 
@@ -82,6 +85,13 @@ export default async function ActivitiesPage({
             <p className="mt-3 max-w-3xl text-sm leading-loose text-ink-soft md:text-[15px]">
               {dict.activitiesPage.helpBody}
             </p>
+            <Link
+              href={localePath(locale, "/furano-activity")}
+              className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-water-deep transition-colors hover:text-navy"
+            >
+              {dict.activitiesPage.helpLink}
+              <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+            </Link>
           </div>
         </FadeIn>
       </section>

@@ -7,7 +7,7 @@ category: 旅行計画
 publishedAt: "2026-06-13"
 updatedAt: "2026-06-13"
 image: /images/column/waterfall.jpg
-imageAlt: 美瑛の滝
+imageAlt: 雨の日に立ち寄る富良野のカフェでのひととき
 related:
   - river-weather-cancel
   - furano-1day-model
