@@ -49,7 +49,7 @@ const IMAGE_POOL: { image: string; alt: string }[] = [
   { image: "/images/column/river-kayak.jpg", alt: "富良野の川を進むリバーアクティビティ" },
   { image: "/images/column/river-aerial.jpg", alt: "上空から見た富良野の川と自然" },
   { image: "/images/column/canoe-pov.jpg", alt: "川面から見た富良野の景色" },
-  { image: "/images/column/lake-canoe.jpg", alt: "穏やかな水辺でのアクティビティ" },
+  { image: "/images/column/clothing-guide.jpg", alt: "ライフジャケットを着けて富良野の川を下る" },
   { image: "/images/column/summer-field.jpg", alt: "夏の富良野の風景" },
   { image: "/images/column/mountain-view.jpg", alt: "富良野の山並みの景色" },
   { image: "/images/column/lavender.jpg", alt: "富良野のラベンダー畑" },
