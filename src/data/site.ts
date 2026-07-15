@@ -28,11 +28,15 @@ export const site = {
   },
   email: "info@hoohokkaido.com",
   address: {
-    /** 構造化データ用の分割表記 */
+    /**
+     * 構造化データ用の分割表記。
+     * オーナーの意向により、番地（street）は非公開とし、市区町村までの表示にしています。
+     * 番地を公開する場合は street に設定してください（表示・構造化データ・地図に反映されます）。
+     */
     country: "JP",
     prefecture: "北海道",
     city: "富良野市",
-    street: "北斗町2-8",
+    street: "",
   },
   hours: {
     /** 表示用（数値部分は全言語共通） */
@@ -46,9 +50,10 @@ export const site = {
    * Googleマップ埋め込みURL。未設定でも画面は崩れません。
    */
   googleMapEmbedUrl: process.env.NEXT_PUBLIC_GOOGLE_MAP_EMBED_URL ?? "",
+  // 番地を伏せるため、地図は富良野市を中心に表示（住居を特定しない）
   googleMapSearchUrl:
     "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent("北海道富良野市北斗町2-8"),
+    encodeURIComponent("北海道富良野市"),
 } as const;
 
 /** 言語に応じた電話番号の表示・リンク */

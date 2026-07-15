@@ -27,15 +27,16 @@ const OUT_DIR = path.join(root, "public", "images");
  */
 const MAPPING = [
   // ── ヒーロー ──
-  { src: "IMG_1848 (1).jpg", out: "hero/hero-rafting.jpg", size: [1600, 740], trimBlack: true, note: "空撮：富良野の川とラフト（PC用ヒーロー）" },
-  { src: "IMG_1850 (1).jpg", out: "hero/hero-river.jpg", size: [1600, 740], trimBlack: true, note: "空撮：真上から見た川とラフト" },
-  { src: "IMG_2007 (1).HEIC", out: "hero/hero-mobile.jpg", size: [1080, 1620], note: "川を下るラフト（SP用ヒーロー）" },
+  // ヒーローは高解像度の夏の川下り写真に統一（PC・SP・OGP共通）
+  { src: "IMG_9558 (1).HEIC", out: "hero/hero-rafting.jpg", size: [1600, 740], note: "川を下るラフトと十勝岳連峰（PC用ヒーロー・高解像度）" },
+  { src: "IMG_1850 (1).jpg", out: "hero/hero-river.jpg", size: [1600, 740], trimBlack: true, note: "空撮：真上から見た川とラフト（未使用の予備）" },
+  { src: "IMG_9558 (1).HEIC", out: "hero/hero-mobile.jpg", size: [1080, 1620], note: "川を下るラフトと十勝岳連峰（SP用ヒーロー・高解像度）" },
 
   // ── アクティビティ ──
-  { src: "IMG_9558 (1).HEIC", out: "activities/furano-downriver.jpg", size: [1400, 1050], note: "富良野：川を下るラフトと十勝岳連峰" },
-  { src: "IMG_1821 (1).HEIC", out: "activities/biei-downriver.jpg", size: [1400, 1050], note: "美瑛：透明度の高い川をパックラフトで下る" },
+  { src: "IMG_2007 (1).HEIC", out: "activities/furano-downriver.jpg", size: [1400, 1050], note: "富良野：川を下るラフト" },
+  { src: "IMG_9973 2 (1).heic", out: "activities/biei-downriver.jpg", size: [1400, 1050], note: "美瑛：夕暮れの川を下るグループ（オーナー指定）" },
   { src: "IMG_0237 (1).heic", out: "activities/asahikawa-downriver.jpg", size: [1400, 1050], note: "旭川：市街地の川を下るラフト" },
-  { src: "IMG_1803 (1).HEIC", out: "activities/organize-program.jpg", size: [1400, 1050], note: "団体でのラフティング" },
+  { src: "IMG_0009 2 (1).heic", out: "activities/organize-program.jpg", size: [1400, 1050], note: "湖でのグループ体験（オーナー指定）" },
 
   // ── ガイド ──
   { src: "IMG_8056 2 (1).heic", out: "guide/shota-kose.jpg", size: [900, 1100], pos: "top", note: "代表・小瀬祥太" },
@@ -47,15 +48,15 @@ const MAPPING = [
   { src: "IMG_9442 (1).HEIC", out: "projects/regional-tourism.jpg", size: [1400, 875], note: "富良野のラベンダー畑と山並み" },
 
   // ── 共通風景 ──
-  { src: "IMG_9973 2 (1).heic", out: "common/river-landscape.jpg", size: [1600, 1000], note: "夕暮れの川を下るグループ" },
+  { src: "IMG_1821 (1).HEIC", out: "common/river-landscape.jpg", size: [1600, 1000], note: "透明度の高い川をパックラフトで下る" },
   { src: "IMG_1045 (1).HEIC", out: "common/hokkaido-forest.jpg", size: [1600, 1000], note: "北海道の森（霧氷）" },
   { src: "IMG_1085 (1).HEIC", out: "common/furano-landscape.jpg", size: [1600, 1000], note: "富良野盆地と十勝岳連峰" },
 
   // ── OGP ──
-  { src: "IMG_1848 (1).jpg", out: "og/og-image.jpg", size: [1200, 630], trimBlack: true, note: "OGP：空撮の川とラフト" },
+  { src: "IMG_9558 (1).HEIC", out: "og/og-image.jpg", size: [1200, 630], note: "OGP：川を下るラフトと十勝岳連峰（ヒーローと統一）" },
 
   // ── コラム アイキャッチ ──
-  { src: "IMG_0009 2 (1).heic", out: "column/choose-activity.jpg", size: [1200, 675], note: "湖に浮かぶカヌー・カヤック" },
+  { src: "IMG_1803 (1).HEIC", out: "column/choose-activity.jpg", size: [1200, 675], note: "団体でのラフティング" },
   { src: "IMG_1788 (1).JPG", out: "column/clothing-guide.jpg", size: [1200, 675], note: "ライフジャケットを着た参加者" },
   { src: "IMG_9433 (1).heic", out: "column/furano-trip.jpg", size: [1200, 675], note: "富良野の田園風景" },
   { src: "IMG_1787 (1).JPG", out: "column/before-booking.jpg", size: [1200, 675], note: "ラフトを漕ぐガイド" },
@@ -141,7 +142,7 @@ async function buildLogo() {
 
   // ファビコン（icon.png / favicon.ico）
   // 小さいサイズでも見えるよう、余白ぎりぎりまでトリミングしてから正方形に収める
-  const trimmed = await sharp(normal, raw).trim().toBuffer();
+  const trimmed = await sharp(normal, raw).trim().png().toBuffer();
   const tm = await sharp(trimmed).metadata();
   const side = Math.round(Math.max(tm.width, tm.height) * 1.18);
   const mark = await sharp(trimmed)

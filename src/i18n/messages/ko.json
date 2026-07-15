@@ -34,7 +34,7 @@
     },
     "access": {
       "title": "오시는 길・운영 정보",
-      "description": "Hokkaido Outdoor Organization의 오시는 길과 운영 정보. 소재지는 일본 홋카이도 후라노시 호쿠토초 2-8, 영업시간은 9:00~17:00 (일본 시간)입니다. 각 액티비티의 집합 장소는 예약 시 안내드립니다."
+      "description": "Hokkaido Outdoor Organization의 오시는 길과 운영 정보. 거점은 일본 홋카이도 후라노시, 영업시간은 9:00~17:00 (일본 시간)입니다. 각 액티비티의 집합 장소는 예약 시 안내드립니다."
     },
     "reservation": {
       "title": "예약 폼｜리버 액티비티 예약",
@@ -67,7 +67,7 @@
   },
 
   "common": {
-    "addressFull": "일본 홋카이도 후라노시 호쿠토초 2-8",
+    "addressFull": "일본 홋카이도 후라노시",
     "addressLabel": "소재지",
     "hoursLabel": "영업시간",
     "hoursNote": "9:00~17:00 (일본 시간)",

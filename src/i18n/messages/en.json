@@ -34,7 +34,7 @@
     },
     "access": {
       "title": "Access & Business Information",
-      "description": "Hokkaido Outdoor Organization is based at 2-8 Hokuto-cho, Furano, Hokkaido. Open 9:00-17:00 (JST). Meeting points are shared when you book."
+      "description": "Hokkaido Outdoor Organization is based in Furano, Hokkaido. Open 9:00-17:00 (JST). Meeting points are shared when you book."
     },
     "reservation": {
       "title": "Booking Form | Reserve a River Activity",
@@ -67,7 +67,7 @@
   },
 
   "common": {
-    "addressFull": "2-8 Hokuto-cho, Furano, Hokkaido, Japan",
+    "addressFull": "Furano, Hokkaido, Japan",
     "addressLabel": "Address",
     "hoursLabel": "Business hours",
     "hoursNote": "9:00-17:00 (JST)",

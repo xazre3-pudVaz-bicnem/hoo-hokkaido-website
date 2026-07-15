@@ -34,7 +34,7 @@
     },
     "access": {
       "title": "アクセス・運営情報",
-      "description": "Hokkaido Outdoor Organizationのアクセス・運営情報。所在地は北海道富良野市北斗町2-8、営業時間は9:00〜17:00（日本時間）。各アクティビティの集合場所はご予約時にご案内します。"
+      "description": "Hokkaido Outdoor Organizationのアクセス・運営情報。拠点は北海道富良野市、営業時間は9:00〜17:00（日本時間）。各アクティビティの集合場所はご予約時にご案内します。"
     },
     "reservation": {
       "title": "予約フォーム｜リバーアクティビティの予約",
@@ -67,7 +67,7 @@
   },
 
   "common": {
-    "addressFull": "北海道富良野市北斗町2-8",
+    "addressFull": "北海道富良野市",
     "addressLabel": "所在地",
     "hoursLabel": "営業時間",
     "hoursNote": "9:00〜17:00",

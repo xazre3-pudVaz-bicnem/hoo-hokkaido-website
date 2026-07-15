@@ -38,7 +38,8 @@ export function localBusinessJsonLd(locale: Locale, dict: Dictionary) {
       addressCountry: site.address.country,
       addressRegion: site.address.prefecture,
       addressLocality: site.address.city,
-      streetAddress: site.address.street,
+      // 番地（street）は非公開のため、設定されている場合のみ出力する
+      ...(site.address.street ? { streetAddress: site.address.street } : {}),
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
