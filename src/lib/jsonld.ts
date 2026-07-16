@@ -166,6 +166,10 @@ export function articleJsonLd(
     image?: string;
     /** URLのセクション（既定: column）。ブログ記事では "blog" を指定する。 */
     section?: string;
+    /** 記事のキーワード（frontmatter のタグなど） */
+    keywords?: readonly string[];
+    /** 記事のカテゴリ */
+    articleSection?: string;
   }
 ) {
   const section = args.section ?? "column";
@@ -175,6 +179,10 @@ export function articleJsonLd(
     headline: args.title,
     description: args.description,
     url: localeUrl(locale, `/${section}/${args.slug}`),
+    ...(args.keywords && args.keywords.length > 0
+      ? { keywords: args.keywords.join(", ") }
+      : {}),
+    ...(args.articleSection ? { articleSection: args.articleSection } : {}),
     datePublished: args.publishedAt,
     dateModified: args.updatedAt,
     inLanguage: langCode(locale),

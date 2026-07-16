@@ -8,7 +8,14 @@
     "relatedTitle": "関連記事",
     "ctaTitle": "富良野で自然を体験してみませんか？",
     "notAvailable": "この記事は選択中の言語ではまだご用意がありません。ブログ一覧から他の記事をご覧ください。",
-    "notAvailableCta": "ブログ一覧へ"
+    "notAvailableCta": "ブログ一覧へ",
+    "prev": "前へ",
+    "next": "次へ",
+    "paginationLabel": "ブログのページ送り",
+    "pageOf": "{current} / {total} ページ",
+    "supervisorLabel": "この記事の監修",
+    "supervisor": "小瀬 祥太（HOO代表・アウトドアガイド歴20年以上）",
+    "supervisorProfile": "プロフィールを見る"
   },
   "meta": {
     "blog": {
@@ -197,6 +204,12 @@
   },
 
   "home": {
+    "blog": {
+      "eyebrow": "Blog",
+      "title": "最新のブログ",
+      "lead": "富良野・北海道のアクティビティや自然体験について、日々の気づきをお届けしています。",
+      "seeAll": "ブログをもっと見る"
+    },
     "hero": {
       "eyebrow": "Hokkaido Outdoor Organization",
       "title": "北海道の川と、\n忘れられない時間へ。",

@@ -99,6 +99,42 @@ export function getAllBlogParams(): { locale: Locale; slug: string }[] {
   );
 }
 
+/**
+ * 1ページあたりの表示件数。
+ * 毎日1記事が積み上がるため、一覧はページ分割して
+ * 画像の読み込み量（LCP）とDOM量を一定に保ちます。
+ */
+export const BLOG_PAGE_SIZE = 12;
+
+export function getBlogPageCount(locale: Locale): number {
+  const total = getAllBlogPosts(locale).length;
+  return Math.max(1, Math.ceil(total / BLOG_PAGE_SIZE));
+}
+
+/** 1始まりのページ番号で記事を取得する */
+export function getBlogPage(locale: Locale, page: number): BlogPost[] {
+  const all = getAllBlogPosts(locale);
+  const start = (page - 1) * BLOG_PAGE_SIZE;
+  return all.slice(start, start + BLOG_PAGE_SIZE);
+}
+
+/** 2ページ目以降のページ番号（/blog/page/[n] の generateStaticParams 用） */
+export function getBlogPageParams(): { locale: Locale; page: string }[] {
+  return locales.flatMap((locale) => {
+    const count = getBlogPageCount(locale);
+    // 1ページ目は /blog が受け持つため 2 以降
+    return Array.from({ length: Math.max(0, count - 1) }, (_, i) => ({
+      locale,
+      page: String(i + 2),
+    }));
+  });
+}
+
+/** 最新記事（ホームの新着表示用） */
+export function getLatestBlogPosts(locale: Locale, limit = 3): BlogPost[] {
+  return getAllBlogPosts(locale).slice(0, limit);
+}
+
 /** 指定スラッグの記事が存在する言語を返す（hreflang を実在ぶんに絞るため） */
 export function getBlogLocales(slug: string): Locale[] {
   return locales.filter((locale) =>

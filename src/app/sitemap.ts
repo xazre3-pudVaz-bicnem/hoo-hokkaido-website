@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { activities } from "@/data/activities";
 import { getAllColumns } from "@/lib/column";
-import { getAllBlogPosts } from "@/lib/blog";
+import { getAllBlogPosts, getBlogPageCount } from "@/lib/blog";
 import { locales, type Locale } from "@/i18n/locales";
 import { alternateLanguages, localeUrl } from "@/i18n/routing";
 
@@ -82,6 +82,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(post.updatedAt || post.publishedAt),
         priority: 0.6,
         alternates: { languages: alternateLanguages(path, availableLocales) },
+      });
+    }
+
+    // ブログ一覧の2ページ目以降（記事が増えても全記事へたどり着けるようにする）
+    for (let page = 2; page <= getBlogPageCount(locale); page++) {
+      const path = `/blog/page/${page}`;
+      entries.push({
+        url: localeUrl(locale, path),
+        lastModified: now,
+        priority: 0.4,
+        alternates: { languages: alternateLanguages(path) },
       });
     }
 

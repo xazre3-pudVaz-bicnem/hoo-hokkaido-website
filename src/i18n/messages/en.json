@@ -8,7 +8,14 @@
     "relatedTitle": "Related articles",
     "ctaTitle": "Ready to experience Furano's nature?",
     "notAvailable": "This article is not available in the selected language yet. Please browse other articles from the blog list.",
-    "notAvailableCta": "Back to blog"
+    "notAvailableCta": "Back to blog",
+    "prev": "Previous",
+    "next": "Next",
+    "paginationLabel": "Blog pagination",
+    "pageOf": "Page {current} of {total}",
+    "supervisorLabel": "Reviewed by",
+    "supervisor": "Shota Kose (HOO representative, 20+ years as an outdoor guide)",
+    "supervisorProfile": "View profile"
   },
   "meta": {
     "blog": {
@@ -197,6 +204,12 @@
   },
 
   "home": {
+    "blog": {
+      "eyebrow": "Blog",
+      "title": "Latest from the blog",
+      "lead": "Notes from our guides on activities and nature experiences in Furano and Hokkaido.",
+      "seeAll": "Read more posts"
+    },
     "hero": {
       "eyebrow": "Hokkaido Outdoor Organization",
       "title": "Hokkaido's rivers,\nhours you won't forget.",

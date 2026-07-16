@@ -8,7 +8,14 @@
     "relatedTitle": "相關文章",
     "ctaTitle": "要不要在富良野體驗大自然？",
     "notAvailable": "此文章尚未提供所選語言的版本。請從部落格列表瀏覽其他文章。",
-    "notAvailableCta": "回到部落格"
+    "notAvailableCta": "回到部落格",
+    "prev": "上一頁",
+    "next": "下一頁",
+    "paginationLabel": "部落格分頁",
+    "pageOf": "第 {current} / {total} 頁",
+    "supervisorLabel": "本文審訂",
+    "supervisor": "小瀨祥太（HOO代表・戶外嚮導資歷20年以上）",
+    "supervisorProfile": "查看個人簡介"
   },
   "meta": {
     "blog": {
@@ -197,6 +204,12 @@
   },
 
   "home": {
+    "blog": {
+      "eyebrow": "Blog",
+      "title": "最新部落格",
+      "lead": "關於富良野與北海道的活動與自然體驗，我們持續分享在地的觀察。",
+      "seeAll": "查看更多文章"
+    },
     "hero": {
       "eyebrow": "Hokkaido Outdoor Organization",
       "title": "北海道的河川，\n等你寫下難忘時光。",

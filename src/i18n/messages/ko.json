@@ -8,7 +8,14 @@
     "relatedTitle": "관련 기사",
     "ctaTitle": "후라노에서 자연을 체험해 보시겠어요?",
     "notAvailable": "이 기사는 선택하신 언어로는 아직 제공되지 않습니다. 블로그 목록에서 다른 기사를 확인해 주세요.",
-    "notAvailableCta": "블로그 목록으로"
+    "notAvailableCta": "블로그 목록으로",
+    "prev": "이전",
+    "next": "다음",
+    "paginationLabel": "블로그 페이지 이동",
+    "pageOf": "{current} / {total} 페이지",
+    "supervisorLabel": "이 기사의 감수",
+    "supervisor": "고세 쇼타(HOO 대표・아웃도어 가이드 경력 20년 이상)",
+    "supervisorProfile": "프로필 보기"
   },
   "meta": {
     "blog": {
@@ -197,6 +204,12 @@
   },
 
   "home": {
+    "blog": {
+      "eyebrow": "Blog",
+      "title": "최신 블로그",
+      "lead": "후라노와 홋카이도의 액티비티와 자연 체험에 대해 매일의 이야기를 전해드립니다.",
+      "seeAll": "블로그 더 보기"
+    },
     "hero": {
       "eyebrow": "Hokkaido Outdoor Organization",
       "title": "홋카이도의 강에서,\n잊지 못할 시간으로.",

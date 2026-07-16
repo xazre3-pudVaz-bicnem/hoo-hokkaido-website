@@ -19,6 +19,7 @@ import FlowSteps from "@/components/sections/FlowSteps";
 import FinalCta from "@/components/sections/FinalCta";
 import AccessInfo from "@/components/sections/AccessInfo";
 import ActivityCard from "@/components/ui/ActivityCard";
+import BlogCard from "@/components/ui/BlogCard";
 import FadeIn from "@/components/ui/FadeIn";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -27,6 +28,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import { pageMetadata } from "@/lib/seo";
 import { faqJsonLd } from "@/lib/jsonld";
 import { sortedActivities } from "@/data/activities";
+import { getLatestBlogPosts } from "@/lib/blog";
 import { guide, hasTestimonials } from "@/data/guide";
 import { projects } from "@/data/projects";
 import { getDictionary } from "@/i18n/dictionary";
@@ -69,6 +71,7 @@ export default async function HomePage({
 
   const [featured, ...others] = sortedActivities;
   const homeFaq = dict.faq.items.slice(0, 6);
+  const latestPosts = getLatestBlogPosts(locale, 3);
 
   return (
     <>
@@ -449,7 +452,38 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* 13. アクセス */}
+      {/* 13. 最新のブログ（記事がある言語だけ表示） */}
+      {latestPosts.length > 0 && (
+        <section className="py-16 md:py-24">
+          <div className="mx-auto max-w-6xl px-4 md:px-6">
+            <FadeIn>
+              <SectionHeading
+                eyebrow={dict.home.blog.eyebrow}
+                title={dict.home.blog.title}
+                lead={dict.home.blog.lead}
+              />
+            </FadeIn>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {latestPosts.map((post, i) => (
+                <BlogCard key={post.slug} locale={locale} post={post} index={i} />
+              ))}
+            </div>
+            <FadeIn>
+              <div className="mt-8 text-center">
+                <Link
+                  href={localePath(locale, "/blog")}
+                  className="inline-flex items-center gap-1.5 text-sm font-bold text-water-deep transition-colors hover:text-navy"
+                >
+                  {dict.home.blog.seeAll}
+                  <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
+      {/* 14. アクセス */}
       <section className="bg-offwhite py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <FadeIn>
@@ -464,7 +498,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* 14. 最終CTA */}
+      {/* 15. 最終CTA */}
       <FinalCta locale={locale} dict={dict} />
     </>
   );

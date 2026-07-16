@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ArrowRight, CalendarDays, Info, Tag } from "lucide-react";
+import { ArrowRight, CalendarDays, Info, Tag, UserCheck } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import JsonLd from "@/components/ui/JsonLd";
@@ -62,6 +62,8 @@ export async function generateMetadata({
     description: post.description,
     path: `/blog/${slug}`,
     ogImage: post.image,
+    // frontmatter のタグを対策キーワードとして出力する
+    keywords: post.tags,
     // この記事が実際に存在する言語だけを hreflang に含める
     availableLocales: getBlogLocales(slug),
   });
@@ -190,6 +192,8 @@ export default async function BlogDetailPage({
           publishedAt: post.date,
           updatedAt: post.date,
           image: post.image,
+          keywords: post.tags,
+          articleSection: post.category,
         })}
       />
 
@@ -254,6 +258,26 @@ export default async function BlogDetailPage({
             ))}
           </div>
         )}
+
+        {/* 監修者（E-E-A-T：誰が書いた情報かを明示する） */}
+        <div className="mt-10 flex items-start gap-3 rounded-3xl border border-forest-light bg-white p-6">
+          <UserCheck aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-forest" />
+          <div>
+            <p className="text-xs font-bold text-ink-soft">
+              {dict.blog.supervisorLabel}
+            </p>
+            <p className="mt-1 text-sm font-bold text-navy">
+              {dict.blog.supervisor}
+            </p>
+            <Link
+              href={localePath(locale, "/about")}
+              className="mt-1.5 inline-flex items-center gap-1 text-xs font-bold text-water-deep hover:text-navy"
+            >
+              {dict.blog.supervisorProfile}
+              <ArrowRight aria-hidden="true" className="h-3 w-3 shrink-0" />
+            </Link>
+          </div>
+        </div>
 
         {/* 体験への導線 */}
         <div className="mt-12">
