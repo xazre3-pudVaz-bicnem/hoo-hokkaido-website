@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Check, Globe } from "lucide-react";
 import { localeConfig, locales, type Locale } from "@/i18n/locales";
-import { stripLocale } from "@/i18n/routing";
+import { localePath, stripLocale } from "@/i18n/routing";
 import { rememberLocale } from "@/lib/locale-cookie";
 
 type Props = {
@@ -66,10 +66,10 @@ export default function LanguageSwitcher({
   function selectLocale(next: Locale) {
     rememberLocale(next); // 選択した言語を1年間記憶する
     setOpen(false);
-    // クエリも保持する（例: /ja/reservation?activity=xxx → /en/reservation?activity=xxx）
+    // クエリも保持する（例: /reservation?activity=xxx → /en/reservation?activity=xxx）
     // useSearchParams は静的生成を妨げるため、クリック時に読み取る
     const query = window.location.search;
-    router.push(`/${next}${basePath}${query}`);
+    router.push(`${localePath(next, basePath)}${query}`);
   }
 
   if (variant === "list") {

@@ -4,7 +4,7 @@ import { useCallback, useState, useSyncExternalStore } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Globe, X } from "lucide-react";
 import { LOCALE_COOKIE, detectLocale, type Locale } from "@/i18n/locales";
-import { stripLocale } from "@/i18n/routing";
+import { localePath, stripLocale } from "@/i18n/routing";
 import { rememberLocale } from "@/lib/locale-cookie";
 
 export type BannerStrings = Record<
@@ -63,7 +63,7 @@ export default function LanguageBanner({
     (next: Locale) => {
       rememberLocale(next);
       window.localStorage.setItem(DISMISS_KEY, "1");
-      router.push(`/${next}${stripLocale(pathname ?? "/")}`);
+      router.push(localePath(next, stripLocale(pathname ?? "/")));
     },
     [pathname, router]
   );

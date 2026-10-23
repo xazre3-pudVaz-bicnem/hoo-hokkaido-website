@@ -3,12 +3,15 @@ import { site } from "@/data/site";
 
 /**
  * 言語別ルーティングのヘルパー。
- * URL構造: /{locale}{path}   例: /en/activities/furano-relax-downriver
+ * URL構造:
+ *   日本語（既定言語）: {path}           例: /activities/furano-relax-downriver
+ *   その他の言語:       /{locale}{path}  例: /en/activities/furano-relax-downriver
  */
 
-/** ロケール付きの内部パスを生成する（Link の href に使用） */
+/** ロケール付きの内部パスを生成する（Link の href に使用）。日本語はプレフィックスなし */
 export function localePath(locale: Locale, path = ""): string {
   const clean = path === "/" ? "" : path;
+  if (locale === defaultLocale) return clean || "/";
   return `/${locale}${clean}`;
 }
 
@@ -44,6 +47,7 @@ export function alternateLanguages(
  * 現在のパス名から、ロケール部分を取り除いた「言語非依存のパス」を返す。
  * 言語切り替え時に同じページの別言語版へ移動するために使用します。
  * 例: "/en/activities/furano-relax-downriver" → "/activities/furano-relax-downriver"
+ * 日本語ページ（プレフィックスなし）はそのまま返します。
  */
 export function stripLocale(pathname: string): string {
   const segments = pathname.split("/").filter(Boolean);

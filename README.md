@@ -38,7 +38,7 @@ npm run dev                  # http://localhost:3000
 
 | 言語 | ロケール | URL | `<html lang>` | hreflang |
 | --- | --- | --- | --- | --- |
-| 日本語 | `ja` | `/ja/...` | `ja` | `ja` |
+| 日本語 | `ja` | `/...`（プレフィックスなし） | `ja` | `ja` |
 | 英語 | `en` | `/en/...` | `en` | `en` |
 | 繁体字中国語 | `zh-tw` | `/zh-tw/...` | `zh-Hant` | `zh-Hant` |
 | 簡体字中国語 | `zh-cn` | `/zh-cn/...` | `zh-Hans` | `zh-Hans` |
@@ -53,8 +53,10 @@ npm run dev                  # http://localhost:3000
 
 | アクセス | 挙動 |
 | --- | --- |
-| `/` | 言語cookieがあればその言語へ、なければ `/ja` へ **307**（一時） |
-| `/activities` など旧URL | `/ja/activities` へ **308**（恒久）— 既存の日本語ページの検索評価を引き継ぐため、ここでは言語判定しません |
+| `/activities` など | 日本語ページを表示（内部で `/ja/activities` を描画。アドレス欄はそのまま） |
+| `/` | 日本語トップを表示。ただしサイトの外から来て、日本語以外の言語cookieがあるときはその言語へ **307**（一時） |
+| `/ja/...` 旧URL | プレフィックスなしのURLへ **308**（恒久）— 旧URLの検索評価を引き継ぐ |
+| `/会社概要` など旧WixのURL | 対応するページへ **308**（恒久）— `src/lib/legacy-redirects.ts` |
 | `/en/...` など | そのまま通す |
 
 初回訪問時の言語判定は**自動リダイレクトではなく、画面右下の控えめな案内バナー**（`LanguageBanner`）で行います。検索エンジンをブラウザ言語で強制リダイレクトしません。ユーザーが一度選択した言語は cookie（`hoo_locale`・1年）に保存され、以降優先されます。
@@ -139,7 +141,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 }
 ```
 
-- 内部リンクは必ず `localePath(locale, "/xxx")` を使ってください（`/en/xxx` のように言語プレフィックスが付きます）。
+- 内部リンクは必ず `localePath(locale, "/xxx")` を使ってください（日本語は `/xxx`、それ以外は `/en/xxx` のように言語プレフィックスが付きます）。
 - `src/app/sitemap.ts` の `staticPaths` にパスを追加すると、全言語ぶんがサイトマップに載ります。
 - ヘッダー/フッターに出す場合は `src/data/site.ts` の `navigation` / `footerLinks` にキーを追加し、5言語の `nav` / `footer.links` にラベルを追加します。
 

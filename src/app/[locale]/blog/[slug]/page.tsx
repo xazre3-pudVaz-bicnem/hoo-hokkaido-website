@@ -101,9 +101,9 @@ function markdownComponents(locale: Locale) {
     ),
     li: (props: React.ComponentProps<"li">) => <li className="pl-1" {...props} />,
     a: ({ href, ...props }: React.ComponentProps<"a">) => {
-      // "/activities/..." のような内部リンクに /{locale} を付ける
+      // "/activities/..." のような内部リンクを表示中の言語のURLにする
       const localized =
-        href && href.startsWith("/") ? `/${locale}${href}` : href;
+        href && href.startsWith("/") ? localePath(locale, href) : href;
       const external = href ? /^https?:\/\//.test(href) : false;
       return (
         <a

@@ -178,7 +178,7 @@ export default async function AboutPage({
                 {locales.map((item) => (
                   <li key={item}>
                     <Link
-                      href={`/${item}/about`}
+                      href={localePath(item, "/about")}
                       hrefLang={localeConfig[item].hreflang}
                       lang={localeConfig[item].htmlLang}
                       aria-current={item === locale ? "true" : undefined}

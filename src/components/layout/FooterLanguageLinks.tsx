@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { localeConfig, locales, type Locale } from "@/i18n/locales";
-import { stripLocale } from "@/i18n/routing";
+import { localePath, stripLocale } from "@/i18n/routing";
 import { rememberLocale } from "@/lib/locale-cookie";
 
 /**
@@ -20,7 +20,7 @@ export default function FooterLanguageLinks({ locale }: { locale: Locale }) {
       {locales.map((item) => (
         <li key={item} lang={localeConfig[item].htmlLang}>
           <Link
-            href={`/${item}${basePath}`}
+            href={localePath(item, basePath)}
             hrefLang={localeConfig[item].hreflang}
             onClick={() => rememberLocale(item)}
             aria-current={item === locale ? "true" : undefined}
