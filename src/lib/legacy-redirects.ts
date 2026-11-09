@@ -47,3 +47,26 @@ export function resolveLegacyWixPath(pathname: string): string | null {
   if (WIX_EVENT_PATH.test(rest)) return localePath(locale, "/activities");
   return null;
 }
+
+/**
+ * 掲載を終えたこのサイト内のページ → 転送先（パス＋ページ内の位置）。
+ * - activities/organize-program（2026-27 シーズンから、リバー／レイク／ツアー／ウィンターの4つに分割）
+ *   → アクティビティ一覧の「オーガナイズ（貸切）」の位置（#private）
+ * パスに「#」を入れると %23 になるため、ハッシュは別に返す。
+ */
+const retiredPaths = new Map<string, { path: string; hash?: string }>([
+  ["activities/organize-program", { path: "/activities", hash: "private" }],
+]);
+
+export function resolveRetiredPath(
+  pathname: string
+): { pathname: string; hash: string } | null {
+  const segments = pathname.split("/").filter(Boolean);
+  const [first, ...others] = segments;
+  const hasLocale = first !== undefined && isLocale(first);
+  const locale = hasLocale ? first : defaultLocale;
+  const rest = (hasLocale ? others : segments).join("/");
+  const target = retiredPaths.get(rest);
+  if (!target) return null;
+  return { pathname: localePath(locale, target.path), hash: target.hash ? `#${target.hash}` : "" };
+}

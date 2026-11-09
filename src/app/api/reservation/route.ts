@@ -3,7 +3,7 @@ import { activities } from "@/data/activities";
 import { getDictionary } from "@/i18n/dictionary";
 import { autoReply, localeNameJa } from "@/i18n/emails";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/locales";
-import { formatPriceFull } from "@/lib/format";
+import { priceDetailText } from "@/lib/format";
 import {
   adminRecipient,
   isValidEmail,
@@ -110,7 +110,7 @@ export async function POST(request: Request) {
     `■ 宿泊エリア・滞在先：${body.stayArea || "（未記入）"}`,
     "",
     `■ 希望アクティビティ：${activityNameJa}`,
-    `■ 料金（参考）：${formatPriceFull(activity!, "ja", jaDict)}`,
+    `■ 料金（参考）：${priceDetailText(activity!, "ja", jaDict)}`,
     `■ 希望日：${body.preferredDate}`,
     `■ 希望時間：${body.preferredTime || "指定なし"}`,
     `■ 参加人数：${body.participants}`,

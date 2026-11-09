@@ -1,0 +1,339 @@
+{
+  "furano-relax-downriver": {
+    "card": "/images/tours/v1/furano-relax-downriver/card.jpg",
+    "hero": "/images/tours/v1/furano-relax-downriver/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/furano-relax-downriver/photo-01.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/furano-relax-downriver/photo-02.jpg",
+        "width": 1400,
+        "height": 936
+      },
+      {
+        "src": "/images/tours/v1/furano-relax-downriver/photo-03.jpg",
+        "width": 1400,
+        "height": 936
+      },
+      {
+        "src": "/images/tours/v1/furano-relax-downriver/photo-04.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/furano-relax-downriver/photo-05.jpg",
+        "width": 1400,
+        "height": 788
+      },
+      {
+        "src": "/images/tours/v1/furano-relax-downriver/photo-06.jpg",
+        "width": 1400,
+        "height": 788
+      }
+    ]
+  },
+  "biei-relax-downriver": {
+    "card": "/images/tours/v1/biei-relax-downriver/card.jpg",
+    "hero": "/images/tours/v1/biei-relax-downriver/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/biei-relax-downriver/photo-01.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/biei-relax-downriver/photo-02.jpg",
+        "width": 788,
+        "height": 1400
+      }
+    ]
+  },
+  "asahikawa-relax-downriver": {
+    "card": "/images/tours/v1/asahikawa-relax-downriver/card.jpg",
+    "hero": "/images/tours/v1/asahikawa-relax-downriver/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/asahikawa-relax-downriver/photo-01.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/asahikawa-relax-downriver/photo-02.jpg",
+        "width": 1050,
+        "height": 1400
+      }
+    ]
+  },
+  "kamuikotan-sup": {
+    "card": "/images/tours/v1/kamuikotan-sup/card.jpg",
+    "hero": "/images/tours/v1/kamuikotan-sup/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/kamuikotan-sup/photo-01.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/kamuikotan-sup/photo-02.jpg",
+        "width": 788,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/kamuikotan-sup/photo-03.jpg",
+        "width": 1050,
+        "height": 1400
+      }
+    ]
+  },
+  "kamuikotan-rafting": {
+    "card": "/images/tours/v1/kamuikotan-rafting/card.jpg",
+    "hero": "/images/tours/v1/kamuikotan-rafting/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/kamuikotan-rafting/photo-01.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/kamuikotan-rafting/photo-02.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/kamuikotan-rafting/photo-03.jpg",
+        "width": 788,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/kamuikotan-rafting/photo-04.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/kamuikotan-rafting/photo-05.jpg",
+        "width": 1050,
+        "height": 1400
+      }
+    ]
+  },
+  "furano-rafting": {
+    "card": "/images/tours/v1/furano-rafting/card.jpg",
+    "hero": "/images/tours/v1/furano-rafting/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/furano-rafting/photo-01.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/furano-rafting/photo-02.jpg",
+        "width": 1050,
+        "height": 1400
+      }
+    ]
+  },
+  "organize-river": {
+    "card": "/images/tours/v1/organize-river/card.jpg",
+    "hero": "/images/tours/v1/organize-river/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/organize-river/photo-01.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/organize-river/photo-02.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-river/photo-03.jpg",
+        "width": 1050,
+        "height": 1400
+      }
+    ]
+  },
+  "organize-lake": {
+    "card": "/images/tours/v1/organize-lake/card.jpg",
+    "hero": "/images/tours/v1/organize-lake/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/organize-lake/photo-01.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/organize-lake/photo-02.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-lake/photo-03.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-lake/photo-04.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-lake/photo-05.jpg",
+        "width": 1400,
+        "height": 1050
+      }
+    ]
+  },
+  "organize-tour": {
+    "card": "/images/tours/v1/organize-tour/card.jpg",
+    "hero": "/images/tours/v1/organize-tour/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/organize-tour/photo-01.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-02.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-03.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-04.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-05.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-06.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-07.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-08.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-09.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-10.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-11.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-12.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-13.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/organize-tour/photo-14.jpg",
+        "width": 1050,
+        "height": 1400
+      }
+    ]
+  },
+  "sup-rental": {
+    "card": "/images/tours/v1/sup-rental/card.jpg",
+    "hero": "/images/tours/v1/sup-rental/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/sup-rental/photo-01.jpg",
+        "width": 1050,
+        "height": 1400
+      }
+    ]
+  },
+  "snowshoe-tour": {
+    "card": "/images/tours/v1/snowshoe-tour/card.jpg",
+    "hero": "/images/tours/v1/snowshoe-tour/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/snowshoe-tour/photo-01.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/snowshoe-tour/photo-02.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/snowshoe-tour/photo-03.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/snowshoe-tour/photo-04.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/snowshoe-tour/photo-05.jpg",
+        "width": 1050,
+        "height": 1400
+      }
+    ]
+  },
+  "organize-winter": {
+    "card": "/images/tours/v1/organize-winter/card.jpg",
+    "hero": "/images/tours/v1/organize-winter/hero.jpg",
+    "gallery": [
+      {
+        "src": "/images/tours/v1/organize-winter/photo-01.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/organize-winter/photo-02.jpg",
+        "width": 1050,
+        "height": 1400
+      },
+      {
+        "src": "/images/tours/v1/organize-winter/photo-03.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/organize-winter/photo-04.jpg",
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "src": "/images/tours/v1/organize-winter/photo-05.jpg",
+        "width": 1400,
+        "height": 1050
+      }
+    ]
+  }
+}

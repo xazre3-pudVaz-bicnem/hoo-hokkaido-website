@@ -6,7 +6,7 @@ import {
   type Locale,
 } from "@/i18n/locales";
 import { localePath, stripLocale } from "@/i18n/routing";
-import { resolveLegacyWixPath } from "@/lib/legacy-redirects";
+import { resolveLegacyWixPath, resolveRetiredPath } from "@/lib/legacy-redirects";
 
 /** not-found.tsx から表示言語を判定するためのヘッダー名 */
 export const LOCALE_HEADER = "x-hoo-locale";
@@ -36,6 +36,14 @@ export function middleware(request: NextRequest) {
   const legacyPath = resolveLegacyWixPath(pathname);
   if (legacyPath) {
     url.pathname = legacyPath;
+    return NextResponse.redirect(url, 308);
+  }
+
+  // 掲載を終えたページ（例: /activities/organize-program → /activities#private）
+  const retired = resolveRetiredPath(pathname);
+  if (retired) {
+    url.pathname = retired.pathname;
+    url.hash = retired.hash;
     return NextResponse.redirect(url, 308);
   }
 

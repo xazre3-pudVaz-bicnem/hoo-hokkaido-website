@@ -66,7 +66,7 @@ npm run dev                  # http://localhost:3000
 ```
 /[locale]                          トップページ
 /[locale]/activities               アクティビティ一覧
-/[locale]/activities/[slug]        詳細（furano / biei / asahikawa -relax-downriver, organize-program）
+/[locale]/activities/[slug]        詳細（12件：下の「アクティビティ一覧」を参照）
 /[locale]/furano-activity          富良野のアクティビティSEOページ
 /[locale]/furano-rafting           富良野のラフティング・川体験SEOページ
 /[locale]/about                    HOOについて（MISSION・VISION・代表紹介・多言語対応の案内）
@@ -201,38 +201,58 @@ related:
 
 | ファイル | 管理する内容 |
 | --- | --- |
-| `src/data/activities.ts` | **料金（税込・日本円）・最少催行人数・slug・画像パス・掲載順・未確定情報のステータス** |
+| `src/data/activities.ts` | **料金（税込・日本円）・プラン（半日／1日）・所要時間・開催時間・開催期間・対象年齢・最少催行人数・集合場所と地図URL・シーズン／種別・掲載順** |
+| `src/data/tour-photos.generated.json` | ツアー写真のパスと寸法（`npm run photos -- --only=tours` が自動生成。手で編集しない） |
 | `src/data/site.ts` | 名称・住所・電話番号（国内/国番号付き）・メール・営業時間・ナビゲーション定義 |
 | `src/data/guide.ts` | 代表の氏名（固有名詞）・画像パス |
 | `src/data/projects.ts` | プロジェクトのslug・英字ラベル・画像パス |
 
+### アクティビティ一覧（2026-27 シーズン）
+
+出典は施主提供の「2026-27 ツアー情報.xlsx」です（原本は `photos-original/2026-27/` に保管）。
+
+| slug | 名称 | シーズン・種別 |
+| --- | --- | --- |
+| `furano-relax-downriver` | 富良野リラックスダウンリバー（主力・ホテル送迎） | グリーン・ガイドツアー |
+| `biei-relax-downriver` | 美瑛川リラックスダウンリバー | グリーン・ガイドツアー |
+| `asahikawa-relax-downriver` | 旭川リラックスダウンリバー | グリーン・ガイドツアー |
+| `kamuikotan-sup` | 神居古潭SUPツアー | グリーン・ガイドツアー |
+| `kamuikotan-rafting` | 神居古潭ラフティング | グリーン・ガイドツアー |
+| `furano-rafting` | 富良野ラフティング（南富良野） | グリーン・ガイドツアー |
+| `organize-river` / `organize-lake` / `organize-tour` | オーガナイズ（貸切・ホテル送迎） | グリーン・オーガナイズ |
+| `sup-rental` | SUPレンタル | グリーン・レンタル |
+| `snowshoe-tour` | スノーシューツアー | ウィンター・ガイドツアー |
+| `organize-winter` | オーガナイズウィンター | ウィンター・オーガナイズ |
+
+旧URL `/activities/organize-program` は `/activities#private` へ 308 で転送しています（`src/lib/legacy-redirects.ts`）。
+トップと一覧は「今のシーズン」（日本時間の11〜3月はウィンター、4〜10月はグリーン）を先に表示し、1日1回描き直します（`revalidate`）。
+
 ### 料金の変更方法
 
-`src/data/activities.ts` の `price.amount` を書き換えるだけで、**全5言語に自動反映**されます。
+`src/data/activities.ts` の `plans[].price` を書き換えるだけで、**全5言語に自動反映**されます（カード・詳細ページの料金表・一覧の料金表・予約フォームの選択肢・管理者宛メール・構造化データ）。
 
 ```ts
-{
-  slug: "furano-relax-downriver",
-  price: { amount: 7700, unit: "perPerson" },   // ← ここだけ変更
-  minParticipants: 2,
-}
+plans: [
+  {
+    kind: "standard", hours: 2, approx: true,              // 約2時間
+    sessions: ["9:30-11:30", "13:30-15:30"],               // 開催時間（各回）
+    price: { unit: "perPerson", adult: 8000, child: 8000, infant: 0 },
+  },
+],
 ```
 
-表示形式は言語ごとに切り替わります（為替換算はせず、常に日本円で表示します）。
+| `price.unit` | 意味 | 表示例（日本語） |
+| --- | --- | --- |
+| `perPerson` | 1名あたり。`adult`＝大人（12歳以上）、`child`＝小人（2〜11歳。対象年齢が上なら自動で「4〜11歳」等）、`infant`＝0〜1歳（0 は「無料」） | 大人（12歳以上）8,000円／小人（2〜11歳）8,000円／0〜1歳 無料 |
+| `perGroup` | 1グループ貸切（オーガナイズ）。`kind` は `halfDay`／`fullDay` | 半日（約2.5時間）30,000円／1日（約7時間）50,000円 |
+| `perBoard` | レンタル（1艇・1日） | 3,500円 1艇・1日（税込） |
 
-| 言語 | 表示 |
-| --- | --- |
-| 日本語 | 7,700円（税込）／1名 |
-| 英語 | JPY 7,700 per person, tax included |
-| 繁体字 | 每人 7,700 日圓，含稅 |
-| 簡体字 | 每人 7,700 日元，含税 |
-| 韓国語 | 1인 7,700엔, 세금 포함 |
+表示形式は言語ごとに切り替わります（為替換算はせず、常に日本円で表示します）。表示テンプレートは各言語の `price.*` と `activityDetail.*`（期間・時間・年齢）にあります。
+翻訳ファイルに金額の数字を直接書くと `npm run i18n:check` がエラーにします（チェックする金額は `activities.ts` から自動で読み取ります）。
 
-表示テンプレートは各言語の `price.*` にあります（`{amount}` は共通データから注入されます）。翻訳ファイルに金額の数字を直接書くと `npm run i18n:check` がエラーにします。
+### 開催期間・対象年齢・集合場所の変更方法
 
-### 未確定情報の更新
-
-所要時間・開催期間・対象年齢・集合場所・服装持ち物は「お問い合わせください」等のステータス管理です。確定したら `src/data/activities.ts` の `info` を書き換え、表示文言は各言語の `activityDetail.infoValues` を編集してください。
+`src/data/activities.ts` の `period`（`endApr` などの区切り。表示文言は `activityDetail.periods`）、`minAge`（0＝年齢制限なし）、`minParticipants`、`meeting`（`place` と `mapUrl`。場所の名前は各言語の `activityDetail.meeting`）を書き換えます。服装・持ち物は全アクティビティ「予約時にご案内します」です。
 
 ---
 
@@ -329,6 +349,20 @@ MAIL_FROM=HOO Website <onboarding@resend.dev>
 ## 画像の差し替え方法
 
 正式写真を `photos-original/` に置き、`scripts/place-photos.mjs` の `MAPPING` を編集して `npm run photos` を実行すると、`public/images/` 配下のサイト用画像が再生成されます。ファイル名を変えない限り、コードの変更は不要です。alt属性は各言語の翻訳ファイルで管理しています。
+
+### ツアーごとの写真（2026-27 シーズン〜）
+
+施主から Google ドライブのフォルダ単位（ツアー名ごと）で届いた写真を `photos-original/2026-27/<フォルダ名>/` に置き、`scripts/place-photos.mjs` の `TOURS` で割り当てます。
+
+```bash
+npm run photos -- --only=tours   # ツアー写真だけを作り直す（1〜2分）
+```
+
+- 出力：`public/images/tours/<版>/<slug>/card.jpg`（カード 4:3）・`hero.jpg`（詳細ページ上部 3:2）・`photo-NN.jpg`（ギャラリー）と `src/data/tour-photos.generated.json`
+- 切り抜き位置は `main.card` / `main.hero`（`"attention"`＝自動、`{ y: 0〜1 }`＝縦の位置）で調整します
+- **写真を差し替えるときは `TOUR_PHOTO_VERSION` を上げてください**（同じURLのまま中身を替えると、next/image の最適化キャッシュに古い写真が残るため）
+- ギャラリーの説明文（alt）は各言語の `activities.<slug>.gallery` に、`TOURS` の `gallery` と同じ順番で置きます
+- 施主のフォルダにあって使っていない写真：オーガナイズウィンターの `IMG_3112 2.jpg`（紅葉のリフト。冬のツアーと季節が合わないため）
 
 ---
 

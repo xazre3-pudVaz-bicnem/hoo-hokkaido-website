@@ -35,6 +35,6 @@ HOO는 아사히카와 지역의 강을 보트로 여유롭게 내려가는 [아
 
 ## 예약・문의
 
-아사히카와 릴랙스 다운리버는 2인부터 참가할 수 있습니다. 요금은 [액티비티 상세 페이지](/activities/asahikawa-relax-downriver)에서 확인해 주세요. 운영 기간, 소요 시간, 집합 장소는 문의 시 또는 예약 시에 확인해 주시기 바랍니다.
+아사히카와 릴랙스 다운리버는 3인부터 참가할 수 있습니다. 요금은 [액티비티 상세 페이지](/activities/asahikawa-relax-downriver)에서 확인해 주세요. 운영 기간, 소요 시간, 집합 장소는 문의 시 또는 예약 시에 확인해 주시기 바랍니다.
 
 예약은 [예약 폼](/reservation?activity=asahikawa-relax-downriver)에서 받고 있습니다.

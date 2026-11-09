@@ -20,8 +20,8 @@ related:
 挑選活動時，第一件要決定的其實不是內容，而是「想和誰、一起度過什麼樣的時光」。
 
 - **全家同遊** — 最重要的是所有人都能輕鬆參加。年齡條件依體驗而異，若有孩童同行，建議預約前先洽詢確認。
-- **朋友或情侶** — 選擇少人數就能成行的體驗，行程會比較好安排。[HOO的悠閒順流體驗](/activities/furano-relax-downriver)2人即可參加。
-- **團體或群組** — 人數較多時，適合選擇能彈性組合內容的方案。HOO以[客製化企劃方案](/activities/organize-program)受理這類洽詢。
+- **朋友或情侶** — 選擇少人數就能成行的體驗，行程會比較好安排。[HOO的悠閒順流體驗](/activities/furano-relax-downriver)3人即可參加，[富良野泛舟](/activities/furano-rafting)與[神居古潭SUP之旅](/activities/kamuikotan-sup)則2人即可參加。
+- **團體或群組** — 人數較多時，適合選擇能彈性組合內容的方案。HOO以[Organize包團行程](/activities#private)受理這類洽詢。
 
 ## 把「眺望的觀光」和「走進去的體驗」搭在一起
 

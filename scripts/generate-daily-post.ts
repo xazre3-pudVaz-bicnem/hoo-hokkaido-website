@@ -37,7 +37,12 @@ const SITE = {
 const INTERNAL_LINKS = [
   "/furano-activity", // 富良野のアクティビティ（ピラー）
   "/furano-rafting", // 富良野のラフティング・川体験
-  "/activities", // アクティビティ一覧
+  "/activities", // アクティビティ一覧（料金・開催期間の一覧表つき）
+  "/activities/furano-relax-downriver", // 富良野リラックスダウンリバー（主力）
+  "/activities/furano-rafting", // 富良野ラフティング（南富良野）
+  "/activities/kamuikotan-sup", // 神居古潭SUPツアー（旭川）
+  "/activities/snowshoe-tour", // スノーシューツアー（冬）
+  "/activities/organize-tour", // オーガナイズツアー（貸切・ホテル送迎）
   "/reservation", // 予約フォーム
   "/access", // アクセス
   "/contact", // お問い合わせ
@@ -90,6 +95,14 @@ const TOPICS = [
   { key: "富良野で家族旅行におすすめの体験", brief: "家族旅行におすすめの富良野の自然体験" },
   { key: "北海道旅行で自然体験を入れるメリット", brief: "北海道旅行に自然体験を加えるメリット" },
   { key: "富良野観光とアウトドア体験の組み合わせ", brief: "富良野観光とアウトドア体験を組み合わせる楽しみ方" },
+  // 2026-27 シーズンに加わったアクティビティ
+  { key: "富良野 スノーシュー", brief: "冬の富良野でスノーシューを履いて雪の森を歩く楽しみ方（/activities/snowshoe-tour へ）" },
+  { key: "富良野 冬 アクティビティ", brief: "スキー以外で楽しむ冬の富良野の自然体験（スノーシュー・冬の貸切ツアー）" },
+  { key: "神居古潭 SUP", brief: "旭川・神居古潭の渓谷でSUPを楽しむ魅力（/activities/kamuikotan-sup へ）" },
+  { key: "旭川 ラフティング", brief: "旭川・神居古潭で楽しむラフティングの魅力と選び方" },
+  { key: "南富良野 ラフティング", brief: "南富良野でのラフティングと、ゆったり下るダウンリバーとの違い" },
+  { key: "富良野 貸切ツアー", brief: "ホテル送迎つきで1名から利用できる貸切のオーガナイズツアーの楽しみ方" },
+  { key: "美瑛 川下り", brief: "美瑛川をゆったり下るリバー体験と美瑛観光の組み合わせ方" },
 ];
 
 // ─────────────────────────────────────────────────────────────
@@ -146,8 +159,10 @@ function pickTopic(existing: { title: string; tags: string[] }[]) {
 function buildSystemPrompt(): string {
   return [
     `あなたは「${SITE.name}（${SITE.shortName}）」の公式ブログを執筆する、富良野在住のプロのアウトドアガイド兼SEOライターです。`,
-    `${SITE.shortName}は北海道・富良野を拠点に、美瑛・旭川エリアも含めて川のアクティビティを開催しています。`,
-    `主力は、川をゆったり下る「リラックスダウンリバー」。激しさやスリルを売りにするのではなく、川面から景色や水の音を楽しむ穏やかな体験です。事前予約制で、2名から参加できます。`,
+    `${SITE.shortName}は北海道・富良野を拠点に、美瑛・旭川（神居古潭）・南富良野で、川・湖・雪のアクティビティを開催しています（すべて事前予約制）。`,
+    `主力は、川をゆったり下る「リラックスダウンリバー」（富良野・美瑛・旭川）。激しさやスリルを売りにするのではなく、川面から景色や水の音を楽しむ穏やかな体験です。富良野リラックスダウンリバーは宿泊先ホテルへの送迎つきです。`,
+    `ほかに、南富良野と旭川・神居古潭のラフティング、神居古潭のSUPツアー、冬（12月中旬〜3月中旬）のスノーシューツアー、ホテル送迎つきで1名から利用できる貸切の「オーガナイズ」（川・湖・観光・冬）、SUPレンタルがあります。`,
+    `料金・最少催行人数・対象年齢・開催期間はアクティビティごとに異なり、各アクティビティのページに掲載しています。`,
     ``,
     `【文章の方針】`,
     `- 対象読者は、富良野・北海道への旅行を検討している人。観光・アウトドア体験らしい、自然で読みやすい日本語で書く。`,
@@ -156,9 +171,9 @@ function buildSystemPrompt(): string {
     `- AIっぽい定型的な言い回し（「いかがでしたか」等）や、過剰な煽りは使わない。`,
     ``,
     `【事実・安全に関する厳守事項】`,
-    `- ${SITE.shortName}の体験は「ゆったり川を下る」もの。「激流」「絶叫」「スリル満点」などの表現は使わない。`,
+    `- リラックスダウンリバーは「ゆったり川を下る」もの。ラフティングを含め、「激流」「絶叫」「スリル満点」などの誇張表現は使わない。`,
     `- 「必ず開催」「絶対安全」「富良野で一番」「No.1」など、根拠のない断定・最上級表現は禁止。`,
-    `- 料金・集合時間・所要時間・開催可否・対象年齢を具体的な数値で断定しない（「予約時にご案内」「事前にご相談ください」と表現）。`,
+    `- 料金・人数（「○名から」など）・集合時間・所要時間・対象年齢を数値で書かない。数値は変わることがあるため、「各アクティビティのページをご覧ください」「予約時にご案内します」と表現する。`,
     `- 川のアクティビティは天候・水量・河川の状況により変更・中止になる可能性があることを、安全のプロセスとして自然に触れる。`,
     `- 架空の口コミ・評価・受賞・実績数を書かない。`,
     ``,
@@ -269,6 +284,20 @@ async function main() {
     process.exit(1);
   }
 
+  // 人数・料金の数値はアクティビティごとに異なり変わりうるため、記事には残さない（指示の取りこぼし対策）
+  const STALE_FACTS: { pattern: RegExp; replace: string }[] = [
+    { pattern: /[0-9０-９]+\s*名(様)?から/g, replace: "少人数から" },
+    { pattern: /[0-9０-９][0-9０-９,，]*\s*円/g, replace: "（料金は各アクティビティのページをご覧ください）" },
+  ];
+  let checkedBody = body;
+  for (const rule of STALE_FACTS) {
+    if (rule.pattern.test(checkedBody)) {
+      console.warn(`注意: 本文の「${rule.pattern}」を置き換えました。`);
+      checkedBody = checkedBody.replace(rule.pattern, rule.replace);
+    }
+  }
+  const checkedDescription = description.replace(STALE_FACTS[0].pattern, STALE_FACTS[0].replace);
+
   // slug を正規化し、既存と重複しないようにする
   const existingSlugs = new Set(existing.map((p) => p.slug));
   let slug = sanitizeSlug(String(data.slug ?? title));
@@ -286,7 +315,7 @@ async function main() {
     "---",
     `title: ${JSON.stringify(title)}`,
     `slug: ${JSON.stringify(slug)}`,
-    `description: ${JSON.stringify(description)}`,
+    `description: ${JSON.stringify(checkedDescription)}`,
     `date: ${JSON.stringify(date)}`,
     `category: ${JSON.stringify(category)}`,
     "tags:",
@@ -299,11 +328,11 @@ async function main() {
   ].join("\n");
 
   const filePath = path.join(BLOG_DIR, `${slug}.md`);
-  fs.writeFileSync(filePath, `${frontmatter}${body}\n`, "utf-8");
+  fs.writeFileSync(filePath, `${frontmatter}${checkedBody}\n`, "utf-8");
 
   console.log(`生成ファイル (file): src/content/blog/ja/${slug}.md`);
   console.log(`タイトル (title): ${title}`);
-  console.log(`本文文字数 (chars): ${body.replace(/\s/g, "").length}`);
+  console.log(`本文文字数 (chars): ${checkedBody.replace(/\s/g, "").length}`);
   console.log("=== 生成完了 ===");
 }
 

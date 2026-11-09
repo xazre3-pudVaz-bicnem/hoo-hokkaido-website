@@ -4,7 +4,9 @@ type SectionHeadingProps = {
   lead?: string;
   align?: "left" | "center";
   tone?: "default" | "light";
-  as?: "h1" | "h2";
+  as?: "h1" | "h2" | "h3";
+  /** 見出しの id（aria-labelledby やページ内リンクの飛び先に使う） */
+  id?: string;
 };
 
 /** セクション見出し（英字ラベル＋日本語見出し＋リード文） */
@@ -15,6 +17,7 @@ export default function SectionHeading({
   align = "center",
   tone = "default",
   as: Tag = "h2",
+  id,
 }: SectionHeadingProps) {
   const alignClass = align === "center" ? "text-center" : "text-left";
   const titleColor = tone === "light" ? "text-white" : "text-navy";
@@ -31,6 +34,7 @@ export default function SectionHeading({
         </p>
       )}
       <Tag
+        id={id}
         className={`font-display text-2xl font-semibold leading-relaxed md:text-4xl md:leading-relaxed ${titleColor} whitespace-pre-line`}
       >
         {title}

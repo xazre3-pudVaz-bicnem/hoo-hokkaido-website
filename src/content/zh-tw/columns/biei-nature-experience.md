@@ -35,6 +35,6 @@ HOO舉辦[美瑛悠閒順流體驗](/activities/biei-relax-downriver)，帶你�
 
 ## 預約與洽詢
 
-美瑛悠閒順流體驗2人即可參加。費用請參考[活動詳細頁面](/activities/biei-relax-downriver)。集合地點、所需時間與攜帶物品，將於預約時另行說明。
+美瑛悠閒順流體驗3人即可參加。費用請參考[活動詳細頁面](/activities/biei-relax-downriver)。集合地點、所需時間與攜帶物品，將於預約時另行說明。
 
 預約請透過[預約表單](/reservation?activity=biei-relax-downriver)。關於行程的討論，也歡迎透過[聯絡我們](/contact)提出。

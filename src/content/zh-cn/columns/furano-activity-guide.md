@@ -20,8 +20,8 @@ related:
 挑选活动时，最先要决定的不是内容，而是「想和谁、度过什么样的时光」。
 
 - **全家同游** — 最优先的是所有人都能轻松参加。年龄条件因体验而异，携带孩子时请在预约前咨询确认。
-- **朋友、情侣同行** — 选择少人数即可参加的体验，行程会更好安排。[HOO的悠闲顺流体验](/activities/furano-relax-downriver)2人起即可参加。
-- **团队、团体** — 人数较多时，适合选择内容可以灵活组合的项目。HOO以[定制化项目](/activities/organize-program)的形式受理咨询。
+- **朋友、情侣同行** — 选择少人数即可参加的体验，行程会更好安排。[HOO的悠闲顺流体验](/activities/furano-relax-downriver)3人起即可参加，[富良野漂流](/activities/furano-rafting)和[神居古潭SUP之旅](/activities/kamuikotan-sup)则2人起即可参加。
+- **团队、团体** — 人数较多时，适合选择内容可以灵活组合的项目。HOO以[Organize包团行程](/activities#private)的形式受理咨询。
 
 ## 把「眺望式观光」与「走进去的体验」结合起来
 

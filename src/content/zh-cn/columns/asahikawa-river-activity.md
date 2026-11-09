@@ -35,6 +35,6 @@ HOO在旭川地区开办[旭川悠闲顺流体验](/activities/asahikawa-relax-d
 
 ## 预约与咨询
 
-旭川悠闲顺流体验2人起即可参加。费用请见[活动详情页](/activities/asahikawa-relax-downriver)。关于开放期间、所需时间与集合地点，请向我们咨询，或于预约时确认。
+旭川悠闲顺流体验3人起即可参加。费用请见[活动详情页](/activities/asahikawa-relax-downriver)。关于开放期间、所需时间与集合地点，请向我们咨询，或于预约时确认。
 
 预约请通过[预约表单](/reservation?activity=asahikawa-relax-downriver)提交。

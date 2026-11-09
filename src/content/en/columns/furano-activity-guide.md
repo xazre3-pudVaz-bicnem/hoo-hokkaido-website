@@ -20,8 +20,8 @@ Furano is famous for lavender, but it is a town you can enjoy the outdoors in al
 Before you look at what an activity involves, decide who you're going with and what kind of time you want to spend together.
 
 - **With family** — the first question is whether everyone can take part comfortably. Age requirements differ from one experience to the next, so if you're bringing children, ask before you book.
-- **With friends or a partner** — an experience that takes small groups is easier to plan around. [HOO's Relax Downriver](/activities/furano-relax-downriver) takes bookings from 2 people.
-- **With a group** — for larger numbers, look for a program that can be shaped around you. That's exactly what our [Organize Program](/activities/organize-program) is for.
+- **With friends or a partner** — an experience that takes small groups is easier to plan around. [HOO's Relax Downriver](/activities/furano-relax-downriver) takes bookings from 3 people, and [Furano Rafting](/activities/furano-rafting) and the [Kamuikotan SUP Tour](/activities/kamuikotan-sup) from 2.
+- **With a group** — for larger numbers, look for a program that can be shaped around you. That's exactly what our [Organize private tours](/activities#private) are for.
 
 ## Mix looking at the landscape with getting into it
 

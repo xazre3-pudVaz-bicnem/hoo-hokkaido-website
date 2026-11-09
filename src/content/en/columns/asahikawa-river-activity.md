@@ -35,6 +35,6 @@ It isn't a trip built around thrills. You ride the current and take in the scene
 
 ## Booking and enquiries
 
-The Asahikawa Relax Downriver takes bookings from 2 people. See the [activity page](/activities/asahikawa-relax-downriver) for pricing. For the season, the duration and the meeting point, contact us or check the details we send when you book.
+The Asahikawa Relax Downriver takes bookings from 3 people. See the [activity page](/activities/asahikawa-relax-downriver) for pricing. For the season, the duration and the meeting point, contact us or check the details we send when you book.
 
 To reserve, use the [booking form](/reservation?activity=asahikawa-relax-downriver).

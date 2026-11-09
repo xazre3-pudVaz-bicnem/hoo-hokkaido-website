@@ -6,8 +6,8 @@ import ReservationForm from "@/components/forms/ReservationForm";
 import { pageMetadata } from "@/lib/seo";
 import { sortedActivities } from "@/data/activities";
 import { phoneFor } from "@/data/site";
-import { formatPriceFull } from "@/lib/format";
-import { getDictionary } from "@/i18n/dictionary";
+import { priceSummary } from "@/lib/format";
+import { format, getDictionary } from "@/i18n/dictionary";
 import type { Locale } from "@/i18n/locales";
 
 type Params = { locale: Locale };
@@ -40,10 +40,15 @@ export default async function ReservationPage({
   const r = dict.reservation;
   const phone = phoneFor(locale);
 
-  // 選択肢のラベル：アクティビティ名＋料金（料金は共通データから取得）
+  // 選択肢：シーズン・種別ごとにまとめ、アクティビティ名＋料金（料金は共通データから取得）
+  const ad = dict.activityDetail;
   const activityOptions = sortedActivities.map((a) => ({
     slug: a.slug,
-    label: `${dict.activities[a.slug as keyof typeof dict.activities].name}（${formatPriceFull(a, locale, dict)}）`,
+    label: format(r.optionLabel, {
+      name: dict.activities[a.slug as keyof typeof dict.activities].name,
+      price: priceSummary(a, locale, dict),
+    }),
+    group: `${ad.seasons[a.season]}｜${ad.categories[a.category]}`,
   }));
 
   return (

@@ -8,6 +8,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import JsonLd from "@/components/ui/JsonLd";
 import SectionHeading from "@/components/ui/SectionHeading";
+import TextWithLink from "@/components/ui/TextWithLink";
 import ActivityCard from "@/components/ui/ActivityCard";
 import FinalCta from "@/components/sections/FinalCta";
 import { pageMetadata } from "@/lib/seo";
@@ -23,6 +24,7 @@ type Params = { locale: Locale };
 const beforeIcons = [Shirt, CloudRain, HelpCircle];
 const relatedLinks = [
   "/furano-activity",
+  "/activities/furano-rafting",
   "/activities/furano-relax-downriver",
   "/faq",
 ];
@@ -50,7 +52,8 @@ export default async function FuranoRaftingPage({
   const { locale } = await params;
   const dict = await getDictionary(locale);
   const p = dict.furanoRafting;
-  const furano = getActivity("furano-relax-downriver")!;
+  // 富良野で開催している2つの川の体験（波を越えるラフティング／ゆったり下るダウンリバー）
+  const programs = [getActivity("furano-rafting")!, getActivity("furano-relax-downriver")!];
 
   return (
     <>
@@ -114,9 +117,20 @@ export default async function FuranoRaftingPage({
             lead={p.programLead}
           />
         </FadeIn>
-        <FadeIn>
-          <ActivityCard locale={locale} dict={dict} activity={furano} large />
-        </FadeIn>
+        <div className="grid gap-6 md:grid-cols-2">
+          {programs.map((activity, i) => (
+            <FadeIn key={activity.slug} delay={i * 0.08}>
+              <ActivityCard locale={locale} dict={dict} activity={activity} />
+            </FadeIn>
+          ))}
+        </div>
+        <p className="mt-6 text-center text-sm leading-relaxed text-ink-soft">
+          <TextWithLink
+            text={p.programMore}
+            href={localePath(locale, "/activities/kamuikotan-rafting")}
+            label={dict.activities["kamuikotan-rafting"].name}
+          />
+        </p>
       </section>
 
       {/* 初参加前の確認事項 */}

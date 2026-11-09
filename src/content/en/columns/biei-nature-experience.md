@@ -35,6 +35,6 @@ The view from water level is nothing like the one from a car window or a viewpoi
 
 ## Booking and enquiries
 
-The Biei Relax Downriver takes bookings from 2 people. See the [activity page](/activities/biei-relax-downriver) for pricing. The meeting point, duration and what to bring are all shared when you book.
+The Biei Relax Downriver takes bookings from 3 people. See the [activity page](/activities/biei-relax-downriver) for pricing. The meeting point, duration and what to bring are all shared when you book.
 
 To reserve, use the [booking form](/reservation?activity=biei-relax-downriver). If you'd like to talk through your itinerary first, just [get in touch](/contact).

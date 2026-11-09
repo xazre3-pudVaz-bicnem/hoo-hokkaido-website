@@ -30,7 +30,21 @@ export type ReservationFormStrings = {
 export type ActivityOption = {
   slug: string;
   label: string;
+  /** 選択肢のまとまり（例: シーズン｜種別）。同じ値が並んだものを optgroup にまとめる */
+  group?: string;
 };
+
+/** 並び順を保ったまま、同じ group の選択肢をまとめる */
+function groupOptions(options: ActivityOption[]) {
+  const groups: { label: string; options: ActivityOption[] }[] = [];
+  for (const option of options) {
+    const label = option.group ?? "";
+    const last = groups[groups.length - 1];
+    if (last && last.label === label) last.options.push(option);
+    else groups.push({ label, options: [option] });
+  }
+  return groups;
+}
 
 const inputClass =
   "w-full rounded-xl border border-forest-light bg-white px-4 py-3 text-base text-ink placeholder:text-ink-soft/50 focus:border-water-deep focus:outline-none focus:ring-2 focus:ring-water-deep/30";
@@ -335,11 +349,23 @@ export default function ReservationForm({
           <option value="" disabled>
             {f.activityPlaceholder}
           </option>
-          {activityOptions.map((a) => (
-            <option key={a.slug} value={a.slug}>
-              {a.label}
-            </option>
-          ))}
+          {groupOptions(activityOptions).map((group) =>
+            group.label ? (
+              <optgroup key={group.label} label={group.label}>
+                {group.options.map((a) => (
+                  <option key={a.slug} value={a.slug}>
+                    {a.label}
+                  </option>
+                ))}
+              </optgroup>
+            ) : (
+              group.options.map((a) => (
+                <option key={a.slug} value={a.slug}>
+                  {a.label}
+                </option>
+              ))
+            )
+          )}
         </select>
       </div>
 

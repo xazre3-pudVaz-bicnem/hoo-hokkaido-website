@@ -3,7 +3,7 @@ import type { Activity } from "@/data/activities";
 import type { Dictionary } from "@/i18n/dictionary";
 import { localeConfig, type Locale } from "@/i18n/locales";
 import { localeUrl } from "@/i18n/routing";
-import { formatPriceFull } from "@/lib/format";
+import { priceRows, priceSummary } from "@/lib/format";
 
 /**
  * 言語別の構造化データ（JSON-LD）。
@@ -60,7 +60,7 @@ export function localBusinessJsonLd(locale: Locale, dict: Dictionary) {
       name: site.representative.nameRoman,
       alternateName: site.representative.name,
     },
-    areaServed: ["Furano", "Biei", "Asahikawa"],
+    areaServed: ["Furano", "Biei", "Asahikawa", "Minamifurano"],
   };
 }
 
@@ -129,29 +129,37 @@ export function faqJsonLd(locale: Locale, faqs: readonly Faq[]) {
   };
 }
 
+/**
+ * アクティビティ（Service）。料金は区分ごと（大人・小人・0〜1歳／半日・1日）に Offer を出す。
+ * 金額は共通データから取得するため、画面の表示と食い違わない。
+ */
 export function serviceJsonLd(
   locale: Locale,
   dict: Dictionary,
   activity: Activity
 ) {
   const t = dict.activities[activity.slug as keyof Dictionary["activities"]];
+  const reserveUrl = localeUrl(locale, `/reservation?activity=${activity.slug}`);
+  const unit = priceSummary(activity, locale, dict);
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name: t.name,
     description: t.summary,
     url: localeUrl(locale, `/activities/${activity.slug}`),
+    image: `${site.url}${activity.image}`,
     inLanguage: langCode(locale),
     areaServed: t.area,
     provider: { "@id": `${site.url}/#organization` },
-    offers: {
+    offers: priceRows(activity, locale, dict).map((row) => ({
       "@type": "Offer",
-      price: activity.price.amount,
+      name: row.label,
+      price: row.amount,
       priceCurrency: "JPY",
-      description: formatPriceFull(activity, locale, dict),
+      description: `${row.label} ${row.value} — ${unit}`,
       availability: "https://schema.org/InStock",
-      url: localeUrl(locale, `/reservation?activity=${activity.slug}`),
-    },
+      url: reserveUrl,
+    })),
   };
 }
 

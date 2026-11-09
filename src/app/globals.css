@@ -176,4 +176,9 @@ details.faq-item[open] .faq-icon {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  /* 出現アニメーション（FadeIn）の初期状態（透明・下にずらす）を打ち消し、最初から表示する */
+  [data-fade-in] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

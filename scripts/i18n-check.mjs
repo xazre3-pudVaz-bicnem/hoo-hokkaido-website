@@ -35,10 +35,29 @@ const JA_ONLY_PREFIXES = ["furanoActivity.guides"];
 const isJaOnlyKey = (key) =>
   JA_ONLY_PREFIXES.some((p) => key === p || key.startsWith(p));
 
+/**
+ * 料金は src/data/activities.ts から読み取る（adult / child / infant / amount の金額）。
+ * 料金を変えても、このチェックが自動で追従する。
+ */
+const activitiesSource = fs.readFileSync(path.join(root, "src", "data", "activities.ts"), "utf-8");
+const PRICES = [
+  ...new Set(
+    [...activitiesSource.matchAll(/\b(?:adult|child|infant|amount):\s*(\d+)/g)]
+      .map((m) => Number(m[1]))
+      .filter((n) => n >= 1000)
+  ),
+];
+const priceRule = (n) => {
+  const s = String(n);
+  // 3桁区切りの「,」「，」あり・なしの両方を検出（前後が数字のときは別の数とみなす）
+  const withComma = s.replace(/\B(?=(\d{3})+(?!\d))/g, "[,，]?");
+  return { label: `料金（${n.toLocaleString("ja-JP")}）`, pattern: new RegExp(`(?<![0-9])${withComma}(?![0-9])`) };
+};
+
 /** 翻訳ファイルへ書いてはいけない共通データ（重複記載の検出用） */
 const FORBIDDEN = [
-  { label: "料金（7,700）", pattern: /7[,，]?700/ },
-  { label: "料金（50,000）", pattern: /50[,，]?000/ },
+  { label: "料金（7,700：2026-27 シーズン前の旧料金）", pattern: /(?<![0-9])7[,，]?700(?![0-9])/ },
+  ...PRICES.map(priceRule),
   // HOOの実電話番号のみを検出（入力例の +81 90-1234-5678 などは許容）
   { label: "電話番号", pattern: /090[-\s]?5950[-\s]?4006|81[-\s]?90[-\s]?5950/ },
   { label: "メールアドレス", pattern: /info@hoohokkaido\.com/ },

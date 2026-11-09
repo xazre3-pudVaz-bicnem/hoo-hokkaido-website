@@ -8,6 +8,7 @@
  *
  * 事前準備: npm install --no-save heic-decode
  */
+import { existsSync } from "node:fs";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
@@ -33,10 +34,7 @@ const MAPPING = [
   { src: "IMG_9558 (1).HEIC", out: "hero/hero-mobile.jpg", size: [1080, 1620], note: "川を下るラフトと十勝岳連峰（SP用ヒーロー・高解像度）" },
 
   // ── アクティビティ ──
-  { src: "IMG_2007 (1).HEIC", out: "activities/furano-downriver.jpg", size: [1400, 1050], note: "富良野：川を下るラフト" },
-  { src: "IMG_9973 2 (1).heic", out: "activities/biei-downriver.jpg", size: [1400, 1050], note: "美瑛：夕暮れの川を下るグループ（オーナー指定）" },
-  { src: "IMG_0237 (1).heic", out: "activities/asahikawa-downriver.jpg", size: [1400, 1050], note: "旭川：市街地の川を下るラフト" },
-  { src: "IMG_0009 2 (1).heic", out: "activities/organize-program.jpg", size: [1400, 1050], note: "湖でのグループ体験（オーナー指定）" },
+  // 2026-27 シーズンから、ツアーごとの写真は下の TOURS で生成します（public/images/tours/<slug>/）。
 
   // ── ガイド ──
   { src: "IMG_8056 2 (1).heic", out: "guide/shota-kose.jpg", size: [900, 1100], pos: "top", note: "代表・小瀬祥太" },
@@ -78,6 +76,106 @@ const MAPPING = [
   { src: "IMG_0412 (1).HEIC", out: "column/vineyard.jpg", size: [1200, 675], note: "富良野のぶどう畑" },
 ];
 
+/**
+ * ツアーごとの写真（2026-27 シーズン〜）。
+ *
+ * 施主から Google ドライブのフォルダ単位（ツアー名ごと）で届いた写真を
+ * photos-original/2026-27/<フォルダ名>/ に置き、ここで割り当てます。
+ *
+ * 出力（ファイル名に版を含めない代わりに、写真を差し替えるときは TOUR_PHOTO_VERSION を上げる。
+ *  next/image の最適化キャッシュは URL が鍵のため、同じ名前で中身を替えると古い写真が残る）:
+ *   public/images/tours/<版>/<slug>/card.jpg     … カード用 4:3（1200×900）
+ *   public/images/tours/<版>/<slug>/hero.jpg     … 詳細ページ上部 3:2（1920×1280）
+ *   public/images/tours/<版>/<slug>/photo-NN.jpg … ギャラリー（元の縦横比・長辺1400）
+ *   src/data/tour-photos.generated.json          … 上記のパスと寸法（src/data/activities.ts が読み込む）
+ *
+ * main.card / main.hero: 切り抜きの基準。"attention"（被写体を自動判定）か、
+ *   { y: 0〜1 }（縦長の写真で、上端0〜下端1 のどこを残すか）／{ x: 0〜1 }（横長の写真の左右）。
+ * trimBlack: 動画から書き出した写真の黒帯を除去する
+ * ギャラリーの説明文（alt）は各言語の activities.<slug>.gallery に、ここと同じ順番で置く。
+ */
+const TOUR_DIR = "2026-27";
+const TOUR_PHOTO_VERSION = "v1";
+const TOURS = [
+  {
+    slug: "furano-relax-downriver",
+    folder: "富良野リラックスダウンリバー",
+    main: { src: "IMG_9973 2.heic", card: "attention", hero: "attention" },
+    gallery: ["IMG_9973 2.heic", "IMG_1788.JPG", "IMG_1787.JPG", "IMG_1749.heic", { src: "IMG_1848.jpg", trimBlack: true }, { src: "IMG_1850.jpg", trimBlack: true }],
+  },
+  {
+    slug: "biei-relax-downriver",
+    folder: "美瑛リラックスダウンリバー",
+    main: { src: "IMG_9558.HEIC", card: "attention", hero: "attention" },
+    gallery: ["IMG_9558.HEIC", "IMG_2886.jpg"],
+  },
+  {
+    slug: "asahikawa-relax-downriver",
+    folder: "旭川リラックスダウンリバー",
+    main: { src: "IMG_0237.heic", card: "attention", hero: { y: 0.47 } },
+    gallery: ["IMG_0237.heic", "IMG_0233.heic"],
+  },
+  {
+    slug: "kamuikotan-sup",
+    folder: "神居古潭SUPツアー",
+    // IMG_6355 に写っているのは SUP ではなく小型ボートのため、メインは神居古潭の吊り橋（IMG_3027）にする
+    main: { src: "IMG_3027.heic", card: "attention", hero: { y: 0.55 } },
+    gallery: ["IMG_3027.heic", { src: "IMG_0374.PNG", trimBlack: true }, "IMG_6355.heic"],
+  },
+  {
+    slug: "kamuikotan-rafting",
+    folder: "神居古潭ラフティング",
+    main: { src: "IMG_2230.heic", card: "attention", hero: { x: 0.5, y: 0.75 } },
+    gallery: ["IMG_2230.heic", "IMG_0838.heic", "IMG_3004.jpg", "IMG_3013 2.heic", "IMG_3027.heic のコピー.heic"],
+  },
+  {
+    slug: "furano-rafting",
+    folder: "富良野ラフティング",
+    main: { src: "IMG_2007.HEIC", card: "attention", hero: "attention" },
+    gallery: ["IMG_2007.HEIC", "IMG_1803.heic"],
+  },
+  {
+    slug: "organize-river",
+    folder: "オーガナイズリバー",
+    main: { src: "IMG_3212.heic", card: "attention", hero: "attention" },
+    gallery: ["IMG_3212.heic", "IMG_0347.heic", "IMG_0480.HEIC"],
+  },
+  {
+    slug: "organize-lake",
+    folder: "オーガナイズレイク",
+    main: { src: "IMG_0009 2.heic", card: "attention", hero: { y: 0.4 } },
+    gallery: ["IMG_0009 2.heic", "IMG_0381.heic", "IMG_0383.HEIC", "IMG_0039.HEIC", "IMG_2523.heic"],
+  },
+  {
+    slug: "organize-tour",
+    folder: "オーガナイズサマー",
+    main: { src: "IMG_0414.HEIC", card: "attention", hero: { y: 0.3 } },
+    gallery: [
+      "IMG_0414.HEIC", "IMG_9440.heic", "IMG_0412.heic", "IMG_9552.heic", "IMG_2952.heic", "IMG_0449.heic", "IMG_0451.HEIC",
+      "IMG_9465.HEIC", "IMG_0416.HEIC", "IMG_0385.heic", "IMG_9432.heic", "IMG_0413.HEIC", "IMG_0464.HEIC", "IMG_0508.heic",
+    ],
+  },
+  {
+    slug: "sup-rental",
+    folder: "SUPレンタル",
+    main: { src: "IMG_2027.heic", card: "attention", hero: "attention" },
+    gallery: ["IMG_2027.heic"],
+  },
+  {
+    slug: "snowshoe-tour",
+    folder: "スノーシューツアー",
+    main: { src: "IMG_1253.HEIC", card: "attention", hero: "attention" },
+    gallery: ["IMG_1253.HEIC", "IMG_1080.HEIC", "IMG_0573.HEIC", "IMG_0998.heic", "IMG_1290.heic"],
+  },
+  {
+    slug: "organize-winter",
+    folder: "オーガナイズウィンター",
+    // IMG_3112 2.jpg（紅葉のリフト）は冬のツアーと季節が合わないため使っていない（施主に確認中）
+    main: { src: "IMG_1085.HEIC", card: "attention", hero: "attention" },
+    gallery: ["IMG_1085.HEIC", "IMG_1045.HEIC", "IMG_0888.heic", "IMG_1166.HEIC", "IMG_1241.HEIC"],
+  },
+];
+
 /** 元ファイル（HEIC含む）を sharp インスタンスとして読み込む */
 async function load(file) {
   const full = path.join(SRC_DIR, file);
@@ -86,6 +184,79 @@ async function load(file) {
     return sharp(Buffer.from(data), { raw: { width, height, channels: 4 } });
   }
   return sharp(full, { unlimited: true }).rotate();
+}
+
+/** 読み込み＋（必要なら）黒帯除去をして、向きを確定したバッファにする */
+async function loadBuffer(file, { trimBlack = false } = {}) {
+  let img = await load(file);
+  if (trimBlack) {
+    img = sharp(await img.trim({ background: "#000000", threshold: 25 }).toBuffer());
+  }
+  // raw（HEIC）→ PNG に一度固めて、寸法を確定させる
+  return img.png({ compressionLevel: 1 }).toBuffer();
+}
+
+/**
+ * 縦横比 ratio（幅/高さ）で切り抜く。focus が "attention" なら sharp の自動判定、
+ * { x, y } なら残す位置（0〜1）を指定する。
+ */
+async function cropTo(buffer, width, height, focus) {
+  if (focus === "attention" || !focus) {
+    return sharp(buffer).resize(width, height, {
+      fit: "cover",
+      position: focus === "attention" ? sharp.strategy.attention : "centre",
+    });
+  }
+  const meta = await sharp(buffer).metadata();
+  const ratio = width / height;
+  let cw = meta.width;
+  let ch = Math.round(cw / ratio);
+  if (ch > meta.height) {
+    ch = meta.height;
+    cw = Math.round(ch * ratio);
+  }
+  const fx = focus.x ?? 0.5;
+  const fy = focus.y ?? 0.5;
+  const left = Math.round(Math.min(Math.max(0, fx * meta.width - cw / 2), meta.width - cw));
+  const top = Math.round(Math.min(Math.max(0, fy * meta.height - ch / 2), meta.height - ch));
+  return sharp(buffer).extract({ left, top, width: cw, height: ch }).resize(width, height);
+}
+
+async function buildTours() {
+  const manifest = {};
+  const jpeg = { quality: 80, mozjpeg: true, progressive: true };
+  for (const tour of TOURS) {
+    const base = `tours/${TOUR_PHOTO_VERSION}/${tour.slug}`;
+    const outDir = path.join(OUT_DIR, base);
+    await mkdir(outDir, { recursive: true });
+    const srcOf = (f) => path.join(TOUR_DIR, tour.folder, f);
+
+    const mainBuf = await loadBuffer(srcOf(tour.main.src));
+    await (await cropTo(mainBuf, 1200, 900, tour.main.card)).jpeg(jpeg).toFile(path.join(outDir, "card.jpg"));
+    await (await cropTo(mainBuf, 1920, 1280, tour.main.hero)).jpeg(jpeg).toFile(path.join(outDir, "hero.jpg"));
+
+    const gallery = [];
+    for (const [i, entry] of tour.gallery.entries()) {
+      const item = typeof entry === "string" ? { src: entry } : entry;
+      const buf = await loadBuffer(srcOf(item.src), { trimBlack: item.trimBlack });
+      const name = `photo-${String(i + 1).padStart(2, "0")}.jpg`;
+      const info = await sharp(buf)
+        .resize(1400, 1400, { fit: "inside", withoutEnlargement: true })
+        .jpeg(jpeg)
+        .toFile(path.join(outDir, name));
+      gallery.push({ src: `/images/${base}/${name}`, width: info.width, height: info.height });
+    }
+
+    manifest[tour.slug] = {
+      card: `/images/${base}/card.jpg`,
+      hero: `/images/${base}/hero.jpg`,
+      gallery,
+    };
+    console.log(`✓ ${base}（ギャラリー ${gallery.length}枚） ← ${tour.folder}/${tour.main.src}`);
+  }
+  const manifestPath = path.join(root, "src", "data", "tour-photos.generated.json");
+  await writeFile(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+  console.log("✓ src/data/tour-photos.generated.json");
 }
 
 async function buildPhotos() {
@@ -198,15 +369,27 @@ async function buildLogo() {
   }
 }
 
+// `npm run photos -- --only=tours` でツアー写真だけを作り直す
+const onlyTours = process.argv.includes("--only=tours");
+
 const files = await readdir(SRC_DIR);
-const missing = [...new Set(MAPPING.map((m) => m.src)), "ロゴ.png"].filter(
-  (f) => !files.includes(f)
+const tourFiles = TOURS.flatMap((t) =>
+  [t.main.src, ...t.gallery.map((g) => (typeof g === "string" ? g : g.src))].map((f) =>
+    path.join(TOUR_DIR, t.folder, f)
+  )
 );
+const missing = [
+  ...(onlyTours ? [] : [...new Set(MAPPING.map((m) => m.src)), "ロゴ.png"].filter((f) => !files.includes(f))),
+  ...tourFiles.filter((f) => !existsSync(path.join(SRC_DIR, f))),
+];
 if (missing.length) {
   console.error("photos-original/ に見つからないファイル:\n" + missing.join("\n"));
   process.exit(1);
 }
 
-await buildPhotos();
-await buildLogo();
+if (!onlyTours) {
+  await buildPhotos();
+  await buildLogo();
+}
+await buildTours();
 console.log("\n完了しました。");

@@ -12,7 +12,7 @@ import ActivityCard from "@/components/ui/ActivityCard";
 import FinalCta from "@/components/sections/FinalCta";
 import { pageMetadata } from "@/lib/seo";
 import { faqJsonLd, itemListJsonLd } from "@/lib/jsonld";
-import { getActivity } from "@/data/activities";
+import { getActivity, sectionId, type Activity } from "@/data/activities";
 import { getDictionary } from "@/i18n/dictionary";
 import { defaultLocale, type Locale } from "@/i18n/locales";
 import { localePath } from "@/i18n/routing";
@@ -28,6 +28,9 @@ const FURANO_ACTIVITY_KEYWORDS = [
   "富良野 ダウンリバー",
   "富良野 観光 アクティビティ",
   "富良野 夏 アクティビティ",
+  "富良野 冬 アクティビティ",
+  "富良野 ラフティング",
+  "富良野 スノーシュー",
   "富良野 ラベンダー アクティビティ",
   "北海道 富良野 体験",
   "美瑛 アクティビティ",
@@ -39,8 +42,21 @@ type Params = { locale: Locale };
 const styleIcons = [Users, Heart, Mountain];
 const styleLinks = [
   "/activities/furano-relax-downriver",
-  "/activities/furano-relax-downriver",
-  "/activities/organize-program",
+  "/activities/furano-rafting",
+  `/activities#${sectionId("green", "private")}`,
+];
+
+/** 「富良野 アクティビティ」ハブで紹介するアクティビティ（ItemList の並び） */
+const furanoAreaSlugs = [
+  "furano-relax-downriver",
+  "furano-rafting",
+  "snowshoe-tour",
+  "organize-tour",
+  "organize-river",
+  "organize-lake",
+  "organize-winter",
+  "sup-rental",
+  "biei-relax-downriver",
 ];
 
 export async function generateMetadata({
@@ -69,15 +85,18 @@ export default async function FuranoActivityPage({
   const p = dict.furanoActivity;
 
   const furano = getActivity("furano-relax-downriver")!;
-  const biei = getActivity("biei-relax-downriver")!;
-  const asahikawa = getActivity("asahikawa-relax-downriver")!;
-  const organize = getActivity("organize-program")!;
+  const recommended = ["furano-rafting", "snowshoe-tour", "organize-tour"]
+    .map((slug) => getActivity(slug))
+    .filter((a): a is Activity => Boolean(a));
 
   // 「富良野 アクティビティ」ハブであることを伝える ItemList
-  const activityList = [furano, biei, asahikawa, organize].map((a) => ({
-    name: dict.activities[a.slug as keyof typeof dict.activities].name,
-    path: `/activities/${a.slug}`,
-  }));
+  const activityList = furanoAreaSlugs
+    .map((slug) => getActivity(slug))
+    .filter((a): a is Activity => Boolean(a))
+    .map((a) => ({
+      name: dict.activities[a.slug as keyof typeof dict.activities].name,
+      path: `/activities/${a.slug}`,
+    }));
 
   return (
     <>
@@ -201,13 +220,21 @@ export default async function FuranoActivityPage({
         <FadeIn>
           <ActivityCard locale={locale} dict={dict} activity={furano} large />
         </FadeIn>
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <FadeIn>
-            <ActivityCard locale={locale} dict={dict} activity={biei} />
-          </FadeIn>
-          <FadeIn delay={0.08}>
-            <ActivityCard locale={locale} dict={dict} activity={asahikawa} />
-          </FadeIn>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {recommended.map((activity, i) => (
+            <FadeIn key={activity.slug} delay={i * 0.08}>
+              <ActivityCard locale={locale} dict={dict} activity={activity} />
+            </FadeIn>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Link
+            href={localePath(locale, "/activities")}
+            className="inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-forest px-8 py-3 text-sm font-bold text-forest transition-colors hover:bg-forest hover:text-white"
+          >
+            {p.moreLink}
+            <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+          </Link>
         </div>
       </section>
 

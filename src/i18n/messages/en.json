@@ -24,19 +24,19 @@
     },
     "home": {
       "title": "Furano Outdoor Activities & River Tours | HOO Hokkaido",
-      "description": "Guided river activities in Furano, Biei and Asahikawa. Enjoy Hokkaido's nature on a relaxed downriver trip with experienced local guides."
+      "description": "Enjoy Hokkaido's nature in Furano, Biei and Asahikawa with experienced guides: relaxed river floats, rafting, SUP, snowshoeing and private tours with hotel pick-up."
     },
     "activities": {
-      "title": "All Activities | River Experiences in Furano, Biei & Asahikawa",
-      "description": "Browse every HOO activity: Relax Downriver trips in Furano, Biei and Asahikawa, plus tailor-made Organize Programs for groups. Booking is required."
+      "title": "Activities & Prices | Furano, Biei & Asahikawa Outdoor Tours",
+      "description": "Prices, seasons, ages and meeting points for every HOO activity: Relax Downriver, rafting, SUP, snowshoeing and private Organize tours in Furano, Biei and Asahikawa."
     },
     "furanoActivity": {
       "title": "Things to Do in Furano | Outdoor & Nature Experiences",
-      "description": "Planning a trip to Furano? A local guide explains how to choose an outdoor experience, from river trips to nature time, for families, friends and couples."
+      "description": "Looking for things to do in Furano? A local guide helps you choose by season and purpose: river floats, rafting, snowshoeing and private tours with hotel pick-up."
     },
     "furanoRafting": {
       "title": "Furano Rafting & River Activities: How to Choose",
-      "description": "Looking for rafting in Furano? Learn how river trips differ, what to check before you book, and what HOO's relaxed guided downriver experience is really like."
+      "description": "Rafting or river fun in Furano? See how Furano Rafting in Minamifurano differs from the gentle Furano Relax Downriver, how to choose, and what to check first."
     },
     "about": {
       "title": "About HOO | Mission, Vision & Our Guide",
@@ -52,15 +52,15 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "description": "Answers about joining a HOO river activity: first-timers, group size, what to wear, rain, children, meeting points, booking and cancellations."
+      "description": "Answers about HOO activities: group size, ages, child prices, hotel pick-up, meeting points, what to wear and bring, rain, winter trips, booking and cancellations."
     },
     "access": {
       "title": "Access & Business Information",
-      "description": "Hokkaido Outdoor Organization is based in Furano, Hokkaido. Open 9:00-17:00 (JST). Meeting points are shared when you book."
+      "description": "Hokkaido Outdoor Organization is based in Furano, Hokkaido. Open 9:00-17:00 (JST). Meeting points vary by activity and are listed on each activity's page."
     },
     "reservation": {
       "title": "Booking Form | Reserve a River Activity",
-      "description": "Request a booking for a Relax Downriver trip in Furano, Biei or Asahikawa, or an Organize Program. You can also get in touch by phone."
+      "description": "Request a booking with HOO: Relax Downriver trips, rafting, SUP, snowshoeing, private Organize tours and SUP Rental. You can also get in touch by phone."
     },
     "contact": {
       "title": "Contact Us",
@@ -109,21 +109,37 @@
     "minParticipantsLabel": "Minimum group size",
     "minParticipants": "From {count} people",
     "minParticipantsShort": "From {count} people",
+    "minParticipantsOne": "From {count} person",
+    "minParticipantsShortOne": "From {count} person",
     "formAvailable24h": "Outside business hours, you can still reach us any time through the contact form.",
     "skipToContent": "Skip to main content",
-    "loading": "Loading"
+    "loading": "Loading",
+    "minBoards": "From {count} boards",
+    "minBoardsShort": "Rental from {count} boards"
   },
 
   "price": {
     "amount": "JPY {amount}",
+    "free": "Free",
+    "from": "From {amount}",
     "perPerson": "per person, tax included",
-    "perThreeHours": "for 3 hours, tax included",
-    "full": {
-      "perPerson": "JPY {amount} per person, tax included",
-      "perThreeHours": "JPY {amount} for 3 hours, tax included"
+    "perAdult": "per adult, tax included",
+    "perGroup": "per private group, tax included",
+    "perBoard": "per board per day, tax included",
+    "optionLabel": "{amount} / {unit}",
+    "tiers": {
+      "adult": "Adults ({from}+)",
+      "child": "Children ({from}–{to})",
+      "infant": "Infants (0–1)"
     },
+    "plans": {
+      "halfDay": "Half day",
+      "fullDay": "Full day"
+    },
+    "planWithDuration": "{plan} ({duration})",
     "note": "Prices are subject to change. Please contact us for the latest pricing.",
-    "noteCustom": "The price depends on the content and group size. We will prepare a quote for you."
+    "noteGroup": "This is the price for one private group. For large groups, or depending on what you'd like to do, we'll prepare a separate quote.",
+    "noteRental": "The price covers a set of SUP board, paddle and life jacket."
   },
 
   "mailto": {
@@ -223,10 +239,10 @@
       "label": "What our trips are like",
       "items": [
         "Based in Furano",
-        "From 2 people",
+        "Private tours from just 1 person",
         "Led by experienced guides",
-        "Advance booking required",
-        "An unhurried way to enjoy nature"
+        "Hotel pick-up & drop-off on some plans",
+        "Rivers and lakes in summer, snow in winter"
       ]
     },
     "intro": {
@@ -241,8 +257,9 @@
     "activities": {
       "eyebrow": "Activities",
       "title": "Activities",
-      "lead": "Based in Furano, we also run river activities in the Biei and Asahikawa areas. All trips are by advance booking, from 2 people.",
-      "seeAll": "See all activities"
+      "lead": "Based in Furano, we also run river, lake and snow activities in Biei, Asahikawa (Kamuikotan) and Minamifurano. All activities require advance booking.",
+      "seeAll": "See all activities",
+      "seasonAll": "See all {season} activities ({count})"
     },
     "purpose": {
       "eyebrow": "Find Your Experience",
@@ -250,24 +267,24 @@
       "lead": "Not sure which activity is right for you? Start with the option closest to what you have in mind.",
       "cards": [
         {
-          "title": "I want to enjoy nature in Furano",
-          "body": "Our flagship river activity: a relaxed float down the rivers of Furano.",
+          "title": "I want to enjoy nature on my Furano trip",
+          "body": "Our flagship program: a gentle float down the rivers of Furano, with hotel pick-up and drop-off and open to all ages from 0.",
           "linkLabel": "Furano Relax Downriver"
         },
         {
-          "title": "I'm coming with family or friends",
-          "body": "From 2 people, with careful guidance for anyone joining for the first time.",
-          "linkLabel": "See all activities"
+          "title": "I want a day of full-on river fun",
+          "body": "We also run rafting trips that ride over the waves, and a SUP tour through a river gorge.",
+          "linkLabel": "How to choose a rafting or river experience"
         },
         {
-          "title": "I want a memory that feels like Hokkaido",
-          "body": "We also run downriver trips in the Biei and Asahikawa areas.",
-          "linkLabel": "Choose an experience by area"
+          "title": "I want to enjoy Hokkaido in winter",
+          "body": "Walk through snowy forest on a Snowshoe Tour, or take a private tour of Furano and Biei in winter.",
+          "linkLabel": "See winter activities"
         },
         {
-          "title": "I'm planning something for a group",
-          "body": "Training days, events and more, built around your goals.",
-          "linkLabel": "Organize Program"
+          "title": "I want time with just my family or friends",
+          "body": "Private Organize tours with hotel pick-up and drop-off, available from just 1 person. Choose from river, lake, sightseeing or winter.",
+          "linkLabel": "See Organize (private) tours"
         }
       ]
     },
@@ -284,7 +301,7 @@
     "flow": {
       "eyebrow": "Flow",
       "title": "From booking to the day itself",
-      "lead": "Meeting points, what to bring and other details are shared with you when you book."
+      "lead": "You'll find the duration and meeting point on each activity's page. We'll share what to bring and other details when you book."
     },
     "guide": {
       "eyebrow": "Guide",
@@ -323,9 +340,30 @@
   "activitiesPage": {
     "eyebrow": "Activities",
     "title": "Activities",
-    "lead": "Every river activity we run, based in Furano and reaching into the Biei and Asahikawa areas.\nAll trips are by advance booking, from 2 people.",
+    "lead": "Every activity we run, based in Furano and reaching into Biei, Asahikawa (Kamuikotan) and Minamifurano.\nRivers and lakes from spring to autumn, snow in winter. All activities require advance booking.",
+    "jumpLabel": "Jump to seasons and price list",
+    "seasonLead": {
+      "green": "From gentle downriver floats to rafting over the waves, SUP through a river gorge and canoeing on a lake: water activities that run from spring to autumn.",
+      "winter": "The Snowshoe Tour through snowy forest, and Organize Winter, a private tour of Furano and Biei in winter. Both include pick-up and drop-off at your hotel, so there's no need to drive on winter roads."
+    },
+    "categoryLead": {
+      "tour": "Tours you enjoy alongside a guide. They run at set times, so they're easy to fit into your itinerary.",
+      "private": "Private plans for your group only, with pick-up and drop-off at your hotel. Available from 1 person, with half-day or full-day options depending on the plan.",
+      "rental": "Rent the gear and go at your own pace."
+    },
+    "tableTitle": "Prices and seasons at a glance",
+    "tableLead": "All prices include tax. For meeting points and how the day runs, see each activity's page.",
+    "tableScrollHint": "Scroll sideways to see the full table.",
+    "tableHeaders": {
+      "name": "Activity",
+      "period": "Season",
+      "duration": "Duration",
+      "price": "Price (incl. tax)",
+      "age": "Age range",
+      "min": "Minimum group size"
+    },
     "helpTitle": "Not sure which to choose?",
-    "helpBody": "If it's your first time with us, we suggest our flagship program, the Furano Relax Downriver. We're also happy to suggest something that fits your itinerary and group size, so just ask.",
+    "helpBody": "If it's your first time, we recommend the Furano Relax Downriver, with hotel pick-up and drop-off and open to all ages from 0. We can also suggest something to fit your itinerary and group size, so if you're unsure, just ask.",
     "helpLink": "See how to choose a Furano activity"
   },
 
@@ -337,25 +375,68 @@
     "notes": "Good to know",
     "faq": "Frequently asked questions",
     "faqLink": "For other questions, take a look at our FAQ.",
-    "otherActivities": "Other activities",
+    "otherActivities": "Other activities to consider",
     "otherActivitiesEyebrow": "Other Activities",
-    "accessEyebrow": "Access",
-    "accessTitle": "Access & meeting point",
-    "accessLead": "The meeting point depends on the area. We'll give you full details when you book.",
+    "galleryEyebrow": "Photos",
+    "galleryTitle": "Photo gallery",
+    "meetingEyebrow": "Meeting Point",
+    "meetingTitle": "Meeting & finish point",
+    "meetingContact": "Questions about the meeting point or pick-up? Feel free to contact us.",
+    "mapLink": "View on Google Maps",
+    "mapLinkShort": "Map",
     "reserveNote": "Sending the form does not confirm your booking.\nYour place is confirmed once we contact you.",
     "labels": {
+      "plans": "Plans & prices",
       "duration": "Duration",
+      "sessions": "Times",
       "period": "Season",
       "targetAge": "Age range",
-      "meetingPlace": "Meeting point",
+      "meetingPlace": "Meeting & finish point",
       "clothing": "What to wear and bring"
     },
     "infoValues": {
-      "tbd": "Please contact us",
-      "onBooking": "Shared when you book",
-      "threeHours": "3 hours (flexible depending on the program)"
+      "onBooking": "Shared when you book"
     },
-    "furanoNote": "This is the program many people choose when they're searching for rafting or river activities in Furano. It isn't a white-water run: it's a relaxed downriver trip that gives you time to take in the nature of Furano's rivers. If you're weighing up your options, our guide to choosing a rafting or river experience in Furano may help.",
+    "durationApprox": "About {hours} hours",
+    "durationExact": "{hours} hours",
+    "timeRange": "{start}–{end}",
+    "listSeparator": " / ",
+    "planSessions": "{plan}: {sessions}",
+    "periodRange": "{from} – {to}",
+    "periods": {
+      "endApr": "End of April",
+      "endOct": "end of October",
+      "midJun": "Mid-June",
+      "midSep": "mid-September",
+      "midDec": "Mid-December",
+      "midMar": "mid-March"
+    },
+    "ageAll": "All ages (from 0)",
+    "ageFrom": "Ages {age} and up",
+    "seasons": {
+      "green": "Green season",
+      "winter": "Winter season"
+    },
+    "categories": {
+      "tour": "Guided tours",
+      "private": "Organize (private)",
+      "rental": "Rental"
+    },
+    "meeting": {
+      "hotelPickup": "Your hotel (pick-up and drop-off included)",
+      "furanoDelivery": "A location you specify in the Furano area (delivery and pick-up)",
+      "bieiFurusatoIchiba": "Biei Furusato Ichiba (local market)",
+      "asahikawaTouristCenter": "Asahikawa Tourism and Local Products Information Center (JR Asahikawa Station)",
+      "kamuikotanParking": "Kamuikotan parking lot",
+      "minamifuranoOchiai": "194-2 Ochiai, Minamifurano-cho, Sorachi-gun, Hokkaido"
+    },
+    "meetingNote": {
+      "hotelPickup": "We'll pick you up at your hotel and drop you back there afterwards. Please confirm the pick-up time and the areas we can pick up from when you book.",
+      "furanoDelivery": "We'll deliver the SUP set to a location you specify within the Furano area and collect it after use. Please tell us where to deliver when you book.",
+      "place": "We meet and finish on site. We'll give you the meeting time when you book, and you can check the location on Google Maps."
+    },
+    "furanoNote": "If you'd like to try rafting in Furano, we also run Furano Rafting in Minamifurano, where you paddle over wave-filled rapids. Can't decide which experience suits you? Take a look at our guide: {link}.",
+    "raftingNote": "If you'd rather take in the scenery and the sound of the water at a gentle pace, we also recommend the Furano Relax Downriver, with hotel pick-up and drop-off. We explain how the two differ in our guide: {link}.",
     "furanoNoteLink": "How to choose a rafting or river experience in Furano"
   },
 
@@ -364,48 +445,49 @@
       "name": "Furano Relax Downriver",
       "area": "Furano",
       "catchcopy": "See Hokkaido from the water, at the pace of the river.",
-      "summary": "Our flagship river activity: a boat trip down the rivers of Furano, taking in the scenery from water level alongside an experienced guide.",
-      "imageAlt": "A Relax Downriver trip on a river in Furano",
+      "summary": "HOO's flagship program: a relaxed boat trip down the rivers of Furano. Pick-up and drop-off at your hotel are included, and the whole family can join, from age 0.",
+      "imageAlt": "Guests floating down a river in Furano by boat, looking out at a bridge under the evening sky",
       "meta": {
-        "title": "Furano Relax Downriver | River Activity in Furano",
-        "description": "Float down the rivers of Furano by boat with an experienced guide. From 2 people. A relaxed way to enjoy Hokkaido's nature on the water."
+        "title": "Furano Relax Downriver | River Float, Hotel Pick-up, All Ages",
+        "description": "A relaxed 2-hour boat trip down a river in Furano, with hotel pick-up and drop-off. Ages 0+, under-2s free. Mornings and afternoons, late April to late October."
       },
       "description": [
-        "The Furano Relax Downriver is a river activity that takes you down the rivers of Furano by boat, close enough to the nature of Hokkaido to feel it.",
+        "The Furano Relax Downriver is a river activity that takes you down the rivers of Furano by boat, so you can feel the nature of Hokkaido with all your senses.",
         "The sky seen from water level, the forest along the banks, the sound of the current. From the river, Furano looks like nowhere you'll reach on foot.",
-        "An experienced guide reads the river on the day and leads the trip, so if it's your first time on the water, just talk to us."
+        "We pick you up at your hotel, so you can join without a rental car. There's no age limit and children can take part from age 0, which makes it easy to fit into a three-generation family trip."
       ],
       "features": [
         {
+          "title": "Hotel pick-up and drop-off: no transport worries",
+          "body": "We pick you up at your hotel and take you back afterwards. Even without a car, you can fit a river experience in Furano into your itinerary."
+        },
+        {
+          "title": "The whole family, from age 0",
+          "body": "There's no age limit: children can join from age 0, and those aged 1 and under go free. If you're bringing children, please include their ages when you book."
+        },
+        {
           "title": "Furano, seen from the river",
-          "body": "The sky, the forest and the water's edge from an angle you'll never get from land. Drifting with the current is the point of the trip, not a means to an end."
-        },
-        {
-          "title": "A guide you can ask anything",
-          "body": "Our representative has over 20 years as an outdoor guide, and our guides know these rivers. Ask us whatever you're unsure about, before you book or on the day."
-        },
-        {
-          "title": "An unhurried downriver trip",
-          "body": "This isn't about speed or thrills. It's a program built around taking your time with the current and the nature of Furano."
+          "body": "Furano's sky, forest and water's edge from an angle you'll never get from land. Drifting with the current is the point of the trip, not a means to an end."
         }
       ],
       "recommendedFor": [
         "Travellers in Furano looking for a real encounter with nature",
-        "Families, friends and couples who want a memory to take home",
-        "Anyone curious about rafting or river trips, but not the wild kind",
-        "People who want to experience the Furano that photos can't capture"
+        "Families with young children, or three generations travelling together",
+        "Travellers getting around without a rental car",
+        "Anyone curious about rafting or river trips, but not the wild kind"
       ],
       "flow": [
-        { "step": "Book or enquire", "body": "Tell us your preferred date and group size, by form or phone." },
-        { "step": "Details", "body": "We'll share the meeting point, what to bring and how the day runs." },
-        { "step": "Check in", "body": "Come to the meeting point we've given you." },
+        { "step": "Book or enquire", "body": "Tell us your preferred date, time of day (morning or afternoon) and group size, by form or phone." },
+        { "step": "Details", "body": "When you book, we'll let you know your pick-up time, what to wear and what to bring." },
+        { "step": "Hotel pick-up", "body": "We pick you up at your hotel." },
         { "step": "Guide briefing", "body": "Your guide explains the equipment and how the trip will go." },
-        { "step": "On the river", "body": "Head down the rivers of Furano with your guide." },
-        { "step": "Finish", "body": "The trip ends and you're free to carry on with your day." }
+        { "step": "On the river", "body": "Float gently down the rivers of Furano with your guide." },
+        { "step": "Back to your hotel", "body": "Afterwards, we drop you back at your hotel." }
       ],
       "notes": [
         "Trips may be cancelled or changed depending on the weather and river conditions.",
         "If you have any concerns about your health, please talk to us in advance.",
+        "Please check which areas we can pick up from when you book.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
       "faq": [
@@ -415,59 +497,72 @@
         },
         {
           "question": "What is the minimum group size?",
-          "answer": "Bookings start from 2 people. For other group sizes, please get in touch."
+          "answer": "Trips run with a minimum of 3 people. If you have any questions about group size, please get in touch."
         },
         {
-          "question": "Can children take part?",
-          "answer": "The age range depends on the river conditions on the day. If you're coming with children, contact us in advance and let us know their ages."
+          "question": "Can young children take part?",
+          "answer": "Yes. There's no age limit, so children can join from age 0, and those aged 1 and under go free. If you're bringing children, please include their ages when you book."
+        },
+        {
+          "question": "Where do we meet?",
+          "answer": "We'll pick you up at your hotel. We'll let you know the pick-up time and the areas we can pick up from when you book."
         },
         {
           "question": "What should I wear and bring?",
           "answer": "We'll tell you exactly what to wear and bring when you book."
         }
+      ],
+      "gallery": [
+        "Guests floating down a river in Furano by boat, looking out at a bridge under the evening sky",
+        "A smiling guest in a life jacket, sitting in the boat",
+        "A guide paddling the boat",
+        "Sweets and drinks laid out on the boat",
+        "Aerial view of a river in Furano, with a boat floating downstream",
+        "Top-down view of the river, with a boat floating downstream"
       ]
     },
     "biei-relax-downriver": {
-      "name": "Biei Relax Downriver",
+      "name": "Biei River Relax Downriver",
       "area": "Biei",
       "catchcopy": "Biei, the town of rolling hills, seen from the water.",
-      "summary": "A relaxed boat trip down a river in the Biei area, and a different side of a landscape most people only see from the hills.",
-      "imageAlt": "A Relax Downriver trip on a river in Biei",
+      "summary": "A relaxed boat trip down the Biei River, starting and finishing at Biei Furusato Ichiba (local market). Open to ages 4 and up, it pairs easily with sightseeing in Biei.",
+      "imageAlt": "Guests floating down the Biei River by boat, with mountains in the distance",
       "meta": {
-        "title": "Biei Relax Downriver | River Activity in Biei",
-        "description": "A relaxed boat trip down a river in the Biei area. See the famous hill country of Biei from the water. From 2 people."
+        "title": "Biei River Relax Downriver | River Float in Biei, Ages 4+",
+        "description": "A relaxed 2-hour float down the Biei River from Biei Furusato Ichiba. Ages 4+, mornings and afternoons, late April to late October. Pairs well with Biei sightseeing."
       },
       "description": [
-        "The Biei Relax Downriver is a guided boat trip down a river in the Biei area, and a chance to spend time in the landscape rather than beside it.",
+        "The Biei River Relax Downriver is a nature program that takes you down the Biei River by boat.",
         "Biei is known for its hills and patchwork fields, but the view from the river is another thing entirely: water and forest close by, and time that moves at Hokkaido's pace.",
-        "It slots easily into a Biei and Furano itinerary. Tell us your plans and we'll work around them."
+        "It starts and finishes at Biei Furusato Ichiba (local market). With two trips a day, morning and afternoon, it's easy to fit in before or after sightseeing in Biei and Furano."
       ],
       "features": [
         {
           "title": "Biei's nature from the river",
-          "body": "A quiet way to experience one of Hokkaido's most photographed areas, from an angle few visitors see."
+          "body": "A quiet way to enjoy Biei, one of Hokkaido's most popular destinations, from the river's point of view."
         },
         {
-          "title": "Led by an experienced guide",
-          "body": "Your guide reads the river as you go and leads the trip with safety in mind."
+          "title": "Meet and finish at Biei Furusato Ichiba",
+          "body": "We meet and finish on site. You can find the location on the map on this page."
         },
         {
           "title": "Easy to fit into your trip",
-          "body": "It plans well alongside sightseeing in the Biei, Furano and Asahikawa areas."
+          "body": "Two trips a day, morning and afternoon. It plans well alongside sightseeing in the Biei, Furano and Asahikawa areas."
         }
       ],
       "recommendedFor": [
         "Travellers who want nature time alongside sightseeing in Biei",
+        "Families with children aged 4 and up",
         "Anyone looking for more than the usual tourist route",
         "People who want to enjoy nature quietly"
       ],
       "flow": [
-        { "step": "Book or enquire", "body": "Tell us your preferred date and group size, by form or phone." },
-        { "step": "Details", "body": "We'll share the meeting point, what to bring and how the day runs." },
-        { "step": "Check in", "body": "Come to the meeting point we've given you." },
+        { "step": "Book or enquire", "body": "Tell us your preferred date, time of day (morning or afternoon) and group size, by form or phone." },
+        { "step": "Details", "body": "When you book, we'll let you know the meeting time, what to wear and what to bring." },
+        { "step": "Check in", "body": "Come to Biei Furusato Ichiba (local market)." },
         { "step": "Guide briefing", "body": "Your guide explains the equipment and how the trip will go." },
-        { "step": "On the river", "body": "Head down the river in Biei with your guide." },
-        { "step": "Finish", "body": "The trip ends and you're free to carry on with your day." }
+        { "step": "On the river", "body": "Float gently down the Biei River with your guide." },
+        { "step": "Finish", "body": "The trip ends back at Biei Furusato Ichiba." }
       ],
       "notes": [
         "Trips may be cancelled or changed depending on the weather and river conditions.",
@@ -477,55 +572,68 @@
       "faq": [
         {
           "question": "Can I do this on the same day as sightseeing in Biei?",
-          "answer": "We'll confirm the duration and meeting point when you book, so if your itinerary is already set, let us know and we'll advise."
+          "answer": "Yes. There are two trips a day, morning and afternoon, so choose whichever fits your sightseeing plans. We'll give you the meeting time when you book."
         },
         {
           "question": "What is the minimum group size?",
-          "answer": "Bookings start from 2 people. For other group sizes, please get in touch."
+          "answer": "Trips run with a minimum of 3 people. If you have any questions about group size, please get in touch."
+        },
+        {
+          "question": "Can children take part?",
+          "answer": "Children aged 4 and up can take part."
+        },
+        {
+          "question": "Where do we meet?",
+          "answer": "We meet at Biei Furusato Ichiba (local market), and the trip finishes at the same place. You'll find a map on this page."
         }
+      ],
+      "gallery": [
+        "Guests floating down the Biei River by boat, with mountains in the distance",
+        "A guest gazing at a stream in a mossy forest"
       ]
     },
     "asahikawa-relax-downriver": {
       "name": "Asahikawa Relax Downriver",
       "area": "Asahikawa",
       "catchcopy": "River time, minutes from the city of Asahikawa.",
-      "summary": "A relaxed boat trip down a river in the Asahikawa area: close to the city, yet surrounded by nature.",
-      "imageAlt": "A Relax Downriver trip on a river in Asahikawa",
+      "summary": "A relaxed boat trip down a river that flows close to central Asahikawa. Meet at the Asahikawa Tourism and Local Products Information Center in JR Asahikawa Station. Ages 4 and up.",
+      "imageAlt": "Guests in helmets and life jackets floating down a river in Asahikawa by boat",
       "meta": {
-        "title": "Asahikawa Relax Downriver | River Activity in Asahikawa",
-        "description": "A relaxed boat trip down a river in the Asahikawa area. Enjoy Hokkaido's nature just outside the city. From 2 people."
+        "title": "Asahikawa Relax Downriver | Meet at the Station, Ages 4+",
+        "description": "A relaxed 2-hour boat trip near central Asahikawa, starting and finishing at JR Asahikawa Station. Ages 4+. Mornings and afternoons, late April to late October."
       },
       "description": [
-        "The Asahikawa Relax Downriver is a guided boat trip down a river in the Asahikawa area.",
-        "Hokkaido's second city is closer to rivers and forest than most people expect. Add a few hours on the water to your time in town.",
-        "It fits neatly into a trip that takes in Asahikawa, Biei and Furano."
+        "The Asahikawa Relax Downriver is a nature program that takes you by boat down a river flowing close to central Asahikawa.",
+        "Hokkaido's second city is closer to rivers and forest than most people expect. Add some time on the water to your sightseeing in town.",
+        "It starts and finishes at the Asahikawa Tourism and Local Products Information Center in JR Asahikawa Station, so it's easy to join straight off the train or bus."
       ],
       "features": [
         {
+          "title": "Meet right at the station",
+          "body": "It starts and finishes at the Asahikawa Tourism and Local Products Information Center (JR Asahikawa Station), so it's easy to join without a car."
+        },
+        {
           "title": "The waterways of the Asahikawa area",
-          "body": "A chance to get onto the river in a region better known for Asahiyama Zoo and city sightseeing."
+          "body": "A chance to get close to river nature around Asahikawa, an area better known for sights such as Asahiyama Zoo."
         },
         {
           "title": "Led by an experienced guide",
           "body": "Your guide reads the river as you go and leads the trip with safety in mind."
-        },
-        {
-          "title": "Easy to reach from your base",
-          "body": "A natural addition to a Hokkaido trip built around Asahikawa."
         }
       ],
       "recommendedFor": [
         "Travellers who want nature time alongside sightseeing in Asahikawa",
+        "Travellers getting around by train or bus",
         "Anyone using Asahikawa as a base for Furano and Biei",
-        "People who want to spend an unhurried few hours by the water"
+        "Families with children aged 4 and up"
       ],
       "flow": [
-        { "step": "Book or enquire", "body": "Tell us your preferred date and group size, by form or phone." },
-        { "step": "Details", "body": "We'll share the meeting point, what to bring and how the day runs." },
-        { "step": "Check in", "body": "Come to the meeting point we've given you." },
+        { "step": "Book or enquire", "body": "Tell us your preferred date, time of day (morning or afternoon) and group size, by form or phone." },
+        { "step": "Details", "body": "When you book, we'll let you know the meeting time, what to wear and what to bring." },
+        { "step": "Check in", "body": "Come to the Asahikawa Tourism and Local Products Information Center (JR Asahikawa Station)." },
         { "step": "Guide briefing", "body": "Your guide explains the equipment and how the trip will go." },
-        { "step": "On the river", "body": "Head down the river in Asahikawa with your guide." },
-        { "step": "Finish", "body": "The trip ends and you're free to carry on with your day." }
+        { "step": "On the river", "body": "Float gently down the river in Asahikawa with your guide." },
+        { "step": "Finish", "body": "The trip ends back at the Asahikawa Tourism and Local Products Information Center." }
       ],
       "notes": [
         "Trips may be cancelled or changed depending on the weather and river conditions.",
@@ -534,69 +642,672 @@
       ],
       "faq": [
         {
-          "question": "Is it close to central Asahikawa?",
-          "answer": "We'll give you the meeting point when you book. Tell us your itinerary and we'll advise."
+          "question": "Is it close to Asahikawa Station?",
+          "answer": "We meet and finish at the Asahikawa Tourism and Local Products Information Center, which is at JR Asahikawa Station. You'll find a map on this page."
         },
         {
           "question": "What is the minimum group size?",
-          "answer": "Bookings start from 2 people. For other group sizes, please get in touch."
+          "answer": "Trips run with a minimum of 3 people. If you have any questions about group size, please get in touch."
+        },
+        {
+          "question": "Can children take part?",
+          "answer": "Children aged 4 and up can take part."
         }
+      ],
+      "gallery": [
+        "A boat passing under a bridge on a river in the heart of Asahikawa",
+        "Guests in helmets and life jackets floating down a river in Asahikawa"
       ]
     },
-    "organize-program": {
-      "name": "Organize Program",
-      "area": "Furano, Biei, Asahikawa and beyond",
-      "catchcopy": "A nature experience built around your group.",
-      "summary": "A made-to-order program for groups, shaped around what you want to achieve: training days, events, or something no one has done before. Start by telling us the idea.",
-      "imageAlt": "An Organize Program in the nature of Hokkaido",
+    "kamuikotan-sup": {
+      "name": "Kamuikotan SUP Tour",
+      "area": "Asahikawa (Kamuikotan)",
+      "catchcopy": "Explore Kamuikotan's gorge and remarkable rocks by SUP.",
+      "summary": "A SUP tour at Kamuikotan, a scenic spot in Asahikawa. Stand on your board and take in the gorge from the water. A summer-only experience for ages 10 and up.",
+      "imageAlt": "Kamuikotan's white suspension bridge and the river reflecting the blue sky",
       "meta": {
-        "title": "Organize Program | Custom Outdoor Experiences for Groups",
-        "description": "Made-to-order outdoor programs for groups: corporate training, team building, group travel. Tell us your goals and we'll design the day."
+        "title": "Kamuikotan SUP Tour | Paddleboarding in Asahikawa, Ages 10+",
+        "description": "A 1.5-hour SUP tour at Kamuikotan, Asahikawa's scenic gorge, from its parking lot. Ages 10+, from 2 people. Mornings and afternoons, mid-June to mid-September."
       },
       "description": [
-        "The Organize Program is a made-to-order outdoor program, designed around what your group actually needs.",
-        "Corporate training, team building, a one-off event for friends, a community gathering: tell us the purpose and the number of people, and we'll put a plan together.",
-        "Enquiries at the \"could you do something like this?\" stage are welcome. Just get in touch."
+        "The Kamuikotan SUP Tour takes you out on the river at Kamuikotan, a scenic spot in Asahikawa, on a SUP (stand-up paddleboard).",
+        "Kamuikotan, where the Ishikari River weaves its way between the rocks, is a scenic gorge of unusual rock formations, forest and a white suspension bridge. The view looking up from your board has a power all its own, quite different from the view at the lookout.",
+        "If you've never tried SUP, your guide will start by showing you how to ride the board. The tour runs only for a limited period in summer."
       ],
       "features": [
         {
-          "title": "Built around your goals",
-          "body": "We shape the program around your group size, purpose and available time."
+          "title": "Kamuikotan, a scenic gorge",
+          "body": "Enjoy the river at Kamuikotan, surrounded by unusual rocks and forest, from water level."
         },
         {
-          "title": "An experienced guide from the planning stage",
-          "body": "Our representative, with over 20 years as an outdoor guide, works with you from the first conversation."
+          "title": "First-timers welcome, with a guide alongside",
+          "body": "Your guide will show you how to ride the board and use the paddle. If anything worries you, talk to us when you book."
         },
         {
-          "title": "Made for groups",
-          "body": "Corporate training, team building, group travel and more."
+          "title": "Easy to combine with sightseeing",
+          "body": "Two tours a day, morning and afternoon, so it's easy to plan on the same day as sightseeing in Asahikawa, Biei or Furano."
         }
       ],
       "recommendedFor": [
-        "Companies planning training or team building",
-        "Groups looking to organise a nature experience of their own",
-        "Anyone wanting something our regular programs don't cover"
+        "Anyone who wants to try SUP",
+        "Visitors to Asahikawa who also want to see its natural scenery",
+        "Families with children aged 10 and up",
+        "Anyone travelling as a pair or in a small group"
       ],
       "flow": [
-        { "step": "Get in touch", "body": "Tell us your purpose, group size and preferred dates." },
-        { "step": "Consultation & proposal", "body": "We listen, then come back with a program proposal and a quote." },
-        { "step": "Confirm & book", "body": "Once the details are settled, we confirm your booking." },
-        { "step": "On the day", "body": "Your guide runs the program as planned." }
+        { "step": "Book or enquire", "body": "Tell us your preferred date, time of day (morning or afternoon) and group size, by form or phone." },
+        { "step": "Details", "body": "When you book, we'll let you know the meeting time, what to wear and what to bring." },
+        { "step": "Check in", "body": "Come to the Kamuikotan parking lot." },
+        { "step": "Guide briefing", "body": "Your guide explains how to ride the board, how to use the paddle and what to watch out for." },
+        { "step": "SUP tour", "body": "Paddle along the river at Kamuikotan with your guide." },
+        { "step": "Finish", "body": "The tour ends back at the Kamuikotan parking lot." }
       ],
       "notes": [
-        "Programs may be cancelled or changed depending on the weather and river conditions.",
-        "The price depends on the content and group size. Please contact us to discuss.",
+        "Tours may be cancelled or changed depending on the weather and river conditions.",
+        "You may get wet. We'll tell you what to wear and bring when you book.",
+        "If you have any concerns about your health, please talk to us in advance.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
       "faq": [
         {
-          "question": "How many people can you accommodate?",
-          "answer": "It depends on the group size and the program. Contact us with the number of people you have in mind."
+          "question": "Is it OK if I've never done SUP before?",
+          "answer": "Yes. Before you set off, your guide will show you how to ride the board and use the paddle. If anything worries you, talk to us when you book."
         },
         {
-          "question": "How flexible is the content?",
-          "answer": "We'll work with your purpose and the time you have. It's fine if nothing is decided yet."
+          "question": "What is the minimum age?",
+          "answer": "Anyone aged 10 and up can take part."
+        },
+        {
+          "question": "What is the minimum group size?",
+          "answer": "Tours run with a minimum of 2 people."
+        },
+        {
+          "question": "Where do we meet?",
+          "answer": "We meet at the Kamuikotan parking lot, and the tour finishes at the same place. You'll find a map on this page."
         }
+      ],
+      "gallery": [
+        "Kamuikotan's white suspension bridge and the river reflecting the blue sky",
+        "A guest paddling a SUP on calm water",
+        "Guests paddling along the forest-lined river at Kamuikotan"
+      ]
+    },
+    "kamuikotan-rafting": {
+      "name": "Kamuikotan Rafting",
+      "area": "Asahikawa (Kamuikotan)",
+      "catchcopy": "Paddle down the gorge together.",
+      "summary": "Rafting at Kamuikotan, a scenic spot in Asahikawa: everyone paddles together as the raft heads down the river. Ages 12 and up.",
+      "imageAlt": "Guests making peace signs in a raft",
+      "meta": {
+        "title": "Kamuikotan Rafting | Rafting in Asahikawa, Ages 12+",
+        "description": "A 2-hour rafting trip at Kamuikotan, Asahikawa's scenic gorge, from its parking lot. Ages 12+, from 3 people. Mornings and afternoons, mid-June to late October."
+      },
+      "description": [
+        "Kamuikotan Rafting takes you down the river at Kamuikotan, a scenic spot in Asahikawa, in a raft.",
+        "Paddling in time to your guide's calls, you make your way through a gorge surrounded by unusual rocks and forest. The sense of teamwork as you ride over the waves is what makes rafting so much fun.",
+        "It's for ages 12 and up, and a great choice for groups of friends or families with older children."
+      ],
+      "features": [
+        {
+          "title": "A scenic gorge, seen from the river",
+          "body": "Experience Kamuikotan, surrounded by unusual rocks and forest, from the river itself."
+        },
+        {
+          "title": "Paddling together as one",
+          "body": "Everyone paddles together in time to your guide's calls. That feeling of working as one team is the joy of rafting."
+        },
+        {
+          "title": "Led by an experienced guide",
+          "body": "Your guide reads the river as you go and leads the trip with safety in mind."
+        }
+      ],
+      "recommendedFor": [
+        "Anyone who wants to try rafting",
+        "Friends and groups who want a lively day out",
+        "Families with children aged 12 and up",
+        "Visitors to Asahikawa who want an active day alongside sightseeing"
+      ],
+      "flow": [
+        { "step": "Book or enquire", "body": "Tell us your preferred date, time of day (morning or afternoon) and group size, by form or phone." },
+        { "step": "Details", "body": "When you book, we'll let you know the meeting time, what to wear and what to bring." },
+        { "step": "Check in", "body": "Come to the Kamuikotan parking lot." },
+        { "step": "Guide briefing", "body": "Your guide explains how to paddle, the calls to follow and key safety points." },
+        { "step": "Rafting", "body": "Paddle down the river at Kamuikotan with your guide." },
+        { "step": "Finish", "body": "The trip ends back at the Kamuikotan parking lot." }
+      ],
+      "notes": [
+        "Trips may be cancelled or changed depending on the weather and river conditions.",
+        "You will get wet. We'll tell you what to wear and bring when you book.",
+        "If you have any concerns about your health, please talk to us in advance.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Can I join if it's my first time?",
+          "answer": "Yes. Before you set off, your guide will explain how to paddle, the calls to follow and key safety points."
+        },
+        {
+          "question": "What is the minimum age?",
+          "answer": "The trip is for ages 12 and up."
+        },
+        {
+          "question": "What is the minimum group size?",
+          "answer": "Trips run with a minimum of 3 people."
+        },
+        {
+          "question": "How is it different from the Kamuikotan SUP Tour?",
+          "answer": "On the SUP Tour, each person rides their own board across the water. In rafting, everyone climbs into one large boat and paddles down the river together."
+        }
+      ],
+      "gallery": [
+        "Guests making peace signs in a raft",
+        "Guests in helmets rafting down the river",
+        "The river foaming white as it flows between rocks",
+        "The river at Kamuikotan, enclosed by rock walls",
+        "Kamuikotan's white suspension bridge and the river"
+      ]
+    },
+    "furano-rafting": {
+      "name": "Furano Rafting",
+      "area": "Minamifurano",
+      "catchcopy": "The exhilaration of rafting, on a river in Minamifurano.",
+      "summary": "Rafting on a river in Minamifurano. Paddle together over wave-filled rapids. Ages 5 and up.",
+      "imageAlt": "A raft heading down a river through white-capped waves",
+      "meta": {
+        "title": "Furano Rafting | About 3 Hours in Minamifurano, Ages 5+",
+        "description": "About 3 hours of rafting from Ochiai, Minamifurano. Ages 5+, from 2 people, with child prices. Mornings and afternoons, late April to late October."
+      },
+      "description": [
+        "Furano Rafting takes you down a river in Minamifurano in a raft.",
+        "Everyone paddles in time to the guide's calls, riding over wave-filled rapids. Pushing on through the spray is a thrill only rafting can give you.",
+        "Children can join from age 5, so it's a good choice for families too. If you'd rather take in the scenery at a gentle pace, we also offer the Furano Relax Downriver."
+      ],
+      "features": [
+        {
+          "title": "The thrill of the spray",
+          "body": "Paddle together over wave-filled rapids."
+        },
+        {
+          "title": "Families welcome, from age 5",
+          "body": "Anyone aged 5 and up can join. There's a child price for ages 5 to 11."
+        },
+        {
+          "title": "Morning or afternoon",
+          "body": "Two trips a day, so it's easy to combine with a trip to the Furano or Tomamu area."
+        }
+      ],
+      "recommendedFor": [
+        "Anyone who wants to try proper rafting",
+        "Families with children aged 5 and up",
+        "Travellers staying in the Furano or Tomamu area",
+        "Friends and groups who want a lively day out"
+      ],
+      "flow": [
+        { "step": "Book or enquire", "body": "Tell us your preferred date, time of day (morning or afternoon) and group size, by form or phone." },
+        { "step": "Details", "body": "When you book, we'll let you know the meeting time, what to wear and what to bring." },
+        { "step": "Check in", "body": "Come to the meeting point in Ochiai, Minamifurano (see the map on this page)." },
+        { "step": "Guide briefing", "body": "Your guide explains how to paddle, the calls to follow and key safety points." },
+        { "step": "Rafting", "body": "Paddle down the river in Minamifurano with your guide." },
+        { "step": "Finish", "body": "The trip ends back at the meeting point." }
+      ],
+      "notes": [
+        "Trips may be cancelled or changed depending on the weather and river conditions.",
+        "You will get wet. We'll tell you what to wear and bring when you book.",
+        "The meeting point is in Ochiai, Minamifurano, some distance from central Furano, so please allow plenty of travel time.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "How is it different from the Relax Downriver?",
+          "answer": "Furano Rafting is an active experience: everyone paddles together over wave-filled rapids. The Furano Relax Downriver is a gentle float down the river as you enjoy the scenery and the sound of the water, with pick-up and drop-off at your hotel."
+        },
+        {
+          "question": "What is the minimum age?",
+          "answer": "Children aged 5 and up can take part."
+        },
+        {
+          "question": "What is the minimum group size?",
+          "answer": "Trips run with a minimum of 2 people."
+        },
+        {
+          "question": "Where do we meet?",
+          "answer": "We meet at 194-2 Ochiai, Minamifurano-cho, Sorachi-gun, Hokkaido, and the trip finishes at the same place. You'll find a map on this page."
+        }
+      ],
+      "gallery": [
+        "A raft heading down a river through white-capped waves",
+        "A group rafting down a river through the forest"
+      ]
+    },
+    "organize-river": {
+      "name": "Organize River",
+      "area": "Furano, Biei, Asahikawa and beyond",
+      "catchcopy": "A private river journey, just for your group.",
+      "summary": "A private river tour with pick-up and drop-off at your hotel. Head down Hokkaido's rivers by packraft and other boats. Half day or full day, available from 1 person.",
+      "imageAlt": "Packrafts and guests lined up on a riverbank in an autumn forest",
+      "meta": {
+        "title": "Organize River | Private River Tour with Hotel Pick-up",
+        "description": "Private river tours by packraft and more, with hotel pick-up and drop-off. Half or full day (about 2.5 or 7 hours), from 1 person, ages 0+. Late April to late October."
+      },
+      "description": [
+        "Organize River is a private river tour that starts with pick-up at your hotel.",
+        "You'll head down Hokkaido's rivers by packraft (a small, portable boat) and other boats. With no other guests joining you, your family or friends can enjoy the river entirely at your own pace.",
+        "Choose from half-day and full-day plans. We'll suggest what to do based on your wishes and the river conditions on the day."
+      ],
+      "features": [
+        {
+          "title": "Private, for your group only",
+          "body": "You'll never share the tour with other guests. Available from 1 person."
+        },
+        {
+          "title": "Hotel pick-up and drop-off",
+          "body": "We pick you up at your hotel and take you back afterwards."
+        },
+        {
+          "title": "Half day or full day",
+          "body": "Choose a half-day or full-day plan to suit your itinerary."
+        }
+      ],
+      "recommendedFor": [
+        "Families and friends who want a river experience just for themselves",
+        "Anyone who'd like to try going downriver in a packraft",
+        "Anyone who wants a full day to really savour Hokkaido's rivers",
+        "Travellers looking for a tour with hotel pick-up and drop-off"
+      ],
+      "flow": [
+        { "step": "Enquire or book", "body": "Tell us your preferred date, plan (half day or full day), group size and where you're staying." },
+        { "step": "Plan proposal", "body": "We'll suggest what to do based on your wishes and the river conditions on the day." },
+        { "step": "Hotel pick-up", "body": "We pick you up at your hotel." },
+        { "step": "River tour", "body": "Head down a Hokkaido river with your guide." },
+        { "step": "Back to your hotel", "body": "Afterwards, we drop you back at your hotel." }
+      ],
+      "notes": [
+        "Trips may be cancelled or changed depending on the weather and river conditions.",
+        "Please check which areas we can pick up from when you book.",
+        "If you have any concerns about your health, please talk to us in advance.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Can I book on my own?",
+          "answer": "Yes. Organize River is a private tour available from just 1 person."
+        },
+        {
+          "question": "Can young children take part?",
+          "answer": "There's no age limit, so children can join from age 0. We'll tailor the plan to their ages, so please include them when you book."
+        },
+        {
+          "question": "Which river will we go down?",
+          "answer": "Your guide will suggest a plan based on your wishes and the river conditions on the day."
+        }
+      ],
+      "gallery": [
+        "Packrafts and guests lined up on a riverbank in an autumn forest",
+        "Guests packrafting down a river under a blue sky",
+        "Guests packrafting along a river in autumn"
+      ]
+    },
+    "organize-lake": {
+      "name": "Organize Lake",
+      "area": "Furano, Biei, Asahikawa and beyond",
+      "catchcopy": "Quiet time on a lake, just for your group.",
+      "summary": "A private lake tour with pick-up and drop-off at your hotel. Paddle out onto calm water by canoe, kayak and more. Half day or full day, available from 1 person.",
+      "imageAlt": "A group enjoying boats, canoes and kayaks on a lake",
+      "meta": {
+        "title": "Organize Lake | Private Lake Canoe Tour with Hotel Pick-up",
+        "description": "Private lake tours by canoe, kayak and more, with hotel pick-up and drop-off. Half or full day (about 2.5 or 7 hours), from 1 person, ages 0+. Mid-June to mid-September."
+      },
+      "description": [
+        "Organize Lake is a private lake tour that starts with pick-up at your hotel.",
+        "On a quiet lake surrounded by forest, you'll paddle out by canoe, kayak and more. Taking it easy on the lakeshore is part of the fun, too.",
+        "The tour runs in the summer season. Choose from half-day and full-day plans."
+      ],
+      "features": [
+        {
+          "title": "Private, for your group only",
+          "body": "You'll never share the tour with other guests. Available from 1 person."
+        },
+        {
+          "title": "Hotel pick-up and drop-off",
+          "body": "We pick you up at your hotel and take you back afterwards."
+        },
+        {
+          "title": "Relax on calm water",
+          "body": "With no current, a lake is also a good choice for families with young children and anyone who wants to take it slow on the water."
+        }
+      ],
+      "recommendedFor": [
+        "Families and friends who want time on a lake just for themselves",
+        "Anyone who'd like to try a canoe or kayak",
+        "Families with young children looking for calm water",
+        "Travellers looking for a tour with hotel pick-up and drop-off"
+      ],
+      "flow": [
+        { "step": "Enquire or book", "body": "Tell us your preferred date, plan (half day or full day), group size and where you're staying." },
+        { "step": "Plan proposal", "body": "We'll suggest what to do based on your wishes and the weather on the day." },
+        { "step": "Hotel pick-up", "body": "We pick you up at your hotel." },
+        { "step": "Lake tour", "body": "Enjoy time on the lake and along the shore with your guide." },
+        { "step": "Back to your hotel", "body": "Afterwards, we drop you back at your hotel." }
+      ],
+      "notes": [
+        "Trips may be cancelled or changed depending on the weather and lake conditions.",
+        "Please check which areas we can pick up from when you book.",
+        "If you have any concerns about your health, please talk to us in advance.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Can I book on my own?",
+          "answer": "Yes. Organize Lake is a private tour available from just 1 person."
+        },
+        {
+          "question": "Can young children take part?",
+          "answer": "There's no age limit, so children can join from age 0. We'll tailor the plan to their ages, so please include them when you book."
+        },
+        {
+          "question": "Which lake will we visit?",
+          "answer": "Your guide will suggest a plan based on your wishes and the weather on the day."
+        }
+      ],
+      "gallery": [
+        "A group enjoying boats, canoes and kayaks on a lake",
+        "A canoe gliding across a still lake",
+        "Canoes resting on the lakeshore in the sunshine",
+        "The sun setting over a lake",
+        "Taking a break in the shade of trees by the lake"
+      ]
+    },
+    "organize-tour": {
+      "name": "Organize Tour",
+      "area": "Furano, Biei and beyond",
+      "catchcopy": "A private day touring the spectacular views of Furano and Biei.",
+      "summary": "A private full-day tour of the flower fields and scenic spots of Furano and Biei, with pick-up and drop-off at your hotel. We'll suggest destinations to suit your wishes. Available from 1 person.",
+      "imageAlt": "Kochia in autumn colour, with flower fields spreading over the hills",
+      "meta": {
+        "title": "Organize Tour | Private Day Tour of Furano and Biei",
+        "description": "Private 7-hour day tours of Furano and Biei, from the Blue Pond to hillside flowers and lavender, with hotel pick-up. From 1 person, ages 0+. Late April to late October."
+      },
+      "description": [
+        "The Organize Tour is a private full-day tour of the Furano and Biei area that starts with pick-up at your hotel.",
+        "With your guide, you'll visit the highlights of the season, such as the Blue Pond (Aoiike) in Biei, hillsides covered in flowers, summer lavender fields and the Bogakudai observation point on Mt. Tokachi. We'll suggest destinations based on your wishes, the season and the weather.",
+        "Pick-up and drop-off at your hotel are included, so you don't need a rental car. Places you want to photograph, places you'd like to linger: just tell us what you have in mind."
+      ],
+      "features": [
+        {
+          "title": "A made-to-order itinerary",
+          "body": "Flower fields, scenic viewpoints, forest walks: we'll plan your day around what you'd like to do."
+        },
+        {
+          "title": "Hotel pick-up and drop-off, private for your group",
+          "body": "We pick you up where you're staying, and the whole day is just for your group. Available from 1 person."
+        },
+        {
+          "title": "Guided by a local",
+          "body": "A guide based in Furano shows you the highlights, adapting to the season and the weather."
+        }
+      ],
+      "recommendedFor": [
+        "Anyone who wants to see the best of Furano and Biei efficiently",
+        "Travellers getting around without a rental car",
+        "Families with young children, or three generations travelling together",
+        "Anyone who wants to enjoy the views and take photos at their own pace"
+      ],
+      "flow": [
+        { "step": "Enquire or book", "body": "Tell us your preferred date, group size and where you're staying, plus where you'd like to go and what you'd like to do." },
+        { "step": "Itinerary proposal", "body": "We'll suggest an itinerary for the day to suit the season and the weather." },
+        { "step": "Hotel pick-up", "body": "We pick you up at your hotel." },
+        { "step": "Day tour", "body": "Tour the highlights of Furano and Biei with your guide." },
+        { "step": "Back to your hotel", "body": "Afterwards, we drop you back at your hotel." }
+      ],
+      "notes": [
+        "Destinations and activities may change depending on the weather.",
+        "Please check which areas we can pick up from when you book.",
+        "If you have any concerns about your health, please talk to us in advance.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Can I book on my own?",
+          "answer": "Yes. The Organize Tour is a private tour available from just 1 person."
+        },
+        {
+          "question": "Can I choose where we go?",
+          "answer": "Yes. Tell us where you'd like to go and what you'd like to do, and we'll suggest an itinerary to suit the season and the weather."
+        },
+        {
+          "question": "Can young children take part?",
+          "answer": "There's no age limit, so children can join from age 0. We'll tailor the itinerary to their ages, so please include them when you book."
+        },
+        {
+          "question": "Is there a half-day plan?",
+          "answer": "The Organize Tour is a full-day plan. If you'd prefer a half day, take a look at the half-day plans for Organize River and Organize Lake."
+        }
+      ],
+      "gallery": [
+        "Kochia in autumn colour, with flower fields spreading over the hills",
+        "The Blue Pond (Aoiike) in Biei",
+        "A child gazing at flower fields covering the hillside",
+        "Lavender fields with the Tokachi mountain range behind",
+        "The stone monument at the Bogakudai observation point on Mt. Tokachi",
+        "A volcano venting steam, with a pond at its foot",
+        "A view of the mountains from the highlands",
+        "A forest path past log cabins with their lights on",
+        "Ripe bunches of grapes",
+        "A campsite in the forest",
+        "A field carpeted with yellow canola flowers",
+        "A child crouching in front of a hillside flower field",
+        "A bridge running straight through the forest",
+        "The FURANO lettering monument and the town of Furano"
+      ]
+    },
+    "sup-rental": {
+      "name": "SUP Rental",
+      "area": "Furano",
+      "catchcopy": "SUP sets, delivered to your chosen spot in Furano.",
+      "summary": "A full-day rental set of SUP board, paddle and life jacket. We deliver it to a location you specify within the Furano area and collect it after use.",
+      "imageAlt": "SUP boards and canoes loaded on a trailer by a lake",
+      "meta": {
+        "title": "SUP Rental | Full-Day Rental with Delivery in Furano",
+        "description": "Full-day SUP sets (board, paddle, life jacket), delivered to a spot you choose in the Furano area and collected afterwards. From 3 boards, late April to late October."
+      },
+      "description": [
+        "SUP Rental is a full-day rental service for a set of SUP (stand-up paddleboard), paddle and life jacket.",
+        "We deliver it to a location you specify within the Furano area and come back to collect it after use. With no heavy gear to haul around, you and your friends can enjoy a relaxed day of SUP.",
+        "If you're new to SUP or would like to paddle with a guide, consider the Kamuikotan SUP Tour."
+      ],
+      "features": [
+        {
+          "title": "Delivery and collection included",
+          "body": "We deliver the SUP set to a location you specify within the Furano area, and collect it again once you're done."
+        },
+        {
+          "title": "Everything you need, in one set",
+          "body": "Each set includes a SUP board, paddle and life jacket."
+        },
+        {
+          "title": "A whole day on the water",
+          "body": "A full-day rental, from morning until late afternoon. Enjoy time on the water at your own pace."
+        }
+      ],
+      "recommendedFor": [
+        "People with SUP experience who want to paddle on their own",
+        "Groups planning a day of fun on the water",
+        "Anyone staying in the Furano area with plans to spend time on the water"
+      ],
+      "flow": [
+        { "step": "Enquire or book", "body": "Tell us your preferred date, the number of boards and where to deliver them." },
+        { "step": "Details", "body": "We'll let you know the delivery time and how the handover works." },
+        { "step": "Delivery", "body": "We deliver the SUP sets to your chosen location." },
+        { "step": "On the water", "body": "Wear your life jacket and enjoy the water safely." },
+        { "step": "Collection", "body": "When you're finished, we collect the SUP sets." }
+      ],
+      "notes": [
+        "Always wear a life jacket when using the equipment.",
+        "We may be unable to rent out equipment depending on the weather and water conditions.",
+        "Please follow the rules of the place where you paddle. Check which areas and locations we can deliver to when you book.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "What is the minimum number of boards?",
+          "answer": "Rentals start from 3 boards."
+        },
+        {
+          "question": "Where can you deliver to?",
+          "answer": "We deliver to a location you specify within the Furano area. Please tell us where to deliver when you book."
+        },
+        {
+          "question": "Can I rent if I've never done SUP before?",
+          "answer": "If it's your first time, consider the Kamuikotan SUP Tour, where you paddle with a guide. For questions about renting, please get in touch."
+        }
+      ],
+      "gallery": [
+        "SUP boards and canoes loaded on a trailer by a lake"
+      ]
+    },
+    "snowshoe-tour": {
+      "name": "Snowshoe Tour",
+      "area": "Furano",
+      "catchcopy": "Walk through snowy forest and feel Furano's winter firsthand.",
+      "summary": "A guided walk on snowshoes through snowy forest and open snowfields, with pick-up and drop-off at your hotel. A winter experience for ages 10 and up.",
+      "imageAlt": "A guest lying in deep snow, laughing",
+      "meta": {
+        "title": "Snowshoe Tour | Furano Winter Activity with Hotel Pick-up",
+        "description": "A 2-hour guided snowshoe tour in Furano's snowy forest, with hotel pick-up and drop-off. Ages 10+, from 3 people. Mornings and afternoons, mid-December to mid-March."
+      },
+      "description": [
+        "The Snowshoe Tour is a guided walk through Furano's winter nature on snowshoes, footwear designed for walking on snow.",
+        "Tread through soft, fluffy snow and take in snow-covered trees and the mountains beyond the snowfields. Even if you don't ski or snowboard, you can enjoy Hokkaido's winter nature with all your senses.",
+        "With pick-up and drop-off at your hotel, it's easy to join even if you're not used to driving on winter roads."
+      ],
+      "features": [
+        {
+          "title": "Winter nature, no skiing required",
+          "body": "Snowshoes are made for walking on snow, so you can explore winter forest and snowfields without any special skills."
+        },
+        {
+          "title": "Hotel pick-up and drop-off",
+          "body": "No need to drive on winter roads. We pick you up at your hotel and take you back afterwards."
+        },
+        {
+          "title": "Winter in Furano, with a guide",
+          "body": "Your guide shows you the highlights of the snowy forest and scenery you can only see in winter."
+        }
+      ],
+      "recommendedFor": [
+        "Anyone looking for a winter experience other than skiing or snowboarding",
+        "Anyone who wants to enjoy Furano's nature in winter",
+        "Anyone uneasy about driving on winter roads",
+        "Families with children aged 10 and up"
+      ],
+      "flow": [
+        { "step": "Book or enquire", "body": "Tell us your preferred date, time of day (morning or afternoon) and group size, by form or phone." },
+        { "step": "Details", "body": "When you book, we'll let you know your pick-up time, what warm clothing to wear and what to bring." },
+        { "step": "Hotel pick-up", "body": "We pick you up at your hotel." },
+        { "step": "Guide briefing", "body": "Your guide shows you how to put on your snowshoes and how to walk in them." },
+        { "step": "Snowshoe tour", "body": "Walk through snowy forest and across snowfields with your guide." },
+        { "step": "Back to your hotel", "body": "Afterwards, we drop you back at your hotel." }
+      ],
+      "notes": [
+        "Tours may be cancelled or changed depending on the weather and snow conditions.",
+        "This is an outdoor winter activity. We'll tell you what warm clothing to wear and what to bring when you book.",
+        "Please check which areas we can pick up from when you book.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Is it OK if I've never used snowshoes?",
+          "answer": "Yes. Before you set off, your guide will show you how to put them on and how to walk."
+        },
+        {
+          "question": "What is the minimum age?",
+          "answer": "Anyone aged 10 and up can take part."
+        },
+        {
+          "question": "What is the minimum group size?",
+          "answer": "Tours run with a minimum of 3 people."
+        },
+        {
+          "question": "What should I wear and bring?",
+          "answer": "We'll tell you what warm clothing to wear and what to bring when you book."
+        }
+      ],
+      "gallery": [
+        "A guest lying in deep snow, laughing",
+        "Mountains beyond snow-covered trees",
+        "The snow-covered FURANO lettering monument and a tree stump",
+        "Frost-covered branches lit by the morning sun",
+        "A guest making a little sculpture out of snow"
+      ]
+    },
+    "organize-winter": {
+      "name": "Organize Winter",
+      "area": "Furano, Biei and beyond",
+      "catchcopy": "Snowy Hokkaido, on a private tour.",
+      "summary": "A private winter tour with pick-up and drop-off at your hotel. We'll show you Furano and Biei in winter, including spectacular snowy viewpoints, to suit your wishes. Half day or full day, available from 1 person.",
+      "imageAlt": "A snowboarder on a snowy mountain looking out over the Furano basin and the Tokachi mountain range",
+      "meta": {
+        "title": "Organize Winter | Private Winter Tour of Furano and Biei",
+        "description": "A private tour of Furano and Biei's snowy viewpoints and more, with hotel pick-up and drop-off. Half or full day, from 1 person, ages 0+. Mid-December to mid-March."
+      },
+      "description": [
+        "Organize Winter is a private winter tour that starts with pick-up at your hotel.",
+        "The Tokachi mountain range rising beyond the snowfields, trees coated in rime ice, farmland wrapped in snow. We'll show you the scenery only Furano and Biei can offer in winter, tailored to your wishes.",
+        "Leave the winter driving to your guide. Choose from half-day and full-day plans."
+      ],
+      "features": [
+        {
+          "title": "Private, for your group only",
+          "body": "You'll never share the tour with other guests. Available from 1 person, and children can join from age 0."
+        },
+        {
+          "title": "Hotel pick-up and drop-off: no worries about winter roads",
+          "body": "We pick you up at your hotel and take you back afterwards."
+        },
+        {
+          "title": "Half day or full day",
+          "body": "Choose a half-day or full-day plan to suit your itinerary."
+        }
+      ],
+      "recommendedFor": [
+        "Anyone who wants to see Hokkaido's spectacular winter scenery",
+        "Anyone uneasy about driving on winter roads",
+        "Families and friends who want a winter trip just for themselves",
+        "Anyone looking for ways to enjoy winter besides skiing"
+      ],
+      "flow": [
+        { "step": "Enquire or book", "body": "Tell us your preferred date, plan (half day or full day), group size and where you're staying." },
+        { "step": "Plan proposal", "body": "We'll suggest what to do based on your wishes and the weather and road conditions on the day." },
+        { "step": "Hotel pick-up", "body": "We pick you up at your hotel." },
+        { "step": "Winter tour", "body": "Enjoy Furano and Biei in winter with your guide." },
+        { "step": "Back to your hotel", "body": "Afterwards, we drop you back at your hotel." }
+      ],
+      "notes": [
+        "Destinations and activities may change depending on the weather, road conditions and snow.",
+        "The tour includes time outdoors in winter. We'll tell you what warm clothing to wear when you book.",
+        "Please check which areas we can pick up from when you book.",
+        "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
+      ],
+      "faq": [
+        {
+          "question": "Can I book on my own?",
+          "answer": "Yes. Organize Winter is a private tour available from just 1 person."
+        },
+        {
+          "question": "Where will we go?",
+          "answer": "We'll suggest an itinerary based on your wishes and the weather and road conditions on the day, taking in places such as spectacular snowy viewpoints."
+        },
+        {
+          "question": "Can young children take part?",
+          "answer": "There's no age limit, so children can join from age 0. We'll tailor the plan to their ages, so please include them when you book."
+        }
+      ],
+      "gallery": [
+        "A snowboarder on a snowy mountain looking out over the Furano basin and the Tokachi mountain range",
+        "Rime-coated trees against a blue sky",
+        "A snowy riverbank lit by the morning sun",
+        "A vineyard in the snowfields, with the Tokachi mountain range",
+        "The snowy town of Furano seen from a ski lift"
       ]
     }
   },
@@ -608,26 +1319,26 @@
     "introTitle": "Nature experiences you can have in Furano",
     "introParagraphs": [
       "Furano is best known for lavender fields and ski slopes. But there is more to it than that. A short drive from town, rivers and forest open into the kind of scenery Hokkaido is made of.",
-      "A downriver trip, drifting along in a boat, brings you to a Furano that sightseeing on foot never reaches. The sound of the water, the smell of the forest, the breeze across the surface, and the view changing as you move: none of it exists anywhere but on the river.",
-      "HOO is based in Furano and runs river activities here as well as in the Biei and Asahikawa areas."
+      "Above all, a downriver trip, drifting along in a boat, brings you to a Furano that sightseeing on foot never reaches. The sound of the water, the smell of the forest, the breeze across the surface, and the view changing as you move: none of it exists anywhere but on the river.",
+      "HOO is based in Furano and runs river activities, rafting, SUP, winter snowshoeing and more, here as well as in Biei, Asahikawa (Kamuikotan) and Minamifurano."
     ],
     "styleEyebrow": "How to Choose",
     "styleTitle": "Choosing a Furano activity by who you're with",
     "styleCards": [
       {
         "title": "With family",
-        "body": "Because the Relax Downriver is about taking your time rather than chasing speed, families ask about it often. Whether children can join depends on their age, so please talk to us first.",
+        "body": "The Furano Relax Downriver, a gentle float down the river, is open to all ages from 0, and children aged 1 and under go free. With pick-up and drop-off at your hotel, it's easy to plan even with little ones.",
         "linkLabel": "Furano Relax Downriver"
       },
       {
         "title": "With friends or a partner",
-        "body": "The view of Furano from the water is the kind of memory a photo can't quite hold. Bookings start from 2 people, so it works well for a trip for two.",
-        "linkLabel": "Furano Relax Downriver"
+        "body": "Furano Rafting, riding over the waves through the spray, runs with as few as 2 people. It fits easily into a trip for two, and families with children aged 5 and up can join too.",
+        "linkLabel": "Furano Rafting"
       },
       {
         "title": "With a group",
-        "body": "Our Organize Program is built around your goals, whether that's training or an event. Tell us the numbers and the purpose, and we'll propose something.",
-        "linkLabel": "Organize Program"
+        "body": "Our private Organize tours include pick-up and drop-off at your hotel. Choose from river, lake, sightseeing and winter plans. For large groups, get in touch and let us know your numbers.",
+        "linkLabel": "Organize (private)"
       }
     ],
     "whyTitle": "Why a river activity, and why now",
@@ -641,12 +1352,13 @@
     "checkPoints": [
       "Whether a trip runs depends on the weather and river conditions, so make sure we can reach you as your travel dates approach",
       "What to wear and bring changes with the season. Follow the details we send when you book",
-      "Meeting points vary by activity. Check yours, and how you'll get there, in advance",
+      "Meeting points vary by activity. Check in advance whether your plan includes hotel pick-up or you meet us on site",
+      "Age ranges and minimum group sizes vary by activity. Check them if you're bringing children or travelling in a small group",
       "If you have any concerns about your health, talk to us before you book"
     ],
     "recommendedEyebrow": "Recommended",
     "recommendedTitle": "Start with this one",
-    "recommendedLead": "Our flagship program is the Furano Relax Downriver, and we run trips in the Biei and Asahikawa areas too.",
+    "recommendedLead": "Alongside our flagship Furano Relax Downriver, we run rafting in Minamifurano, snowshoeing in winter and private Organize tours.",
     "guideEyebrow": "Guide & Safety",
     "guideTitle": "Our guide, and how we think about safety",
     "guideBody": "Shota Kose, HOO's representative, has more than 20 years as an outdoor guide. He is a Hokkaido Governor-certified Outdoor Guide (Rafting / Canoe) and holds Rescue3 SRT-1 and Advanced First Aid certification, with guiding experience on rivers across Japan. Whether a trip runs is decided on the day, based on the weather and the state of the river, and we would rather not run than push it.",
@@ -656,58 +1368,63 @@
     "faqTitle": "Questions about activities in Furano",
     "faq": [
       {
-        "question": "Do I need to book in advance?",
+        "question": "Do I need to book Furano activities in advance?",
         "answer": "Yes, all HOO activities require advance booking. Once you know your date, contact us by form or phone as early as you can."
       },
       {
         "question": "How do I fit this into my Furano itinerary?",
-        "answer": "We share the duration and meeting point when you book, so if your plans are already set, send them along with your enquiry and we'll suggest a time that works."
+        "answer": "The Furano Relax Downriver runs twice a day, morning and afternoon, and takes about 2 hours. With pick-up and drop-off at your hotel, it's easy to fit in before or after sightseeing. We can also suggest the session that best suits your plans, so just ask."
       },
       {
         "question": "Can I take part outside summer?",
-        "answer": "The season depends on the state of the river. Once you know when you'd like to come, check with us by form or phone."
+        "answer": "Yes. In winter (mid-December to mid-March), we run the Snowshoe Tour and Organize Winter, a private tour of Furano and Biei in winter. River and lake activities mainly run from the end of April to the end of October (dates vary by activity)."
       },
       {
         "question": "Are any activities suitable for children?",
-        "answer": "The age range depends on the activity and the river conditions on the day. Contact us in advance with your children's ages and we'll let you know."
+        "answer": "Yes. The Furano Relax Downriver is open to all ages from 0, and children aged 1 and under go free. Age ranges vary by activity, so please check each activity's page."
+      },
+      {
+        "question": "Can I join without a car?",
+        "answer": "The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel. Please check which areas we can pick up from when you book."
       }
     ],
-    "ctaTitle": "See Furano from the river.\nWe'll take you there."
+    "ctaTitle": "See Furano from the river.\nWe'll take you there.",
+    "moreLink": "See all activities, including Biei and Asahikawa (Kamuikotan)"
   },
 
   "furanoRafting": {
     "eyebrow": "Furano Rafting Guide",
     "title": "Looking for rafting or\na river experience in Furano",
-    "lead": "If you searched for \"Furano rafting\" and landed here, this page is for you. Here's an honest look at the choices, and at what HOO actually runs on the rivers of Furano.",
+    "lead": "If you searched for \"Furano rafting\" and landed here, this page is for you. Here's an honest look at how to choose, and at the two river experiences HOO runs in Furano.",
     "introTitle": "What to know before you pick a river trip in Furano",
     "introParagraphs": [
       "\"Rafting\" is used loosely for almost any trip that takes a boat down a river, but the experiences behind the word are very different. Some run white water for the thrill of it. Others move gently, and are about the scenery and the life around the water.",
-      "What HOO runs in Furano is closer to the second kind: a program we call the Relax Downriver. It isn't a white-water run. You ride the current and take in the nature of Furano at an easy pace, which makes it a comfortable first time on a river.",
-      "As you read on, it helps to keep asking yourself what kind of day you actually want."
+      "HOO offers both: Furano Rafting, where everyone paddles together over wave-filled rapids in Minamifurano, and the Furano Relax Downriver, a gentle float down the rivers of Furano.",
+      "Which one suits you depends on the kind of time you want and the ages of the people you're travelling with. Read on as we sort out the differences."
     ],
     "compareEyebrow": "How to Compare",
     "compareTitle": "What to look at when comparing river trips",
     "comparePoints": [
       {
         "title": "Check what kind of trip it is",
-        "body": "River trips range from ones built around the rapids to ones built around the view. Deciding what kind of time you want first makes everything else easier."
+        "body": "River trips range from ones built around the thrill of riding the waves to ones built around taking in the view. Deciding what kind of time you want first makes choosing easier."
       },
       {
         "title": "Check the area and the meeting point",
-        "body": "Even within \"the Furano area\", operators use different rivers and different meeting points. Check yours against your itinerary and how you'll travel."
+        "body": "Even among \"Furano\" experiences, meeting points differ. For Furano Rafting you meet on site in Ochiai, Minamifurano, while the Furano Relax Downriver includes pick-up and drop-off at your hotel."
       },
       {
         "title": "Check who can take part",
-        "body": "Age limits and group size requirements vary. If you're bringing children or a large group, ask before you book."
+        "body": "Age and group size requirements vary by experience. For example, Furano Rafting is for ages 5 and up and runs from 2 people, while the Furano Relax Downriver is open from age 0 and runs from 3 people."
       },
       {
         "title": "Check the guide's experience and qualifications",
         "body": "When nature sets the terms, a guide's experience, qualifications and attitude to safety are worth knowing about."
       }
     ],
-    "programEyebrow": "Our Program",
-    "programTitle": "The Furano Relax Downriver",
-    "programLead": "A river activity that takes you gently down the rivers of Furano, with a guide alongside you.",
+    "programEyebrow": "Our Programs",
+    "programTitle": "HOO's river experiences in Furano",
+    "programLead": "For the thrill of riding the waves, choose Furano Rafting. To take in the scenery at a gentle pace, choose the Furano Relax Downriver.",
     "beforeEyebrow": "Before You Go",
     "beforeTitle": "What to sort out before your first trip",
     "beforeCards": [
@@ -735,8 +1452,12 @@
     "faqTitle": "Questions about river trips in Furano",
     "faq": [
       {
-        "question": "How is the Relax Downriver different from rafting?",
-        "answer": "\"Rafting\" tends to be used as a catch-all for going down a river in a boat. HOO's Relax Downriver isn't about chasing thrills: it's a downriver trip built around taking the current and the scenery slowly. If you're not sure it matches what you have in mind, just ask us."
+        "question": "How is Furano Rafting different from the Relax Downriver?",
+        "answer": "Furano Rafting is an active experience of about 3 hours in Minamifurano, where everyone paddles together over wave-filled rapids. The Furano Relax Downriver is a program of about 2 hours that floats gently down the rivers of Furano while you enjoy the scenery and the sound of the water, with pick-up and drop-off at your hotel. If you're not sure which matches what you have in mind, just ask us."
+      },
+      {
+        "question": "Which one can children join?",
+        "answer": "Furano Rafting is for ages 5 and up, while the Furano Relax Downriver is open from age 0. If you're bringing young children, we recommend the Relax Downriver."
       },
       {
         "question": "Can I join if I can't swim?",
@@ -753,10 +1474,12 @@
     ],
     "relatedLinks": [
       "How to choose an outdoor experience in Furano",
+      "Furano Rafting in detail",
       "Furano Relax Downriver in detail",
       "All frequently asked questions"
     ],
-    "ctaTitle": "Your first downriver trip,\non the rivers of Furano."
+    "ctaTitle": "On the rivers of Furano,\nfind the experience that suits you.",
+    "programMore": "We also run {link} through a river gorge in Asahikawa."
   },
 
   "about": {
@@ -826,8 +1549,8 @@
         "body": "We also work on river management, conservation and local development, alongside the communities we belong to."
       },
       {
-        "title": "Small groups welcome",
-        "body": "Bookings start from 2 people. If you're unsure about numbers or content, just ask."
+        "title": "Private bookings from 1 person",
+        "body": "With Organize (private), you can book from just 1 person. If you're unsure about numbers or what to do, just ask."
       }
     ]
   },
@@ -916,7 +1639,7 @@
     "guideLink": "Read our representative's profile",
     "flowEyebrow": "Flow",
     "flowTitle": "From booking to the day itself",
-    "flowLead": "Meeting points, what to bring, how long it takes: we cover all of it when you book.",
+    "flowLead": "You'll find the duration and meeting point on each activity's page. We'll share what to bring and other details when you book.",
     "ctaTitle": "If something's on your mind,\nask before you book.",
     "ctaLead": "Health, age, not being a confident swimmer: whatever it is, talk to us in advance.",
     "commitments": [
@@ -969,27 +1692,39 @@
       },
       {
         "question": "What is the minimum group size?",
-        "answer": "Every activity starts from 2 people. If you'd like to join alone or bring a large group, please talk to us in advance."
+        "answer": "It varies by activity. The Relax Downriver trips, Kamuikotan Rafting and the Snowshoe Tour run from 3 people; Furano Rafting and the Kamuikotan SUP Tour from 2 people; and Organize (private) tours from 1 person. SUP Rental starts from 3 boards."
+      },
+      {
+        "question": "Can children take part?",
+        "answer": "Age ranges vary by activity. The Furano Relax Downriver and Organize (private) tours are open from age 0; the Biei River and Asahikawa Relax Downriver trips from age 4; Furano Rafting from age 5; the Kamuikotan SUP Tour and the Snowshoe Tour from age 10; and Kamuikotan Rafting from age 12."
+      },
+      {
+        "question": "Are there child prices?",
+        "answer": "For activities priced per person, ages 12 and up pay the adult price and ages 2 to 11 the child price (on some activities, the child price is the same as the adult price). On the Furano Relax Downriver, children aged 1 and under go free. Organize (private) tours are priced per group."
       },
       {
         "question": "What should I wear and bring?",
-        "answer": "What to wear and bring changes with the season and the state of the river, so we send full details when you book. Ask us in advance if you'd like to know sooner."
+        "answer": "What to wear and bring changes with the season and the state of the river on the day, so we send full details when you book. If anything is unclear, ask us in advance."
       },
       {
         "question": "What happens if it rains?",
         "answer": "Your guide decides whether to run the trip, and in what form, based on the weather and river conditions. If we have to cancel or change anything, we'll contact you in advance, so get in touch even if the forecast looks doubtful."
       },
       {
-        "question": "Can children take part?",
-        "answer": "The age range depends on the activity and the river conditions on the day. If you'd like to bring children, contact us in advance and let us know their ages."
+        "question": "Where do we meet?",
+        "answer": "It depends on the activity. The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel. For the Biei River and Asahikawa Relax Downriver trips, the Kamuikotan SUP Tour, Kamuikotan Rafting and Furano Rafting, you meet and finish on site, and there's a map on each activity's page. For the SUP Rental, we deliver the equipment to a location you specify in the Furano area."
       },
       {
-        "question": "Where do we meet?",
-        "answer": "We give you the meeting point in full when you book. It differs by area (Furano, Biei or Asahikawa), so check the details for your booking."
+        "question": "Can you pick us up from our hotel?",
+        "answer": "The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel. Please check which areas we can pick up from when you book."
+      },
+      {
+        "question": "Can I take part in winter?",
+        "answer": "Yes. From mid-December to mid-March, we run the Snowshoe Tour and Organize Winter, a private tour of Furano and Biei in winter."
       },
       {
         "question": "How far in advance should I book?",
-        "answer": "All activities require advance booking. Once your date is set, contact us as early as you can. For last-minute bookings, call us and we'll see what's possible."
+        "answer": "All activities require advance booking. Once your date is set, contact us as early as you can. For last-minute bookings, call us first and we'll see what's possible."
       },
       {
         "question": "What is your cancellation policy?",
@@ -997,11 +1732,11 @@
       },
       {
         "question": "Do you take group bookings?",
-        "answer": "Yes. For groups we offer the Organize Program, built around your purpose. Tell us the number of people and what you have in mind, and we'll propose something."
+        "answer": "Yes. If you'd like an experience just for your family or friends, we offer private Organize tours with pick-up and drop-off at your hotel. For large groups, tell us the number of people and your purpose, and we'll suggest a plan."
       },
       {
         "question": "Do you run trips outside Furano?",
-        "answer": "Yes. As well as Furano, we run Relax Downriver trips in the Biei and Asahikawa areas. Choose whichever fits your itinerary."
+        "answer": "Yes. We run Relax Downriver trips in Biei and Asahikawa, a SUP tour and rafting at Kamuikotan in Asahikawa, and Furano Rafting in Minamifurano."
       }
     ]
   },
@@ -1011,8 +1746,8 @@
     "title": "Access & business information",
     "lead": "Where HOO is based, and how to reach us.",
     "meetingTitle": "About meeting points",
-    "meetingBody": "The meeting point for each activity depends on the area (Furano, Biei or Asahikawa) and on the river conditions that day. It may not be the address above, so please check the details we send when you book. If anything is unclear, call us or use the contact form.",
-    "mapNote": "Meeting points differ by area. We'll give you full details when you book.",
+    "meetingBody": "Meeting points vary by activity. The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel, and for the SUP Rental we deliver the equipment to a location you specify; for all other activities, you meet us on site. Meeting points and maps are listed on each activity's page. The address above is our organisation's base, not a meeting point. If anything is unclear, call us or use the contact form.",
+    "mapNote": "Each activity's meeting point is shown with a map on its activity page.",
     "mapButton": "Open in Google Maps",
     "mapAria": "Map showing Hokkaido Outdoor Organization"
   },
@@ -1078,7 +1813,8 @@
       "network": "Your message could not be sent. Check your connection and try again.",
       "notConfigured": "Email sending is not configured (RESEND_API_KEY is not set). Please check .env.local.",
       "badRequest": "The request was not in a valid format."
-    }
+    },
+    "optionLabel": "{name} — {price}"
   },
 
   "contact": {
@@ -1202,9 +1938,9 @@
         "title": "Booking",
         "items": [
           "All activities require advance booking.",
-          "Every activity starts from 2 people. For other group sizes, please talk to us.",
+          "The minimum group size varies by activity. Please check each activity's page.",
           "Sending the form does not confirm your booking. We'll review your request, and your place is confirmed once we contact you.",
-          "The meeting point, what to bring and how the day runs are all explained when you book."
+          "Meeting points are listed on each activity's page. We'll explain what to bring and how the day runs when you book."
         ]
       },
       {
@@ -1227,7 +1963,7 @@
           "For everyone's safety, please follow your guide's instructions throughout.",
           "If you are feeling unwell, or have a medical condition or any concern about your health, talk to us before you book.",
           "We may decline participation if you have been drinking.",
-          "Age ranges and participation requirements vary by activity and by the conditions on the day. Please contact us in advance."
+          "Each activity has its own age range. If you have any concerns about participation requirements, please contact us in advance."
         ]
       }
     ],

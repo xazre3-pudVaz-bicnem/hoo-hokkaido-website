@@ -4,13 +4,13 @@ import Link from "next/link";
 import {
   ArrowRight,
   Award,
-  CalendarCheck,
+  Bus,
   Compass,
-  Leaf,
   LifeBuoy,
   MapPin,
   MessagesSquare,
   ShieldCheck,
+  Snowflake,
   Trees,
   Users,
 } from "lucide-react";
@@ -27,23 +27,42 @@ import WaveDivider from "@/components/ui/WaveDivider";
 import JsonLd from "@/components/ui/JsonLd";
 import { pageMetadata } from "@/lib/seo";
 import { faqJsonLd } from "@/lib/jsonld";
-import { sortedActivities } from "@/data/activities";
+import {
+  activitiesBySeason,
+  getActivity,
+  sectionId,
+  seasonOrder,
+  seasonPeriods,
+  type Activity,
+} from "@/data/activities";
 import { getLatestBlogPosts } from "@/lib/blog";
+import { formatPeriodRange } from "@/lib/format";
 import { guide, hasTestimonials } from "@/data/guide";
 import { projects } from "@/data/projects";
-import { getDictionary } from "@/i18n/dictionary";
+import { format, getDictionary } from "@/i18n/dictionary";
 import type { Locale } from "@/i18n/locales";
 import { localePath } from "@/i18n/routing";
 
 type Params = { locale: Locale };
 
-const highlightIcons = [MapPin, Users, Compass, CalendarCheck, Leaf];
+/** 今のシーズンのアクティビティを先に出すため、1日1回描き直す */
+export const revalidate = 86400;
+
+const highlightIcons = [MapPin, Users, Compass, Bus, Snowflake];
 const reasonIcons = [Award, ShieldCheck, LifeBuoy, Trees, MessagesSquare];
 const purposeLinks = [
   "/activities/furano-relax-downriver",
-  "/activities",
-  "/furano-activity",
-  "/activities/organize-program",
+  "/furano-rafting",
+  `/activities#${sectionId("winter")}`,
+  `/activities#${sectionId("green", "private")}`,
+];
+
+/** トップに出すグリーンシーズンのアクティビティ（先頭は大きいカード） */
+const homeGreenSlugs = [
+  "furano-relax-downriver",
+  "furano-rafting",
+  "kamuikotan-sup",
+  "organize-tour",
 ];
 
 export async function generateMetadata({
@@ -69,7 +88,10 @@ export default async function HomePage({
   const { locale } = await params;
   const dict = await getDictionary(locale);
 
-  const [featured, ...others] = sortedActivities;
+  const order = seasonOrder();
+  const homeGreen = homeGreenSlugs
+    .map((slug) => getActivity(slug))
+    .filter((a): a is Activity => Boolean(a));
   const homeFaq = dict.faq.items.slice(0, 6);
   const latestPosts = getLatestBlogPosts(locale, 3);
 
@@ -135,26 +157,76 @@ export default async function HomePage({
             />
           </FadeIn>
 
-          {/* 主力：富良野リラックスダウンリバーを最大サイズで表示 */}
-          <FadeIn>
-            <ActivityCard
-              locale={locale}
-              dict={dict}
-              activity={featured}
-              large
-              priority
-            />
-          </FadeIn>
+          {/* 今のシーズンを先に（11〜3月はウィンター、4〜10月はグリーン） */}
+          {order.map((season, si) => {
+            const all = activitiesBySeason(season);
+            const list = season === "green" ? homeGreen : all;
+            return (
+              <div key={season} className={si > 0 ? "mt-16 md:mt-20" : ""}>
+                <h3 className="mb-6 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-display text-xl font-bold text-navy md:text-2xl">
+                  {dict.activityDetail.seasons[season]}
+                  <span className="text-sm font-medium text-ink-soft md:text-base">
+                    {formatPeriodRange(seasonPeriods[season], dict)}
+                  </span>
+                </h3>
+                {season === "green" ? (
+                  <>
+                    {/* 主力：富良野リラックスダウンリバーを大きく */}
+                    <FadeIn>
+                      <ActivityCard
+                        locale={locale}
+                        dict={dict}
+                        activity={list[0]}
+                        large
+                        headingLevel="h4"
+                      />
+                    </FadeIn>
+                    <div className="mt-8 grid gap-6 md:grid-cols-3">
+                      {list.slice(1).map((activity, i) => (
+                        <FadeIn key={activity.slug} delay={i * 0.08}>
+                          <ActivityCard
+                            locale={locale}
+                            dict={dict}
+                            activity={activity}
+                            headingLevel="h4"
+                          />
+                        </FadeIn>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="grid gap-6 md:grid-cols-2">
+                    {list.map((activity, i) => (
+                      <FadeIn key={activity.slug} delay={i * 0.08}>
+                        <ActivityCard
+                          locale={locale}
+                          dict={dict}
+                          activity={activity}
+                          headingLevel="h4"
+                        />
+                      </FadeIn>
+                    ))}
+                  </div>
+                )}
+                {all.length > list.length && (
+                  <div className="mt-6 text-right">
+                    <Link
+                      href={localePath(locale, `/activities#${sectionId(season)}`)}
+                      className="inline-flex items-center gap-1.5 text-sm font-bold text-water-deep transition-colors hover:text-navy"
+                    >
+                      {format(dict.home.activities.seasonAll, {
+                        season: dict.activityDetail.seasons[season],
+                        count: all.length,
+                      })}
+                      <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+                    </Link>
+                  </div>
+                )}
+              </div>
+            );
+          })}
 
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {others.map((activity, i) => (
-              <FadeIn key={activity.slug} delay={i * 0.08}>
-                <ActivityCard locale={locale} dict={dict} activity={activity} />
-              </FadeIn>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
+          <div className="mt-12 text-center">
             <Link
               href={localePath(locale, "/activities")}
               className="inline-flex min-h-12 items-center gap-2 rounded-full border-2 border-forest px-8 py-3 text-sm font-bold text-forest transition-colors hover:bg-forest hover:text-white"
