@@ -1,5 +1,5 @@
 import { site } from "@/data/site";
-import type { Activity } from "@/data/activities";
+import { operatorNames, type Activity } from "@/data/activities";
 import type { Dictionary } from "@/i18n/dictionary";
 import { localeConfig, type Locale } from "@/i18n/locales";
 import { localeUrl } from "@/i18n/routing";
@@ -150,7 +150,13 @@ export function serviceJsonLd(
     image: `${site.url}${activity.image}`,
     inLanguage: langCode(locale),
     areaServed: t.area,
-    provider: { "@id": `${site.url}/#organization` },
+    // 協力会社が運営するツアーは、運営者を provider、HOO を broker（申込の窓口）にする
+    ...(activity.operator
+      ? {
+          provider: { "@type": "Organization", name: operatorNames[activity.operator] },
+          broker: { "@id": `${site.url}/#organization` },
+        }
+      : { provider: { "@id": `${site.url}/#organization` } }),
     offers: priceRows(activity, locale, dict).map((row) => ({
       "@type": "Offer",
       name: row.label,

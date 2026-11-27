@@ -124,7 +124,8 @@ export default async function FuranoRaftingPage({
             </FadeIn>
           ))}
         </div>
-        <p className="mt-6 text-center text-sm leading-relaxed text-ink-soft">
+        <p className="mt-6 text-center text-xs leading-relaxed text-ink-soft">{p.operatorNote}</p>
+        <p className="mt-3 text-center text-sm leading-relaxed text-ink-soft">
           <TextWithLink
             text={p.programMore}
             href={localePath(locale, "/activities/kamuikotan-rafting")}

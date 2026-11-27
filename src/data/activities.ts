@@ -28,6 +28,17 @@ export type MeetingPlace =
   | "kamuikotanParking"
   | "minamifuranoOchiai";
 
+/**
+ * ツアーを運営する協力会社（HOO 以外が運営する場合のみ）。
+ * 富良野ラフティング：2026-11 施主回答「アース・アウトドア・ツアーズ様は協力会社となり、実際のツアー運営もお願いしています」
+ */
+export type Operator = "earthOutdoorTours";
+
+/** 協力会社の構造化データ用の名称（固有名詞・全言語共通） */
+export const operatorNames: Record<Operator, string> = {
+  earthOutdoorTours: "Earth Outdoor Tours",
+};
+
 /** プランの種別（standard＝1種類のみ／半日／1日） */
 export type PlanKind = "standard" | "halfDay" | "fullDay";
 
@@ -67,6 +78,8 @@ export type Activity = {
   minParticipants: number;
   participantUnit: "person" | "board";
   meeting: { place: MeetingPlace; mapUrl?: string };
+  /** HOO 以外がツアーを運営する場合の運営会社（表示名は辞書 activityDetail.operators） */
+  operator?: Operator;
   plans: readonly Plan[];
   /** カード用（4:3）。alt は辞書 activities.<slug>.imageAlt */
   image: string;
@@ -95,10 +108,14 @@ function photosOf(slug: string) {
 
 /** 1日2回（午前・午後）の約2時間ツアー */
 const twoHourSessions = ["9:30-11:30", "13:30-15:30"] as const;
-/** オーガナイズ（貸切）の半日・1日プラン */
+/**
+ * オーガナイズ（貸切）の半日・1日プラン。
+ * 料金は1名あたり（2026-11 施主回答：「1グループの料金ではなく、1名あたりの料金」）。
+ * ツアー情報の表では大人・小人・1歳〜0歳とも同額のため、3区分とも同じ金額にしている。
+ */
 const organizePlans = (): Plan[] => [
-  { kind: "halfDay", hours: 2.5, approx: true, sessions: ["9:00-11:30", "13:45-16:15"], price: { unit: "perGroup", amount: 30000 } },
-  { kind: "fullDay", hours: 7, approx: true, sessions: ["9:00-16:00"], price: { unit: "perGroup", amount: 50000 } },
+  { kind: "halfDay", hours: 2.5, approx: true, sessions: ["9:00-11:30", "13:45-16:15"], price: { unit: "perPerson", adult: 30000, child: 30000, infant: 30000 } },
+  { kind: "fullDay", hours: 7, approx: true, sessions: ["9:00-16:00"], price: { unit: "perPerson", adult: 50000, child: 50000, infant: 50000 } },
 ];
 
 export const activities: Activity[] = [
@@ -193,6 +210,7 @@ export const activities: Activity[] = [
     minParticipants: 2,
     participantUnit: "person",
     meeting: { place: "minamifuranoOchiai", mapUrl: "https://maps.app.goo.gl/wMG65x72cNVWr8817" },
+    operator: "earthOutdoorTours",
     plans: [
       { kind: "standard", hours: 3, approx: true, sessions: ["9:30-12:30", "13:45-16:45"], price: { unit: "perPerson", adult: 6100, child: 5700 } },
     ],

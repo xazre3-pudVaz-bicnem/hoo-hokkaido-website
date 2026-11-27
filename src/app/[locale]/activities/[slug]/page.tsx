@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   Clock,
   ExternalLink,
+  Handshake,
   MapPin,
   Phone,
   Shirt,
@@ -375,6 +376,16 @@ export default async function ActivityDetailPage({
                   </dt>
                   <dd className="mt-0.5 pl-6 text-sm text-ink">{d.infoValues.onBooking}</dd>
                 </div>
+                {/* 協力会社が運営するツアー（富良野ラフティング） */}
+                {activity.operator && (
+                  <div>
+                    <dt className="flex items-center gap-2 text-xs font-bold text-ink-soft">
+                      <Handshake aria-hidden="true" className="h-4 w-4 shrink-0 text-forest" />
+                      {d.labels.operator}
+                    </dt>
+                    <dd className="mt-0.5 pl-6 text-sm text-ink">{d.operators[activity.operator]}</dd>
+                  </div>
+                )}
               </dl>
 
               <div className="mt-7 space-y-3">

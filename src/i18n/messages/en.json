@@ -139,7 +139,9 @@
     "planWithDuration": "{plan} ({duration})",
     "note": "Prices are subject to change. Please contact us for the latest pricing.",
     "noteGroup": "This is the price for one private group. For large groups, or depending on what you'd like to do, we'll prepare a separate quote.",
-    "noteRental": "The price covers a set of SUP board, paddle and life jacket."
+    "noteRental": "The price covers a set of SUP board, paddle and life jacket.",
+    "noteAllAges": "Adults, children and infants (0–1) pay the same price. Prices are subject to change. Please contact us for the latest pricing.",
+    "perPersonAllAges": "per person, tax included (same price for all ages)"
   },
 
   "mailto": {
@@ -392,7 +394,8 @@
       "period": "Season",
       "targetAge": "Age range",
       "meetingPlace": "Meeting & finish point",
-      "clothing": "What to wear and bring"
+      "clothing": "What to wear and bring",
+      "operator": "Operated by"
     },
     "infoValues": {
       "onBooking": "Shared when you book"
@@ -423,21 +426,24 @@
       "rental": "Rental"
     },
     "meeting": {
-      "hotelPickup": "Your hotel (pick-up and drop-off included)",
+      "hotelPickup": "Your hotel (pick-up and drop-off in Furano City and Nakafurano Town)",
       "furanoDelivery": "A location you specify in the Furano area (delivery and pick-up)",
       "bieiFurusatoIchiba": "Biei Furusato Ichiba (local market)",
       "asahikawaTouristCenter": "Asahikawa Tourism and Local Products Information Center (JR Asahikawa Station)",
       "kamuikotanParking": "Kamuikotan parking lot",
-      "minamifuranoOchiai": "194-2 Ochiai, Minamifurano-cho, Sorachi-gun, Hokkaido"
+      "minamifuranoOchiai": "Earth Outdoor Tours Minamifurano Tomamu (194-2 Ochiai, Minamifurano-cho, Sorachi-gun, Hokkaido)"
     },
     "meetingNote": {
-      "hotelPickup": "We'll pick you up at your hotel and drop you back there afterwards. Please confirm the pick-up time and the areas we can pick up from when you book.",
+      "hotelPickup": "We'll pick you up at your hotel and drop you back there afterwards. Pick-up and drop-off cover hotels in Furano City and Nakafurano Town, and we'll let you know the pick-up time when you book. If you're staying outside these areas, please ask us before booking.",
       "furanoDelivery": "We'll deliver the SUP set to a location you specify within the Furano area and collect it after use. Please tell us where to deliver when you book.",
       "place": "We meet and finish on site. We'll give you the meeting time when you book, and you can check the location on Google Maps."
     },
     "furanoNote": "If you'd like to try rafting in Furano, we also run Furano Rafting in Minamifurano, where you paddle over wave-filled rapids. Can't decide which experience suits you? Take a look at our guide: {link}.",
     "raftingNote": "If you'd rather take in the scenery and the sound of the water at a gentle pace, we also recommend the Furano Relax Downriver, with hotel pick-up and drop-off. We explain how the two differ in our guide: {link}.",
-    "furanoNoteLink": "How to choose a rafting or river experience in Furano"
+    "furanoNoteLink": "How to choose a rafting or river experience in Furano",
+    "operators": {
+      "earthOutdoorTours": "Earth Outdoor Tours (HOO's partner company)"
+    }
   },
 
   "activities": {
@@ -487,7 +493,7 @@
       "notes": [
         "Trips may be cancelled or changed depending on the weather and river conditions.",
         "If you have any concerns about your health, please talk to us in advance.",
-        "Please check which areas we can pick up from when you book.",
+        "Pick-up and drop-off cover hotels in Furano City and Nakafurano Town.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
       "faq": [
@@ -505,7 +511,7 @@
         },
         {
           "question": "Where do we meet?",
-          "answer": "We'll pick you up at your hotel. We'll let you know the pick-up time and the areas we can pick up from when you book."
+          "answer": "We'll pick you up at your hotel in Furano City or Nakafurano Town. We'll let you know the pick-up time when you book."
         },
         {
           "question": "What should I wear and bring?",
@@ -818,7 +824,7 @@
         "description": "About 3 hours of rafting from Ochiai, Minamifurano. Ages 5+, from 2 people, with child prices. Mornings and afternoons, late April to late October."
       },
       "description": [
-        "Furano Rafting takes you down a river in Minamifurano in a raft.",
+        "Furano Rafting takes you down a river in Minamifurano in a raft. The tour is run by HOO's partner company, Earth Outdoor Tours.",
         "Everyone paddles in time to the guide's calls, riding over wave-filled rapids. Pushing on through the spray is a thrill only rafting can give you.",
         "Children can join from age 5, so it's a good choice for families too. If you'd rather take in the scenery at a gentle pace, we also offer the Furano Relax Downriver."
       ],
@@ -845,7 +851,7 @@
       "flow": [
         { "step": "Book or enquire", "body": "Tell us your preferred date, time of day (morning or afternoon) and group size, by form or phone." },
         { "step": "Details", "body": "When you book, we'll let you know the meeting time, what to wear and what to bring." },
-        { "step": "Check in", "body": "Come to the meeting point in Ochiai, Minamifurano (see the map on this page)." },
+        { "step": "Check in", "body": "Come to Earth Outdoor Tours Minamifurano Tomamu (see the map on this page)." },
         { "step": "Guide briefing", "body": "Your guide explains how to paddle, the calls to follow and key safety points." },
         { "step": "Rafting", "body": "Paddle down the river in Minamifurano with your guide." },
         { "step": "Finish", "body": "The trip ends back at the meeting point." }
@@ -853,7 +859,7 @@
       "notes": [
         "Trips may be cancelled or changed depending on the weather and river conditions.",
         "You will get wet. We'll tell you what to wear and bring when you book.",
-        "The meeting point is in Ochiai, Minamifurano, some distance from central Furano, so please allow plenty of travel time.",
+        "The meeting point is Earth Outdoor Tours Minamifurano Tomamu in Ochiai, Minamifurano, some distance from central Furano, so please allow plenty of travel time.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
       "faq": [
@@ -871,7 +877,11 @@
         },
         {
           "question": "Where do we meet?",
-          "answer": "We meet at 194-2 Ochiai, Minamifurano-cho, Sorachi-gun, Hokkaido, and the trip finishes at the same place. You'll find a map on this page."
+          "answer": "We meet at Earth Outdoor Tours Minamifurano Tomamu (194-2 Ochiai, Minamifurano-cho, Sorachi-gun, Hokkaido), and the trip finishes at the same place. You'll find a map on this page."
+        },
+        {
+          "question": "Who runs this tour?",
+          "answer": "It's run by HOO's partner company, Earth Outdoor Tours. HOO handles bookings and enquiries."
         }
       ],
       "gallery": [
@@ -923,7 +933,7 @@
       ],
       "notes": [
         "Trips may be cancelled or changed depending on the weather and river conditions.",
-        "Please check which areas we can pick up from when you book.",
+        "Pick-up and drop-off cover hotels in Furano City and Nakafurano Town.",
         "If you have any concerns about your health, please talk to us in advance.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
@@ -991,7 +1001,7 @@
       ],
       "notes": [
         "Trips may be cancelled or changed depending on the weather and lake conditions.",
-        "Please check which areas we can pick up from when you book.",
+        "Pick-up and drop-off cover hotels in Furano City and Nakafurano Town.",
         "If you have any concerns about your health, please talk to us in advance.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
@@ -1061,7 +1071,7 @@
       ],
       "notes": [
         "Destinations and activities may change depending on the weather.",
-        "Please check which areas we can pick up from when you book.",
+        "Pick-up and drop-off cover hotels in Furano City and Nakafurano Town.",
         "If you have any concerns about your health, please talk to us in advance.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
@@ -1211,7 +1221,7 @@
       "notes": [
         "Tours may be cancelled or changed depending on the weather and snow conditions.",
         "This is an outdoor winter activity. We'll tell you what warm clothing to wear and what to bring when you book.",
-        "Please check which areas we can pick up from when you book.",
+        "Pick-up and drop-off cover hotels in Furano City and Nakafurano Town.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
       "faq": [
@@ -1285,7 +1295,7 @@
       "notes": [
         "Destinations and activities may change depending on the weather, road conditions and snow.",
         "The tour includes time outdoors in winter. We'll tell you what warm clothing to wear when you book.",
-        "Please check which areas we can pick up from when you book.",
+        "Pick-up and drop-off cover hotels in Furano City and Nakafurano Town.",
         "Sending the form does not confirm your booking. Your place is confirmed once we contact you."
       ],
       "faq": [
@@ -1385,7 +1395,7 @@
       },
       {
         "question": "Can I join without a car?",
-        "answer": "The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel. Please check which areas we can pick up from when you book."
+        "answer": "The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel. We pick up from hotels in Furano City and Nakafurano Town."
       }
     ],
     "ctaTitle": "See Furano from the river.\nWe'll take you there.",
@@ -1441,7 +1451,7 @@
         "body": "Not a strong swimmer, not sure about your fitness, wondering whether to bring the kids? Ask before you book, and we'll give you a straight answer."
       }
     ],
-    "guideTitle": "Guided by someone who has worked rivers across Japan",
+    "guideTitle": "HOO's guide has worked rivers across Japan",
     "guideParagraphs": [
       "Shota Kose, HOO's representative, has more than 20 years as a river guide, on the Yoshino River in Shikoku, the Tone River in Gunma, the Mu River in Hokkaido and elsewhere.",
       "He is a Hokkaido Governor-certified Outdoor Guide (Rafting / Canoe) and holds Rescue3 SRT-1 and Advanced First Aid certification, reading the river as it is on the day and running trips accordingly."
@@ -1479,7 +1489,8 @@
       "All frequently asked questions"
     ],
     "ctaTitle": "On the rivers of Furano,\nfind the experience that suits you.",
-    "programMore": "We also run {link} through a river gorge in Asahikawa."
+    "programMore": "We also run {link} through a river gorge in Asahikawa.",
+    "operatorNote": "Furano Rafting is run by HOO's partner company, Earth Outdoor Tours."
   },
 
   "about": {
@@ -1700,7 +1711,7 @@
       },
       {
         "question": "Are there child prices?",
-        "answer": "For activities priced per person, ages 12 and up pay the adult price and ages 2 to 11 the child price (on some activities, the child price is the same as the adult price). On the Furano Relax Downriver, children aged 1 and under go free. Organize (private) tours are priced per group."
+        "answer": "For activities priced per person, ages 12 and up pay the adult price and ages 2 to 11 the child price (on some activities, the child price is the same as the adult price). On the Furano Relax Downriver, children aged 1 and under go free. Organize (private) tours are priced per person, with the same price for adults, children and infants."
       },
       {
         "question": "What should I wear and bring?",
@@ -1712,11 +1723,11 @@
       },
       {
         "question": "Where do we meet?",
-        "answer": "It depends on the activity. The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel. For the Biei River and Asahikawa Relax Downriver trips, the Kamuikotan SUP Tour, Kamuikotan Rafting and Furano Rafting, you meet and finish on site, and there's a map on each activity's page. For the SUP Rental, we deliver the equipment to a location you specify in the Furano area."
+        "answer": "It depends on the activity. The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel in Furano City or Nakafurano Town. For the Biei River and Asahikawa Relax Downriver trips, the Kamuikotan SUP Tour, Kamuikotan Rafting and Furano Rafting, you meet and finish on site, and there's a map on each activity's page. For the SUP Rental, we deliver the equipment to a location you specify in the Furano area."
       },
       {
         "question": "Can you pick us up from our hotel?",
-        "answer": "The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel. Please check which areas we can pick up from when you book."
+        "answer": "The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel. We pick up from hotels in Furano City and Nakafurano Town."
       },
       {
         "question": "Can I take part in winter?",
@@ -1736,7 +1747,7 @@
       },
       {
         "question": "Do you run trips outside Furano?",
-        "answer": "Yes. We run Relax Downriver trips in Biei and Asahikawa, a SUP tour and rafting at Kamuikotan in Asahikawa, and Furano Rafting in Minamifurano."
+        "answer": "Yes. We run Relax Downriver trips in Biei and Asahikawa, and a SUP tour and rafting at Kamuikotan in Asahikawa. In Minamifurano, we offer Furano Rafting, run by our partner company Earth Outdoor Tours."
       }
     ]
   },
@@ -1746,7 +1757,7 @@
     "title": "Access & business information",
     "lead": "Where HOO is based, and how to reach us.",
     "meetingTitle": "About meeting points",
-    "meetingBody": "Meeting points vary by activity. The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel, and for the SUP Rental we deliver the equipment to a location you specify; for all other activities, you meet us on site. Meeting points and maps are listed on each activity's page. The address above is our organisation's base, not a meeting point. If anything is unclear, call us or use the contact form.",
+    "meetingBody": "Meeting points vary by activity. The Furano Relax Downriver, the Snowshoe Tour and Organize (private) tours include pick-up and drop-off at your hotel in Furano City or Nakafurano Town, and for the SUP Rental we deliver the equipment to a location you specify; for all other activities, you meet us on site. Meeting points and maps are listed on each activity's page. The address above is our organisation's base, not a meeting point. If anything is unclear, call us or use the contact form.",
     "mapNote": "Each activity's meeting point is shown with a map on its activity page.",
     "mapButton": "Open in Google Maps",
     "mapAria": "Map showing Hokkaido Outdoor Organization"

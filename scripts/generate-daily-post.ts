@@ -15,6 +15,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import Anthropic from "@anthropic-ai/sdk";
+import { activitySlugs } from "../src/data/activities";
 
 // ─────────────────────────────────────────────────────────────
 // 設定
@@ -47,6 +48,19 @@ const INTERNAL_LINKS = [
   "/access", // アクセス
   "/contact", // お問い合わせ
   "/faq", // よくある質問
+];
+
+/** リンクとして残してよい、そのほかの実在ページ（normalizeLinks で使う） */
+const EXISTING_PAGES = [
+  "/",
+  "/about",
+  "/projects",
+  "/safety",
+  "/column",
+  "/blog",
+  "/terms",
+  "/privacy",
+  "/sitemap",
 ];
 
 /** アイキャッチ画像プール（既存の画像を日替わりで割り当てる） */
@@ -160,8 +174,9 @@ function buildSystemPrompt(): string {
   return [
     `あなたは「${SITE.name}（${SITE.shortName}）」の公式ブログを執筆する、富良野在住のプロのアウトドアガイド兼SEOライターです。`,
     `${SITE.shortName}は北海道・富良野を拠点に、美瑛・旭川（神居古潭）・南富良野で、川・湖・雪のアクティビティを開催しています（すべて事前予約制）。`,
-    `主力は、川をゆったり下る「リラックスダウンリバー」（富良野・美瑛・旭川）。激しさやスリルを売りにするのではなく、川面から景色や水の音を楽しむ穏やかな体験です。富良野リラックスダウンリバーは宿泊先ホテルへの送迎つきです。`,
-    `ほかに、南富良野と旭川・神居古潭のラフティング、神居古潭のSUPツアー、冬（12月中旬〜3月中旬）のスノーシューツアー、ホテル送迎つきで1名から利用できる貸切の「オーガナイズ」（川・湖・観光・冬）、SUPレンタルがあります。`,
+    `主力は、川をゆったり下る「リラックスダウンリバー」（富良野・美瑛・旭川）。激しさやスリルを売りにするのではなく、川面から景色や水の音を楽しむ穏やかな体験です。富良野リラックスダウンリバーは宿泊先ホテルへの送迎つきです（送迎の対象エリアは富良野市・中富良野町）。`,
+    `ほかに、旭川・神居古潭のラフティング、南富良野の「富良野ラフティング」（協力会社のアース・アウトドア・ツアーズが運営）、神居古潭のSUPツアー、冬（12月中旬〜3月中旬）のスノーシューツアー、ホテル送迎つきで1名から利用できる貸切の「オーガナイズ」（オーガナイズリバー＝川・オーガナイズレイク＝湖・オーガナイズツアー＝観光地めぐり・オーガナイズウィンター＝冬の4つだけ）、SUPレンタルがあります。`,
+    `オーガナイズに、ほかのアクティビティ（リラックスダウンリバー・ラフティング・SUP・スノーシューなど）を組み込めるとは書かない。富良野ラフティングを「HOOのガイドが案内する」とは書かない。`,
     `料金・最少催行人数・対象年齢・開催期間はアクティビティごとに異なり、各アクティビティのページに掲載しています。`,
     ``,
     `【文章の方針】`,
@@ -224,6 +239,38 @@ function extractJson(text: string): Record<string, unknown> {
   const end = t.lastIndexOf("}");
   if (start === -1 || end === -1) throw new Error("JSONが見つかりませんでした");
   return JSON.parse(t.slice(start, end + 1));
+}
+
+/**
+ * 本文の Markdown リンクを点検する。
+ * - https://example.com/activities/x や https://（どのドメインでも）/furano-rafting → /activities/x・/furano-rafting
+ * - https://furano-activity/ のようにドメインの無いURL → /furano-activity
+ * - INTERNAL_LINKS（とトップ）以外のパスはリンクを外して文字だけ残す
+ */
+function normalizeLinks(markdown: string): string {
+  const allowed = new Set<string>([
+    ...INTERNAL_LINKS,
+    ...activitySlugs.map((slug) => `/activities/${slug}`),
+    ...EXISTING_PAGES,
+  ]);
+  return markdown.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (all, text: string, href: string) => {
+    let path = href;
+    const absolute = href.match(/^https?:\/\/([^/?#]+)(.*)$/i);
+    if (absolute) {
+      const host = absolute[1];
+      const rest = absolute[2] || "/";
+      path = host.includes(".") ? rest : `/${host}${rest === "/" ? "" : rest}`;
+    }
+    if (!path.startsWith("/")) return all; // mailto: など
+    const [pathname, suffix = ""] = path.split(/(?=[?#])/);
+    const clean = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+    if (allowed.has(clean)) {
+      if (clean + suffix !== href) console.warn(`注意: リンクを直しました: ${href} → ${clean}${suffix}`);
+      return `[${text}](${clean}${suffix})`;
+    }
+    console.warn(`注意: 存在しないリンク先を外しました: ${href}`);
+    return text;
+  });
 }
 
 function toYamlList(items: string[]): string {
@@ -298,6 +345,10 @@ async function main() {
   }
   const checkedDescription = description.replace(STALE_FACTS[0].pattern, STALE_FACTS[0].replace);
 
+  // リンクの点検：モデルが https://example.com/… や実在しないドメインを書くことがあるため、
+  // 外部URLはサイト内の相対パスに直し、INTERNAL_LINKS に無いページへのリンクは外す（文字だけ残す）
+  checkedBody = normalizeLinks(checkedBody);
+
   // slug を正規化し、既存と重複しないようにする
   const existingSlugs = new Set(existing.map((p) => p.slug));
   let slug = sanitizeSlug(String(data.slug ?? title));
@@ -334,6 +385,13 @@ async function main() {
   console.log(`タイトル (title): ${title}`);
   console.log(`本文文字数 (chars): ${checkedBody.replace(/\s/g, "").length}`);
   console.log("=== 生成完了 ===");
+}
+
+// リンクの点検だけを試す（記事は生成しない）:
+//   HOO_LINK_CHECK=src/content/blog/ja/<slug>.md npx tsx scripts/generate-daily-post.ts
+if (process.env.HOO_LINK_CHECK) {
+  process.stdout.write(normalizeLinks(fs.readFileSync(process.env.HOO_LINK_CHECK, "utf-8")));
+  process.exit(0);
 }
 
 main().catch((err) => {

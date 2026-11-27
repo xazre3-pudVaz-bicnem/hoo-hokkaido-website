@@ -102,6 +102,25 @@ export function formatMinParticipantsShort(activity: Activity, dict: Dictionary)
 
 export type PriceRow = { label: string; value: string; amount: number };
 
+type PerPersonPrice = Extract<Plan["price"], { unit: "perPerson" }>;
+
+/** 対象年齢で選べる区分（大人・小人・0〜1歳）がすべて同じ金額か */
+function isFlatPrice(p: PerPersonPrice, activity: Activity): boolean {
+  const amounts = [
+    p.adult,
+    ...(p.child !== undefined ? [p.child] : []),
+    ...(p.infant !== undefined && activity.minAge < CHILD_FROM_AGE ? [p.infant] : []),
+  ];
+  return amounts.length > 1 && amounts.every((a) => a === p.adult);
+}
+
+/** 半日・1日のプランで、年齢にかかわらず同じ料金のアクティビティ（オーガナイズ） */
+export function isFlatAllAges(activity: Activity): boolean {
+  return activity.plans.every(
+    (plan) => plan.kind !== "standard" && plan.price.unit === "perPerson" && isFlatPrice(plan.price, activity)
+  );
+}
+
 /** プラン名（例:「半日（約2.5時間）」）。1種類のみのプランは空文字 */
 export function planLabel(plan: Plan, dict: Dictionary, withDuration = true): string {
   if (plan.kind === "standard") return "";
@@ -127,6 +146,15 @@ export function priceRows(
   const tiers = dict.price.tiers;
   for (const plan of activity.plans) {
     const p = plan.price;
+    if (p.unit === "perPerson" && plan.kind !== "standard" && isFlatPrice(p, activity)) {
+      // 半日・1日のプランで年齢による違いが無い（オーガナイズ）→ プランごとに1行
+      rows.push({
+        label: planLabel(plan, dict, !short),
+        value: formatAmount(p.adult, locale, dict),
+        amount: p.adult,
+      });
+      continue;
+    }
     if (p.unit === "perPerson") {
       rows.push({
         label: format(tiers.adult, { from: ADULT_FROM_AGE }),
@@ -218,6 +246,7 @@ export function priceNote(activity: Activity, dict: Dictionary): string {
   const unit = activity.plans[0].price.unit;
   if (unit === "perGroup") return dict.price.noteGroup;
   if (unit === "perBoard") return dict.price.noteRental;
+  if (isFlatAllAges(activity)) return dict.price.noteAllAges;
   return dict.price.note;
 }
 

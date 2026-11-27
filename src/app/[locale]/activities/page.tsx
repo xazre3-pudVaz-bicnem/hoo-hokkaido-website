@@ -30,6 +30,7 @@ import {
   formatPeriod,
   formatPeriodRange,
   formatTargetAge,
+  isFlatAllAges,
   priceCaption,
   priceRows,
 } from "@/lib/format";
@@ -58,7 +59,8 @@ export async function generateMetadata({
 function tablePrice(activity: Activity, locale: Locale, dict: Dictionary) {
   return {
     rows: priceRows(activity, locale, dict, { short: true }),
-    caption: priceCaption(activity, dict),
+    // 年齢による違いが無いもの（オーガナイズ）は、そのことも表に出す
+    caption: isFlatAllAges(activity) ? dict.price.perPersonAllAges : priceCaption(activity, dict),
   };
 }
 
